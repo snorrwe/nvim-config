@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='C:\Dev\minomaly'
+let g:netrw_dirhist_2='C:/Dev/minomaly/minomaly'
+let g:netrw_dirhist_3='C:/Dev/minomaly/minomaly/engine'
+let g:netrw_dirhist_4='C:/Dev/minomaly'
+let g:netrw_dirhist_5='C:/Dev/minomaly/minomaly'
+let g:netrw_dirhist_6='C:/Dev/minomaly/minomaly/engine'
+let g:netrw_dirhist_7='C:/Dev/minomaly/minomaly/engine/core'
