@@ -13,8 +13,10 @@ Plug 'https://github.com/Shougo/vimproc.vim.git'
 Plug 'https://github.com/Chiel92/vim-autoformat.git'
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/Valloric/YouCompleteMe.git'
-Plug 'https://github.com/alepez/vim-gtest.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/tpope/vim-rhubarb.git'
+Plug 'https://github.com/vhdirk/vim-cmake.git'
 call plug#end()
 
 syntax on
@@ -33,5 +35,6 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 map <C-n> :NERDTreeToggle<CR>
+
 "ctrlp
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
