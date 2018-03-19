@@ -24,7 +24,6 @@ set expandtab ts=4 sw=4 ai
 set autoread
 
 " Autoformat
-
 " au BufWrite * :Autoformat
 map <A-k> :Autoformat<CR>
 
@@ -33,5 +32,6 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
 map <C-n> :NERDTreeToggle<CR>
+"ctrlp
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
