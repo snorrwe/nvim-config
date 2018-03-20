@@ -7,6 +7,4 @@
 - Init venv `virtualenv python3`
 - Install plugins in vim `:PlugInstall`
 - Install [YouCompleteMe](https://github.com/Valloric/YouCompleteMe#contents)
-- Install Rope `pip install rope`
-- Install Rope `pip install ropevim`
 - Profit

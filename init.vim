@@ -17,7 +17,7 @@ Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-rhubarb.git'
 Plug 'https://github.com/vhdirk/vim-cmake.git'
-Plug 'https://github.com/python-rope/ropevim.git'
+Plug 'https://github.com/python-mode/python-mode.git'
 call plug#end()
 
 syntax on
@@ -45,5 +45,7 @@ autocmd VimLeave * nested if (!isdirectory($HOME . "/.vim")) |
 autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.vim") |
     \ execute "source " . $HOME . "/.vim/Session.vim"
 
-" Rope
-let ropevim_vim_completion=-1
+" Pymode
+let g:pymode_python = 'python3'
+let g:pymode_folding = 0
+
