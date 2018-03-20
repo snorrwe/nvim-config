@@ -35,33 +35,11 @@ map <A-n> :NERDTreeToggle<CR>
 "ctrlp
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
-" Go to last file if invoked without arguments.
-autocmd VimEnter * nested if
-  \ argc() == 0 &&
-  \ bufname("%") == "" &&
-  \ bufname("2" + 0) != "" |
-  \   exe "normal! `0" |
-  \ endif
-" Open last active file(s) if VIM is invoked without arguments.
-autocmd VimLeave * nested let buffernr = bufnr("$") |
-    \ let buflist = [] |
-    \ while buffernr > 0 |
-    \	if buflisted(buffernr) |
-    \	    let buflist += [ bufname(buffernr) ] |
-    \	endif |
-    \   let buffernr -= 1 |
-    \ endwhile |
-    \ if (!isdirectory($HOME . "/.vim")) |
-    \	call mkdir($HOME . "/.vim") |
+" Go to last file(s) if invoked without arguments.
+autocmd VimLeave * nested if (!isdirectory($HOME . "/.vim")) |
+    \ call mkdir($HOME . "/.vim") |
     \ endif |
-    \ call writefile(reverse(buflist), $HOME . "/.vim/buflist.txt")
+    \ execute "mksession! " . $HOME . "/.vim/Session.vim"
 
-autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/buflist.txt") |
-    \	for line in readfile($HOME . "/.vim/buflist.txt") |
-    \	    if filereadable(line) |
-    \		execute "tabedit " . line |
-    \		set bufhidden=delete |
-    \	    endif |
-    \	endfor |
-    \	tabclose 1 |
-    \ endif
+autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.vim") |
+    \ execute "source " . $HOME . "/.vim/Session.vim"
