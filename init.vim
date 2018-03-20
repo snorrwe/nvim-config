@@ -16,6 +16,7 @@ Plug 'https://github.com/Valloric/YouCompleteMe.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-rhubarb.git'
+Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 " Plug 'https://github.com/python-mode/python-mode.git'
 call plug#end()
 
@@ -48,3 +49,8 @@ autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.
 " let g:pymode_python = 'python3'
 " let g:pymode_folding = 0
 
+" vim-multiple-cursors
+let g:multi_cursor_next_key='<C-d>'
+let g:multi_cursor_prev_key='<C-Shift-d>'
+"let g:multi_cursor_skip_key='<C-x>'
+"let g:multi_cursor_quit_key='<Esc>'
