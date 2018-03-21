@@ -5,7 +5,7 @@ if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
     set termguicolors
 endif
 
-let g:python3_host_prog = HOME . 'python3/Scripts/python.exe' 
+let g:python3_host_prog = HOME . 'python3/Scripts/python.exe'
 let g:mapleader = "-"
 
 call plug#begin('~/.vim/plugged')
@@ -54,8 +54,7 @@ autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.
 " let g:pymode_folding = 0
 
 " YouCompleteMe
-let g:ycm_global_ycm_extra_conf = HOME . ".ycm_extra_conf.py" 
-
+let g:ycm_global_ycm_extra_conf = HOME . ".ycm_extra_conf.py"
 " NERDcommenter
 filetype plugin on
 " map <c-c> :NERDComInvertComment<CR>
