@@ -1,9 +1,11 @@
+let HOME = 'C:/Users/Frenetiq.DESKTOP-9QE7I3Q/AppData/Local/nvim/'
+
 set encoding=utf-8
 if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
     set termguicolors
 endif
 
-let g:python3_host_prog='C:/Users/Frenetiq.DESKTOP-9QE7I3Q/AppData/Local/nvim/python3/Scripts/python.exe'
+let g:python3_host_prog = HOME . 'python3/Scripts/python.exe' 
 let g:mapleader = "-"
 
 call plug#begin('~/.vim/plugged')
@@ -40,16 +42,19 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 
 " Go to last file(s) if invoked without arguments.
 autocmd VimLeave * nested if (!isdirectory($HOME . "/.vim")) |
-    \ call mkdir($HOME . "/.vim") |
-    \ endif |
-    \ execute "mksession! " . $HOME . "/.vim/Session.vim"
+            \ call mkdir($HOME . "/.vim") |
+            \ endif |
+            \ execute "mksession! " . $HOME . "/.vim/Session.vim"
 
 autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.vim") |
-    \ execute "source " . $HOME . "/.vim/Session.vim"
+            \ execute "source " . $HOME . "/.vim/Session.vim"
 
 " Pymode
 " let g:pymode_python = 'python3'
 " let g:pymode_folding = 0
+
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf = HOME . ".ycm_extra_conf.py" 
 
 " NERDcommenter
 filetype plugin on
