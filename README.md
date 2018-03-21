@@ -11,7 +11,7 @@
     pip install neovim
     ```
 - Install plugins in vim `:PlugInstall`
-- Install [YouCompleteMe](https://github.com/Valloric/YouCompleteMe#contents)
-- Edit `init.vim` to your liking. Be sure to edit __HOME__
+- Install [libclang](https://github.com/djp952/external-libclang)
+- Edit `init.vim` to your liking. Be sure to edit __HOME__ and __LLVM__
 - Profit
 

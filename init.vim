@@ -1,5 +1,6 @@
 
 let HOME = 'C:/Users/Frenetiq.DESKTOP-9QE7I3Q/AppData/Local/nvim/'
+let LLVM = 'C:/Program Files/LLVM/lib'
 
 set encoding=utf-8
 
@@ -17,12 +18,12 @@ Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/Shougo/vimproc.vim.git'
 Plug 'https://github.com/Chiel92/vim-autoformat.git'
 Plug 'https://github.com/scrooloose/nerdtree.git'
-Plug 'https://github.com/Valloric/YouCompleteMe.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-rhubarb.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
 Plug 'https://github.com/python-mode/python-mode.git'
+Plug 'https://github.com/Rip-Rip/clang_complete.git'
 call plug#end()
 
 syntax on
@@ -55,9 +56,6 @@ autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.
 let g:pymode_python = 'python3'
 let g:pymode_folding = 0
 
-" YouCompleteMe
-let g:ycm_global_ycm_extra_conf = HOME . ".ycm_extra_conf.py"
-
 " NERDcommenter
 filetype plugin on
 " map <c-c> :NERDComInvertComment<CR>
@@ -81,3 +79,7 @@ let g:NERDCommentEmptyLines = 1
 
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
+
+" path to directory where library can be found
+let g:clang_library_path=LLVM
+
