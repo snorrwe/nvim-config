@@ -4,6 +4,7 @@ if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
 endif
 
 let g:python3_host_prog='C:/Users/Frenetiq.DESKTOP-9QE7I3Q/AppData/Local/nvim/python3/Scripts/python.exe'
+let g:mapleader = "-"
 
 call plug#begin('~/.vim/plugged')
 Plug 'https://github.com/joshdick/onedark.vim.git'
@@ -16,7 +17,7 @@ Plug 'https://github.com/Valloric/YouCompleteMe.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-rhubarb.git'
-Plug 'https://github.com/terryma/vim-multiple-cursors.git'
+Plug 'https://github.com/scrooloose/nerdcommenter.git'
 " Plug 'https://github.com/python-mode/python-mode.git'
 call plug#end()
 
@@ -49,8 +50,26 @@ autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.
 " let g:pymode_python = 'python3'
 " let g:pymode_folding = 0
 
-" vim-multiple-cursors
-let g:multi_cursor_next_key='<C-d>'
-let g:multi_cursor_prev_key='<C-Shift-d>'
-"let g:multi_cursor_skip_key='<C-x>'
-"let g:multi_cursor_quit_key='<Esc>'
+" NERDcommenter
+filetype plugin on
+" map <c-c> :NERDComInvertComment<CR>
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+" let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
