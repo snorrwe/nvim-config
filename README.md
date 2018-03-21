@@ -7,4 +7,6 @@
 - Init venv `virtualenv python3`
 - Install plugins in vim `:PlugInstall`
 - Install [YouCompleteMe](https://github.com/Valloric/YouCompleteMe#contents)
+- Edit `init.vim` to your liking. Be sure to edit __HOME__
 - Profit
+
