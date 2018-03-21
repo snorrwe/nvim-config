@@ -26,6 +26,7 @@ colorscheme onedark
 
 set expandtab ts=4 sw=4 ai
 set autoread
+set number
 
 " Autoformat
 " au BufWrite * :Autoformat
