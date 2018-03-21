@@ -23,7 +23,6 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-rhubarb.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
 Plug 'https://github.com/python-mode/python-mode.git'
-Plug 'https://github.com/Rip-Rip/clang_complete.git'
 call plug#end()
 
 syntax on
@@ -79,7 +78,3 @@ let g:NERDCommentEmptyLines = 1
 
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
-
-" path to directory where library can be found
-let g:clang_library_path=LLVM
-
