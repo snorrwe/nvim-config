@@ -78,3 +78,7 @@ let g:NERDCommentEmptyLines = 1
 
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
+
+" Disable the red line
+let g:pymode_options_colorcolumn = 0
+
