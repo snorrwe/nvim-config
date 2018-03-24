@@ -22,7 +22,8 @@ Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-rhubarb.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
-Plug 'https://github.com/python-mode/python-mode.git'
+Plug 'https://github.com/Valloric/YouCompleteMe.git'
+" Plug 'https://github.com/python-mode/python-mode.git'
 call plug#end()
 
 syntax on
@@ -52,8 +53,9 @@ autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.
             \ execute "source " . $HOME . "/.vim/Session.vim"
 
 " Pymode
-let g:pymode_python = 'python3'
-let g:pymode_folding = 0
+" let g:pymode_python = 'python3'
+" let g:pymode_folding = 0
+" let g:pymode_syntax_slow_sync = 0
 
 " NERDcommenter
 filetype plugin on

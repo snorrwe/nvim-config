@@ -12,6 +12,7 @@
     ```
 - Install plugins in vim `:PlugInstall`
 - Install [libclang](https://github.com/djp952/external-libclang)
+- Install [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 - Edit `init.vim` to your liking. Be sure to edit __HOME__ and __LLVM__
 - Profit
 
