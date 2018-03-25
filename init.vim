@@ -29,9 +29,18 @@ call plug#end()
 syntax on
 colorscheme onedark
 
-set expandtab ts=4 sw=4 ai
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
 set autoread
 set number
+
+" YouCompleteMe
+let g:ycm_add_preview_to_completeopt = 0
 
 " Autoformat
 " au BufWrite * :Autoformat
