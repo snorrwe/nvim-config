@@ -23,7 +23,9 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-rhubarb.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
 Plug 'https://github.com/Valloric/YouCompleteMe.git'
+Plug 'mindriot101/vim-yapf'
 " Plug 'https://github.com/python-mode/python-mode.git'
+Plug 'arithran/vim-delete-hidden-buffers'
 call plug#end()
 
 syntax on
