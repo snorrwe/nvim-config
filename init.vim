@@ -70,6 +70,7 @@ autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.
 let g:pymode_python = 'python3'
 let g:pymode_folding = 0
 let g:pymode_syntax_slow_sync = 0
+let g:pymode_rope = 1
 
 " NERDcommenter
 filetype plugin on
