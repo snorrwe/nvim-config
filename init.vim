@@ -71,6 +71,8 @@ let g:pymode_python = 'python3'
 let g:pymode_folding = 0
 let g:pymode_syntax_slow_sync = 0
 let g:pymode_rope = 1
+let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+let g:pymode_lint_ignore = ["E501"]
 
 " NERDcommenter
 filetype plugin on
