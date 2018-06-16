@@ -102,3 +102,5 @@ let g:NERDTrimTrailingWhitespace = 1
 " Disable the red line
 let g:pymode_options_colorcolumn = 0
 
+" Rust
+let g:rustfmt_autosave = 1
