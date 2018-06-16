@@ -18,7 +18,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/Shougo/vimproc.vim.git'
 Plug 'https://github.com/Chiel92/vim-autoformat.git'
 Plug 'https://github.com/scrooloose/nerdtree.git'
-Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
+" Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-rhubarb.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
@@ -26,6 +26,7 @@ Plug 'https://github.com/Valloric/YouCompleteMe.git'
 Plug 'mindriot101/vim-yapf'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'arithran/vim-delete-hidden-buffers'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 syntax on
@@ -54,8 +55,8 @@ map <A-k> :Autoformat<CR>
 map <A-n> :NERDTreeToggle<CR>
 map <A-f> :NERDTreeFind<CR>
 
-"ctrlp
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" ctrlp
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " Go to last file(s) if invoked without arguments.
 autocmd VimLeave * nested if (!isdirectory($HOME . "/.vim")) |
