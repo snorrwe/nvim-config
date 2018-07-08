@@ -18,10 +18,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/Shougo/vimproc.vim.git'
 Plug 'https://github.com/Chiel92/vim-autoformat.git'
 Plug 'https://github.com/scrooloose/nerdtree.git'
-" Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-rhubarb.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
+Plug 'https://github.com/Valloric/YouCompleteMe.git'
 Plug 'w0rp/ale'
 Plug 'mindriot101/vim-yapf'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
@@ -44,8 +44,13 @@ set number
 
 vnoremap // y/<C-R>"<CR>
 
-" YouCompleteMe
-let g:ycm_add_preview_to_completeopt = 0
+" ALE
+let g:ale_completion_enabled = 1
+let g:ale_lint_on_save = 1
+let g:ale_set_balloons = 1
+let g:ale_set_highlights = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
 
 " Autoformat
 " au BufWrite * :Autoformat
