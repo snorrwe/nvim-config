@@ -44,8 +44,11 @@ set number
 
 vnoremap // y/<C-R>"<CR>
 
+" YouCompleteMe 
+" let g:ycm_add_preview_to_completeopt = 0
+
 " ALE
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 let g:ale_lint_on_save = 1
 let g:ale_set_balloons = 1
 let g:ale_set_highlights = 1
