@@ -27,6 +27,7 @@ Plug 'mindriot101/vim-yapf'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'arithran/vim-delete-hidden-buffers'
 Plug 'rust-lang/rust.vim'
+Plug 'https://github.com/ctrlpvim/ctrlp.vim.git' 
 call plug#end()
 
 syntax on
