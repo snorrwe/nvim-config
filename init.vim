@@ -44,6 +44,7 @@ set autoread
 set number
 
 vnoremap // y/<C-R>"<CR>
+map <Space> :noh<CR>
 
 " YouCompleteMe
 let g:ycm_add_preview_to_completeopt = 0
