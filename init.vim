@@ -12,7 +12,8 @@ let g:python3_host_prog = HOME . 'python3/Scripts/python.exe'
 let g:mapleader = '-'
 
 call plug#begin('~/.vim/plugged')
-Plug 'https://github.com/joshdick/onedark.vim.git'
+" Plug 'https://github.com/joshdick/onedark.vim.git'
+Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/Shougo/vimproc.vim.git'
@@ -27,10 +28,15 @@ Plug 'mindriot101/vim-yapf'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'arithran/vim-delete-hidden-buffers'
 Plug 'rust-lang/rust.vim'
+Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 call plug#end()
 
 syntax on
-colorscheme onedark
+colorscheme gruvbox
+
+" Gruvbox
+let g:gruvbox_contrast_dark = 'hard'
+set background=dark
 
 filetype plugin indent on
 " show existing tab with 4 spaces width
@@ -54,6 +60,7 @@ let g:ale_set_balloons = 1
 let g:ale_set_highlights = 1
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+let g:ale_fix_on_save = 1
 
 " Autoformat
 " au BufWrite * :Autoformat
@@ -64,7 +71,7 @@ map <A-n> :NERDTreeToggle<CR>
 map <A-f> :NERDTreeFind<CR>
 
 " ctrlp
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " Go to last file(s) if invoked without arguments.
 autocmd VimLeave * nested if (!isdirectory($HOME . "/.vim")) |
