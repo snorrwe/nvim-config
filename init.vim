@@ -12,7 +12,6 @@ let g:python3_host_prog = HOME . 'python3/Scripts/python.exe'
 let g:mapleader = '-'
 
 call plug#begin('~/.vim/plugged')
-Plug 'https://github.com/joshdick/onedark.vim.git'
 Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/Shougo/vimproc.vim.git'
@@ -31,7 +30,8 @@ Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 call plug#end()
 
 syntax on
-colorscheme onedark
+set background=dark
+colorscheme material-theme
 
 filetype plugin indent on
 " show existing tab with 4 spaces width
