@@ -59,8 +59,8 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 
 " Autoformat
-" au BufWrite * :Autoformat
 map <A-k> :Autoformat<CR>
+map <A-l> :ClangFormat<CR>
 
 " NERDTree
 map <A-n> :NERDTreeToggle<CR>
