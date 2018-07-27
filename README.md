@@ -10,10 +10,11 @@
     python3/Scripts/activate
     pip install neovim
     ```
-- Install plugins in vim `:PlugInstall`
+- Install [LLVM](https://llvm.org/builds/)
 - Install [libclang](https://github.com/djp952/external-libclang)
 - Install [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 - Install RustFMT `rustup component add rustfmt-preview`
 - Edit `init.vim` to your liking. Be sure to edit __HOME__ and __LLVM__
+- Install plugins in vim `:PlugInstall`
 - Profit
 

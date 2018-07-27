@@ -1,6 +1,6 @@
 
-let HOME = 'C:/Users/Frenetiq.DESKTOP-9QE7I3Q/AppData/Local/nvim/'
-let LLVM = 'C:/Program Files/LLVM/lib'
+let HOME = 'C:/Users/Frenetiq/AppData/Local/nvim/'
+let LLVM = 'C:/Program Files(x86)/LLVM/lib'
 
 set encoding=utf-8
 
@@ -27,6 +27,7 @@ Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'arithran/vim-delete-hidden-buffers'
 Plug 'rust-lang/rust.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git' 
+Plug 'https://github.com/rhysd/vim-clang-format.git'
 call plug#end()
 
 syntax on
