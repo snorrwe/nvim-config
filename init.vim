@@ -46,6 +46,7 @@ set number
 
 vnoremap // y/<C-R>"<CR>
 map <Space> :noh<CR>
+map <F12> :YcmCompleter GoTo<CR>
 
 " YouCompleteMe
 let g:ycm_add_preview_to_completeopt = 0
@@ -82,7 +83,8 @@ autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.
 let g:pymode_python = 'python3'
 let g:pymode_folding = 0
 let g:pymode_syntax_slow_sync = 0
-let g:pymode_rope = 1
+let g:pymode_rope = 0
+let g:pymode_rope_lookup_project = 0
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
 let g:pymode_lint_ignore = ["E501"]
 
