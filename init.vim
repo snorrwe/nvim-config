@@ -45,8 +45,14 @@ set autoread
 set number
 
 vnoremap // y/<C-R>"<CR>
+map <C-T> :CtrlPTag<CR>
 map <Space> :noh<CR>
 map <F12> :YcmCompleter GoTo<CR>
+map <F12> :YcmCompleter GoTo<CR>
+map <A-k> :Autoformat<CR>
+map <A-l> :ClangFormat<CR>
+map <A-n> :NERDTreeToggle<CR>
+map <A-f> :NERDTreeFind<CR>
 
 " YouCompleteMe
 let g:ycm_add_preview_to_completeopt = 0
@@ -59,13 +65,6 @@ let g:ale_set_highlights = 1
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 
-" Autoformat
-map <A-k> :Autoformat<CR>
-map <A-l> :ClangFormat<CR>
-
-" NERDTree
-map <A-n> :NERDTreeToggle<CR>
-map <A-f> :NERDTreeFind<CR>
 
 " ctrlp
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -90,8 +89,6 @@ let g:pymode_lint_ignore = ["E501"]
 
 " NERDcommenter
 filetype plugin on
-" map <c-c> :NERDComInvertComment<CR>
-" Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
 " Use compact syntax for prettified multi-line comments
