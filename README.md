@@ -4,8 +4,8 @@
 
 - Install neovim
 - clone into your nvim directory (AppData/Local/nvim on Windows) `git clone https://github.com/snorrwe/nvim-config.git` 
-- Init venv `virtualenv python3`
-- Install the `neovim` package
+- Init venv `python -m venv python3`
+- Install the `neovim` python package in virtual environment
     ```
     python3/Scripts/activate
     pip install neovim
