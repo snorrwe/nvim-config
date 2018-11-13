@@ -53,6 +53,7 @@ map <A-k> :Autoformat<CR>
 map <A-l> :ClangFormat<CR>
 map <A-n> :NERDTreeToggle<CR>
 map <A-f> :NERDTreeFind<CR>
+map <A-t> :Autoformat typescript<CR>
 
 " YouCompleteMe
 let g:ycm_add_preview_to_completeopt = 0
