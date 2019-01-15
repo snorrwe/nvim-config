@@ -114,3 +114,7 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Disable the red line
 let g:pymode_options_colorcolumn = 0
+
+" Vimade
+let g:vimade = {}
+let g:vimade.fadelevel = 0.7
