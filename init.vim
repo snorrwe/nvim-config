@@ -1,6 +1,6 @@
 
 let HOME = 'C:/Users/Frenetiq/AppData/Local/nvim/'
-let LLVM = 'C:/Program Files(x86)/LLVM/lib'
+let LLVM = 'C:/Program Files(x86)/LLVM/bin'
 
 set encoding=utf-8
 
@@ -28,6 +28,7 @@ Plug 'arithran/vim-delete-hidden-buffers'
 Plug 'rust-lang/rust.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git' 
 Plug 'https://github.com/rhysd/vim-clang-format.git'
+Plug 'https://github.com/TaDaa/vimade.git'
 call plug#end()
 
 syntax on
@@ -43,6 +44,7 @@ set shiftwidth=4
 set expandtab
 set autoread
 set number
+
 
 vnoremap // y/<C-R>"<CR>
 map <C-T> :CtrlPTag<CR>
@@ -112,6 +114,3 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Disable the red line
 let g:pymode_options_colorcolumn = 0
-
-" Rust
-let g:rustfmt_autosave = 1
