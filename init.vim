@@ -29,11 +29,12 @@ Plug 'rust-lang/rust.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git' 
 Plug 'https://github.com/rhysd/vim-clang-format.git'
 Plug 'https://github.com/TaDaa/vimade.git'
+Plug 'https://github.com/morhetz/gruvbox.git'
 call plug#end()
 
 syntax on
 set background=dark
-colorscheme material-theme
+colorscheme gruvbox
 
 filetype plugin indent on
 " show existing tab with 4 spaces width
