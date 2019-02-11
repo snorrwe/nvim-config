@@ -28,8 +28,6 @@ Plug 'arithran/vim-delete-hidden-buffers'
 Plug 'rust-lang/rust.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git' 
 Plug 'https://github.com/rhysd/vim-clang-format.git'
-Plug 'https://github.com/TaDaa/vimade.git'
-Plug 'https://github.com/morhetz/gruvbox.git'
 call plug#end()
 
 syntax on
@@ -56,7 +54,8 @@ map <A-k> :Autoformat<CR>
 map <A-l> :ClangFormat<CR>
 map <A-n> :NERDTreeToggle<CR>
 map <A-f> :NERDTreeFind<CR>
-map <A-t> :Autoformat typescript<CR>
+map <A-t> :ALEFix prettier<CR>
+map <A-o> :only<CR>
 
 " YouCompleteMe
 let g:ycm_add_preview_to_completeopt = 0
