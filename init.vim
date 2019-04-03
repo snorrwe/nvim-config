@@ -20,19 +20,33 @@ Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/tpope/vim-rhubarb.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
-Plug 'https://github.com/Valloric/YouCompleteMe.git'
-Plug 'w0rp/ale'
 Plug 'mindriot101/vim-yapf'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'arithran/vim-delete-hidden-buffers'
 Plug 'rust-lang/rust.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git' 
 Plug 'https://github.com/rhysd/vim-clang-format.git'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 call plug#end()
 
 syntax on
 set background=dark
 colorscheme gruvbox
+
+"CoC
+"
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 filetype plugin indent on
 " show existing tab with 4 spaces width
@@ -43,7 +57,6 @@ set shiftwidth=4
 set expandtab
 set autoread
 set number
-
 
 vnoremap // y/<C-R>"<CR>
 map <C-T> :CtrlPTag<CR>
@@ -56,18 +69,6 @@ map <A-n> :NERDTreeToggle<CR>
 map <A-f> :NERDTreeFind<CR>
 map <A-t> :ALEFix prettier<CR>
 map <A-o> :only<CR>
-
-" YouCompleteMe
-let g:ycm_add_preview_to_completeopt = 0
-
-" ALE
-let g:ale_completion_enabled = 0
-let g:ale_lint_on_save = 1
-let g:ale_set_balloons = 1
-let g:ale_set_highlights = 1
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-
 
 " ctrlp
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
