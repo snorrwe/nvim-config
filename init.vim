@@ -27,6 +27,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git' 
 Plug 'https://github.com/rhysd/vim-clang-format.git'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'w0rp/ale'
 call plug#end()
 
 syntax on
@@ -90,6 +91,14 @@ let g:pymode_rope = 0
 let g:pymode_rope_lookup_project = 0
 let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
 let g:pymode_lint_ignore = ["E501"]
+
+" ALE	
+let g:ale_completion_enabled = 0	
+let g:ale_lint_on_save = 1	
+let g:ale_set_balloons = 1	
+let g:ale_set_highlights = 1	
+let g:ale_set_loclist = 0	
+let g:ale_set_quickfix = 1
 
 " NERDcommenter
 filetype plugin on
