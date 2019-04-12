@@ -27,6 +27,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git' 
 Plug 'https://github.com/rhysd/vim-clang-format.git'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'w0rp/ale'
 call plug#end()
 
@@ -48,6 +49,8 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+let g:airline#extensions#disable_rtp_load = 1
+let g:airline_extensions = ['branch', 'hunks', 'coc']
 
 filetype plugin indent on
 " show existing tab with 4 spaces width
@@ -62,8 +65,7 @@ set number
 vnoremap // y/<C-R>"<CR>
 map <C-T> :CtrlPTag<CR>
 map <Space> :noh<CR>
-map <F12> :YcmCompleter GoTo<CR>
-map <F12> :YcmCompleter GoTo<CR>
+map <F12> :ALEGoToDefinition<CR>
 map <A-k> :Autoformat<CR>
 map <A-l> :ClangFormat<CR>
 map <A-n> :NERDTreeToggle<CR>
