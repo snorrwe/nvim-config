@@ -29,13 +29,18 @@ Plug 'https://github.com/rhysd/vim-clang-format.git'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'w0rp/ale'
+Plug 'lervag/vimtex'
 call plug#end()
 
 syntax on
 set background=dark
 colorscheme gruvbox
 
-"CoC
+" VimTex
+
+let g:vimtex_compiler_progname = 'nvr'
+
+" CoC
 "
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
