@@ -18,16 +18,13 @@ Plug 'https://github.com/Shougo/vimproc.vim.git'
 Plug 'https://github.com/Chiel92/vim-autoformat.git'
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
-Plug 'https://github.com/tpope/vim-rhubarb.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
 Plug 'mindriot101/vim-yapf'
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'arithran/vim-delete-hidden-buffers'
 Plug 'rust-lang/rust.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git' 
 Plug 'https://github.com/rhysd/vim-clang-format.git'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
 call plug#end()
