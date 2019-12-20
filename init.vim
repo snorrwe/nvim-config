@@ -9,7 +9,7 @@ if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
 endif
 
 let g:python3_host_prog = HOME . 'python3/Scripts/python.exe'
-let g:mapleader = '-'
+let g:mapleader = ','
 
 call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
@@ -27,6 +27,7 @@ Plug 'https://github.com/rhysd/vim-clang-format.git'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
+Plug 'segeljakt/vim-silicon'
 call plug#end()
 
 syntax on
@@ -74,6 +75,7 @@ map <A-n> :NERDTreeToggle<CR>
 map <A-f> :NERDTreeFind<CR>
 map <A-t> :ALEFix prettier<CR>
 map <A-o> :only<CR>
+map <A-j> :ALENext<CR>
 
 " ctrlp
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -126,9 +128,3 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" Disable the red line
-let g:pymode_options_colorcolumn = 0
-
-" Vimade
-let g:vimade = {}
-let g:vimade.fadelevel = 0.7
