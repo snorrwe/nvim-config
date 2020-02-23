@@ -1,6 +1,5 @@
-
-let HOME = 'C:/Users/Frenetiq/AppData/Local/nvim/'
-let LLVM = 'C:/Program Files(x86)/LLVM/bin'
+let HOME = 'C:/Users/littl/AppData/Local/nvim/'
+let LLVM = 'C:/Program Files/LLVM/bin'
 
 set encoding=utf-8
 
@@ -28,6 +27,8 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
 Plug 'segeljakt/vim-silicon'
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
 call plug#end()
 
 syntax on

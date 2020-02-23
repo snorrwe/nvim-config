@@ -15,3 +15,7 @@
 - Install plugins in vim `:PlugInstall`
 - Profit
 
+
+## Notes
+
+Cached paths might cause probelms, try deleting the nvim_data directory
