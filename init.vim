@@ -27,8 +27,6 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
 Plug 'segeljakt/vim-silicon'
-Plug 'camspiers/animate.vim'
-Plug 'camspiers/lens.vim'
 Plug 'psliwka/vim-smoothie'
 call plug#end()
 
