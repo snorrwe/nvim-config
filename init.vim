@@ -15,7 +15,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/Shougo/vimproc.vim.git'
 Plug 'https://github.com/Chiel92/vim-autoformat.git'
-Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
 Plug 'mindriot101/vim-yapf'
@@ -28,6 +27,8 @@ Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
 Plug 'segeljakt/vim-silicon'
 Plug 'psliwka/vim-smoothie'
+Plug 'https://github.com/vifm/vifm.vim.git'
+Plug 'https://github.com/vimwiki/vimwiki.git'
 call plug#end()
 
 syntax on
@@ -55,6 +56,7 @@ endfunction
 let g:airline#extensions#disable_rtp_load = 1
 let g:airline_extensions = ['branch', 'hunks', 'coc']
 
+set nocompatible
 filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4
@@ -71,11 +73,10 @@ map <Space> :noh<CR>
 map <F12> :ALEGoToDefinition<CR>
 map <A-k> :Autoformat<CR>
 map <A-l> :ClangFormat<CR>
-map <A-n> :NERDTreeToggle<CR>
-map <A-f> :NERDTreeFind<CR>
 map <A-t> :ALEFix prettier<CR>
 map <A-o> :only<CR>
 map <A-j> :ALENext<CR>
+map <A-f> :Vifm<CR>
 
 " ctrlp
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']

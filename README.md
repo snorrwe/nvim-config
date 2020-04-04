@@ -13,6 +13,7 @@
 - Install [CoC](https://github.com/neoclide/coc.nvim)
 - Edit `init.vim` to your liking. Be sure to edit __HOME__ and __LLVM__
 - Install plugins in vim `:PlugInstall`
+- Install [Vifm](https://vifm.info/)
 - Profit
 
 
