@@ -29,6 +29,7 @@ Plug 'segeljakt/vim-silicon'
 Plug 'psliwka/vim-smoothie'
 Plug 'https://github.com/vifm/vifm.vim.git'
 Plug 'https://github.com/vimwiki/vimwiki.git'
+Plug 'https://github.com/scrooloose/nerdtree.git'
 call plug#end()
 
 syntax on
@@ -76,7 +77,8 @@ map <A-l> :ClangFormat<CR>
 map <A-t> :ALEFix prettier<CR>
 map <A-o> :only<CR>
 map <A-j> :ALENext<CR>
-map <A-f> :Vifm<CR>
+map <A-n> :NERDTreeToggle<CR>
+map <A-f> :NERDTreeFind<CR>
 
 " ctrlp
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
