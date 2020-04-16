@@ -67,6 +67,8 @@ set shiftwidth=4
 set expandtab
 set autoread
 set number
+set ignorecase
+set smartcase
 
 vnoremap // y/<C-R>"<CR>
 map <C-T> :CtrlPTag<CR>
@@ -79,6 +81,7 @@ map <A-o> :only<CR>
 map <A-j> :ALENext<CR>
 map <A-n> :NERDTreeToggle<CR>
 map <A-f> :NERDTreeFind<CR>
+map <leader>a :ALEFix<space>
 
 " ctrlp
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
