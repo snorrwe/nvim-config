@@ -1,4 +1,4 @@
-let HOME = 'C:/Users/littl/AppData/Local/nvim/'
+let HOME = 'C:/Users/Daniel Kiss/AppData/Local/nvim'
 let LLVM = 'C:/Program Files/LLVM/bin'
 
 set encoding=utf-8
@@ -111,6 +111,7 @@ let g:ale_set_balloons = 1
 let g:ale_set_highlights = 1
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+let g:ale_linter_aliases = {'markdown': ['markdown', 'text'] }
 let g:ale_fixers = {'javascriptreact': ['prettier'], 'cpp': ['clang-format'], 'rust': ['rustfmt']}
 
 " NERDcommenter
@@ -135,3 +136,14 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
+if !exists("*DeleteHiddenBuffers") " Clear all hidden buffers when running 
+	function DeleteHiddenBuffers() " Vim with the 'hidden' option
+		let tpbl=[]
+		call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+		for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+			silent execute 'bwipeout' buf
+		endfor
+	endfunction
+endif
+command! DeleteHiddenBuffers call DeleteHiddenBuffers()
+command! Dhb call DeleteHiddenBuffers()
