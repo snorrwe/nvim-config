@@ -18,7 +18,6 @@ Plug 'https://github.com/Chiel92/vim-autoformat.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
 Plug 'mindriot101/vim-yapf'
-Plug 'arithran/vim-delete-hidden-buffers'
 Plug 'rust-lang/rust.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'https://github.com/rhysd/vim-clang-format.git'
@@ -30,6 +29,7 @@ Plug 'psliwka/vim-smoothie'
 Plug 'https://github.com/vifm/vifm.vim.git'
 Plug 'https://github.com/vimwiki/vimwiki.git'
 Plug 'https://github.com/scrooloose/nerdtree.git'
+Plug 'gko/vim-coloresque'
 call plug#end()
 
 syntax on
@@ -146,4 +146,3 @@ if !exists("*DeleteHiddenBuffers") " Clear all hidden buffers when running
 	endfunction
 endif
 command! DeleteHiddenBuffers call DeleteHiddenBuffers()
-command! Dhb call DeleteHiddenBuffers()
