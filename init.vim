@@ -1,7 +1,5 @@
 let HOME = 'C:/Users/Daniel Kiss/AppData/Local/nvim'
-let LLVM = 'C:/Program Files/LLVM/bin'
-
-set encoding=utf-8
+" let LLVM = 'C:/Program Files/LLVM/bin'
 
 if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
     set termguicolors
@@ -14,13 +12,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/Shougo/vimproc.vim.git'
-Plug 'https://github.com/Chiel92/vim-autoformat.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
-Plug 'mindriot101/vim-yapf'
-Plug 'rust-lang/rust.vim'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
-Plug 'https://github.com/rhysd/vim-clang-format.git'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
@@ -30,10 +24,13 @@ Plug 'https://github.com/vifm/vifm.vim.git'
 Plug 'https://github.com/vimwiki/vimwiki.git'
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'gko/vim-coloresque'
+Plug 'altercation/vim-colors-solarized'
 call plug#end()
 
 syntax on
 set background=dark
+let g:gruvbox_contrast_dark = "soft"
+let g:gruvbox_improved_warnings = 1
 colorscheme gruvbox
 
 " VimTex
@@ -74,7 +71,6 @@ vnoremap // y/<C-R>"<CR>
 map <C-T> :CtrlPTag<CR>
 map <Space> :noh<CR>
 map <F12> :ALEGoToDefinition<CR>
-map <A-k> :Autoformat<CR>
 map <A-l> :ClangFormat<CR>
 map <A-t> :ALEFix prettier<CR>
 map <A-o> :only<CR>
@@ -94,15 +90,6 @@ autocmd VimLeave * nested if (!isdirectory($HOME . "/.vim")) |
 
 autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.vim") |
             \ execute "source " . $HOME . "/.vim/Session.vim"
-
-" Pymode
-let g:pymode_python = 'python3'
-let g:pymode_folding = 0
-let g:pymode_syntax_slow_sync = 0
-let g:pymode_rope = 0
-let g:pymode_rope_lookup_project = 0
-let g:pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
-let g:pymode_lint_ignore = ["E501"]
 
 " ALE
 let g:ale_completion_enabled = 0
@@ -124,19 +111,13 @@ let g:NERDCompactSexyComs = 1
 " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign = 'left'
 
-" Set a language to use its alternate delimiters by default
-let g:NERDAltDelims_java = 1
-
-" Add your own custom formats or override the defaults
-" let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
-
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
 
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-if !exists("*DeleteHiddenBuffers") " Clear all hidden buffers when running 
+if !exists("*DeleteHiddenBuffers") " Clear all hidden buffers when running
 	function DeleteHiddenBuffers() " Vim with the 'hidden' option
 		let tpbl=[]
 		call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
