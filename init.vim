@@ -1,5 +1,4 @@
 let HOME = 'C:/Users/Daniel Kiss/AppData/Local/nvim'
-" let LLVM = 'C:/Program Files/LLVM/bin'
 
 if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
     set termguicolors
@@ -26,14 +25,15 @@ Plug 'https://github.com/vimwiki/vimwiki.git'
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'gko/vim-coloresque'
 Plug 'altercation/vim-colors-solarized'
-Plug 'https://github.com/ryanoasis/vim-devicons.git'
 call plug#end()
 
 syntax on
 set background=dark
-let g:gruvbox_contrast_dark = "hard"
-let g:gruvbox_improved_warnings = 1
 colorscheme joker
+
+" Some nonsense :)
+let g:neovide_cursor_vfx_mode = "railgun"
+let g:neovide_fullscreen=v:true
 
 " VimTex
 
@@ -64,6 +64,7 @@ set shiftwidth=4
 set expandtab
 set autoread
 set number
+set relativenumber
 set ignorecase
 set smartcase
 
