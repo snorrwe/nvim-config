@@ -9,7 +9,8 @@ let g:python3_host_prog = HOME . 'python3/Scripts/python.exe'
 let g:mapleader = ','
 
 call plug#begin('~/.vim/plugged')
-Plug 'vim-airline/vim-airline'
+Plug 'ksevelyar/joker.vim'
+Plug 'itchyny/lightline.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/Shougo/vimproc.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -25,13 +26,14 @@ Plug 'https://github.com/vimwiki/vimwiki.git'
 Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'gko/vim-coloresque'
 Plug 'altercation/vim-colors-solarized'
+Plug 'https://github.com/ryanoasis/vim-devicons.git'
 call plug#end()
 
 syntax on
 set background=dark
 let g:gruvbox_contrast_dark = "hard"
 let g:gruvbox_improved_warnings = 1
-colorscheme gruvbox
+colorscheme joker
 
 " VimTex
 
@@ -51,8 +53,6 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-let g:airline#extensions#disable_rtp_load = 1
-let g:airline_extensions = ['branch', 'hunks', 'coc']
 
 set nocompatible
 filetype plugin indent on
