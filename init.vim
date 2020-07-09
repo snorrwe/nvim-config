@@ -8,7 +8,7 @@ let g:python3_host_prog = HOME . 'python3/Scripts/python.exe'
 let g:mapleader = ','
 
 call plug#begin('~/.vim/plugged')
-Plug 'ksevelyar/joker.vim'
+Plug 'skbolton/embark'
 Plug 'itchyny/lightline.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/Shougo/vimproc.vim.git'
@@ -29,11 +29,13 @@ call plug#end()
 
 syntax on
 set background=dark
-colorscheme joker
+colorscheme embark
+let g:lightline = {
+      \ 'colorscheme': 'embark',
+      \ }
 
 " Some nonsense :)
 let g:neovide_cursor_vfx_mode = "railgun"
-let g:neovide_fullscreen=v:true
 
 " VimTex
 
