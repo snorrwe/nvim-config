@@ -8,7 +8,7 @@
 - Install the `neovim` python package in virtual environment
     ```
     python3/Scripts/activate
-    pip install neovim
+    pip install neovim pynvim
     ```
 - Install [CoC](https://github.com/neoclide/coc.nvim)
 - Edit `init.vim` to your liking. Be sure to edit __HOME__ and __LLVM__
