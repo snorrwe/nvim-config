@@ -1,10 +1,10 @@
-let HOME = 'C:/Users/dkiss/AppData/Local/nvim'
+let HOME = 'C:/Users/Daniel Kiss/AppData/Local/nvim'
 
 if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
     set termguicolors
 endif
 
-let g:python3_host_prog = HOME . '/python3/Scripts/python.exe'
+let g:python3_host_prog = HOME . 'python3/Scripts/python.exe'
 let g:mapleader = ','
 
 call plug#begin('~/.vim/plugged')
@@ -22,7 +22,7 @@ Plug 'segeljakt/vim-silicon'
 Plug 'psliwka/vim-smoothie'
 Plug 'https://github.com/vifm/vifm.vim.git'
 Plug 'https://github.com/vimwiki/vimwiki.git'
-Plug 'https://github.com/ms-jpq/chadtree.git', {'branch': 'chad', 'do': ':UpdateRemotePlugins'}
+Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'gko/vim-coloresque'
 Plug 'altercation/vim-colors-solarized'
 call plug#end()
@@ -74,10 +74,12 @@ vnoremap // y/<C-R>"<CR>
 map <C-T> :CtrlPTag<CR>
 map <Space> :noh<CR>
 map <F12> :ALEGoToDefinition<CR>
+map <A-l> :ClangFormat<CR>
+map <A-t> :ALEFix prettier<CR>
 map <A-o> :only<CR>
-map <A-k> :ALEPrevious<CR>
 map <A-j> :ALENext<CR>
-map <A-n> :CHADopen<CR>
+map <A-n> :NERDTreeToggle<CR>
+map <A-f> :NERDTreeFind<CR>
 map <leader>a :ALEFix<space>
 
 " ctrlp
@@ -101,7 +103,6 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_linter_aliases = {'markdown': ['markdown', 'text'] }
 let g:ale_fixers = {'javascriptreact': ['prettier'], 'cpp': ['clang-format'], 'rust': ['rustfmt']}
-let g:ale_linters = {'rust': ['analyzer']}
 
 " NERDcommenter
 filetype plugin on
