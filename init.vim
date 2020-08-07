@@ -9,7 +9,8 @@ let g:mapleader = ','
 
 call plug#begin('~/.vim/plugged')
 Plug 'skbolton/embark'
-Plug 'itchyny/lightline.vim'
+Plug 'hardcoreplayers/spaceline.vim'
+Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/Shougo/vimproc.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -30,9 +31,6 @@ call plug#end()
 syntax on
 set background=dark
 colorscheme embark
-let g:lightline = {
-      \ 'colorscheme': 'embark',
-      \ }
 
 " Some nonsense :)
 let g:neovide_cursor_vfx_mode = "railgun"
