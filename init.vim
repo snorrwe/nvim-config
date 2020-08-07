@@ -77,6 +77,7 @@ map <A-t> :ALEFix prettier<CR>
 map <A-o> :only<CR>
 map <A-j> :ALENext<CR>
 map <A-n> :Fern . -drawer -toggle<CR>
+map <A-f> :FernFindCurrentFile<CR>
 map <leader>a :ALEFix<space>
 
 " ctrlp
@@ -127,3 +128,11 @@ if !exists("*DeleteHiddenBuffers") " Clear all hidden buffers when running
 	endfunction
 endif
 command! DeleteHiddenBuffers call DeleteHiddenBuffers()
+
+if !exists("*FernFindCurrentFile") 
+	function FernFindCurrentFile() " Vim with the 'hidden' option
+        let current=expand('%:p:h')
+        silent execute 'Fern ' current ' -drawer'
+	endfunction
+endif
+command! FernFindCurrentFile call FernFindCurrentFile()
