@@ -76,7 +76,7 @@ map <A-l> :ClangFormat<CR>
 map <A-t> :ALEFix prettier<CR>
 map <A-o> :only<CR>
 map <A-j> :ALENext<CR>
-map <A-n> :Fern . -drawer<CR>
+map <A-n> :Fern . -drawer -toggle<CR>
 map <leader>a :ALEFix<space>
 
 " ctrlp
