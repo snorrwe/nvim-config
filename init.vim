@@ -23,9 +23,9 @@ Plug 'segeljakt/vim-silicon'
 Plug 'psliwka/vim-smoothie'
 Plug 'https://github.com/vifm/vifm.vim.git'
 Plug 'https://github.com/vimwiki/vimwiki.git'
-Plug 'https://github.com/scrooloose/nerdtree.git'
 Plug 'gko/vim-coloresque'
 Plug 'altercation/vim-colors-solarized'
+Plug 'lambdalisue/fern.vim'
 call plug#end()
 
 syntax on
@@ -76,8 +76,7 @@ map <A-l> :ClangFormat<CR>
 map <A-t> :ALEFix prettier<CR>
 map <A-o> :only<CR>
 map <A-j> :ALENext<CR>
-map <A-n> :NERDTreeToggle<CR>
-map <A-f> :NERDTreeFind<CR>
+map <A-n> :Fern . -drawer<CR>
 map <leader>a :ALEFix<space>
 
 " ctrlp
