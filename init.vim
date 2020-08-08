@@ -136,3 +136,11 @@ if !exists("*FernFindCurrentFile")
 	endfunction
 endif
 command! FernFindCurrentFile call FernFindCurrentFile()
+
+if !exists("*ChangeCwdHere") 
+	function ChangeCwdHere() " Vim with the 'hidden' option
+        let current=expand('%:p:h')
+        silent execute 'chdir ' current
+	endfunction
+endif
+command! ChangeCwdHere call ChangeCwdHere()
