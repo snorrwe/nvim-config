@@ -1,14 +1,13 @@
 let HOME = 'C:/Users/Daniel Kiss/AppData/Local/nvim'
 
-if has('nvim-0.1.5')        " True color in neovim wasn't added until 0.1.5
-    set termguicolors
-endif
+set termguicolors
 
 let g:python3_host_prog = HOME . 'python3/Scripts/python.exe'
 let g:mapleader = ','
 
 call plug#begin('~/.vim/plugged')
-Plug 'skbolton/embark'
+Plug 'chuling/ci_dark'
+Plug 'luochen1990/rainbow'
 Plug 'hardcoreplayers/spaceline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
@@ -30,7 +29,7 @@ call plug#end()
 
 syntax on
 set background=dark
-colorscheme embark
+colorscheme ci_dark
 
 " Some nonsense :)
 let g:neovide_cursor_vfx_mode = "railgun"
