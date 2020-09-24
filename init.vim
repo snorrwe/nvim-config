@@ -1,3 +1,5 @@
+" REQUIRES nvim 0.5+ !!!
+"
 let HOME = 'C:/Users/dkiss/AppData/Local/nvim/'
 
 set termguicolors
@@ -15,7 +17,6 @@ Plug 'https://github.com/Shougo/vimproc.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
 Plug 'segeljakt/vim-silicon'
 Plug 'psliwka/vim-smoothie'
@@ -24,6 +25,14 @@ Plug 'https://github.com/vimwiki/vimwiki.git'
 Plug 'gko/vim-coloresque'
 Plug 'altercation/vim-colors-solarized'
 Plug 'lambdalisue/fern.vim'
+" Collection of common configurations for the Nvim LSP client
+Plug 'neovim/nvim-lspconfig'
+" Extensions to built-in LSP, for example, providing type inlay hints
+Plug 'tjdevries/lsp_extensions.nvim'
+" Autocompletion framework for built-in LSP
+Plug 'nvim-lua/completion-nvim'
+" Diagnostic navigation and settings for built-in LSP
+Plug 'nvim-lua/diagnostic-nvim'
 call plug#end()
 
 syntax on
@@ -36,21 +45,6 @@ let g:neovide_cursor_vfx_mode = "railgun"
 " VimTex
 
 let g:vimtex_compiler_progname = 'nvr'
-
-" CoC
-"
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
 
 set nocompatible
 filetype plugin indent on
@@ -69,7 +63,6 @@ set smartcase
 vnoremap // y/<C-R>"<CR>
 map <C-T> :CtrlPTag<CR>
 map <Space> :noh<CR>
-map <F12> :ALEGoToDefinition<CR>
 map <A-l> :ClangFormat<CR>
 map <A-t> :ALEFix prettier<CR>
 map <A-o> :only<CR>
@@ -77,6 +70,22 @@ map <A-j> :ALENext<CR>
 map <A-n> :Fern . -drawer -toggle<CR>
 map <A-f> :FernFindCurrentFile<CR>
 map <leader>a :ALEFix<space>
+" Code navigation shortcuts
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <C-F12>    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <leader>r    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> <F12>    <cmd>lua vim.lsp.buf.declaration()<CR>
+" Trigger completion with <Tab>
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ completion#trigger_completion()
+
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
 
 " ctrlp
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -143,3 +152,57 @@ if !exists("*ChangeCwdHere")
 	endfunction
 endif
 command! ChangeCwdHere call ChangeCwdHere()
+
+
+" nvim lsp
+"
+" Set completeopt to have a better completion experience
+" :help completeopt
+" menuone: popup even when there's only one match
+" noinsert: Do not insert text until a selection is made
+" noselect: Do not select, force user to select one from the menu
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing extra messages when using completion
+set shortmess+=c
+
+" Configure LSP
+" https://github.com/neovim/nvim-lspconfig#rust_analyzer
+lua <<EOF
+
+-- nvim_lsp object
+local nvim_lsp = require'nvim_lsp'
+
+-- function to attach completion and diagnostics
+-- when setting up lsp
+local on_attach = function(client)
+    require'completion'.on_attach(client)
+end
+
+-- Enable lsps
+nvim_lsp.rust_analyzer.setup({ on_attach=on_attach })
+nvim_lsp.clangd.setup({ on_attach=on_attach })
+
+EOF
+
+" Visualize diagnostics
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_trimmed_virtual_text = '40'
+" Don't show diagnostics while in insert mode
+let g:diagnostic_insert_delay = 1
+
+" Set updatetime for CursorHold
+" 300ms of no cursor movement to trigger CursorHold
+set updatetime=300
+" Show diagnostic popup on cursor hold
+autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+
+" Goto previous/next diagnostic warning/error
+nnoremap <silent> g[ <cmd>PrevDiagnosticCycle<cr>
+nnoremap <silent> g] <cmd>NextDiagnosticCycle<cr>
+
+set signcolumn=yes
+
+" Enable type inlay hints
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
+\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
