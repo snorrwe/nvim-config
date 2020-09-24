@@ -1,4 +1,4 @@
-let HOME = 'C:/Users/Daniel Kiss/AppData/Local/nvim'
+let HOME = 'C:/Users/dkiss/AppData/Local/nvim/'
 
 set termguicolors
 
@@ -15,9 +15,8 @@ Plug 'https://github.com/Shougo/vimproc.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
-Plug 'lervag/vimtex'
 Plug 'segeljakt/vim-silicon'
 Plug 'psliwka/vim-smoothie'
 Plug 'https://github.com/vifm/vifm.vim.git'
@@ -98,6 +97,7 @@ let g:ale_set_balloons = 1
 let g:ale_set_highlights = 1
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
+let g:ale_linters = {'rust': ['analyzer']}
 let g:ale_linter_aliases = {'markdown': ['markdown', 'text'] }
 let g:ale_fixers = {'javascriptreact': ['prettier'], 'cpp': ['clang-format'], 'rust': ['rustfmt']}
 
