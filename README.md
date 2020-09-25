@@ -10,13 +10,17 @@
     python3/Scripts/activate
     pip install neovim
     ```
-- Install [CoC](https://github.com/neoclide/coc.nvim)
 - Edit `init.vim` to your liking. Be sure to edit __HOME__ and __LLVM__
 - Install plugins in vim `:PlugInstall`
 - Install [Vifm](https://vifm.info/)
+- Install [CoC](https://github.com/neoclide/coc.nvim)
+- Install clangd
+- Install rust-analyser
+- Install missing LSPs via LspInstall
 - Profit
 
 
 ## Notes
 
 Cached paths might cause probelms, try deleting the nvim_data directory
+
