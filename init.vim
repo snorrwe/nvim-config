@@ -10,9 +10,9 @@ let g:mapleader = ','
 call plug#begin('~/.vim/plugged')
 Plug 'chuling/ci_dark'
 Plug 'luochen1990/rainbow'
-Plug 'hardcoreplayers/spaceline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
+Plug 'https://github.com/itchyny/lightline.vim.git'
 Plug 'https://github.com/Shougo/vimproc.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
@@ -71,6 +71,12 @@ map <A-j> :ALENext<CR>
 map <A-n> :Fern . -drawer -toggle<CR>
 map <A-f> :FernFindCurrentFile<CR>
 map <leader>a :ALEFix<space>
+" Code navigation shortcuts
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <C-F12>    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <leader>r    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> <F12>    <cmd>lua vim.lsp.buf.declaration()<CR>
 
 " CoC
 "
