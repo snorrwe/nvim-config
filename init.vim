@@ -8,7 +8,6 @@ let g:python3_host_prog = HOME . 'python3/Scripts/python.exe'
 let g:mapleader = ','
 
 call plug#begin('~/.vim/plugged')
-Plug 'chuling/ci_dark'
 Plug 'luochen1990/rainbow'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
@@ -38,7 +37,7 @@ call plug#end()
 
 syntax on
 set background=dark
-colorscheme ci_dark
+colorscheme frenetiq
 
 " Some nonsense :)
 let g:neovide_cursor_vfx_mode = "railgun"
@@ -221,3 +220,14 @@ set signcolumn=yes
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
+
+
+
+" syntax 
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+    if !exists("*synstack")
+        return
+    endif
+    echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
