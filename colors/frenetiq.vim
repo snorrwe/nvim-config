@@ -16,6 +16,8 @@ highlight Statement guifg=#f7c179
 highlight PreProc guifg=#E1B686
 highlight Type guifg=#bbbef2
 highlight Special guifg=#CFC186
+highlight WarningMsg guifg=#ff9090
+highlight Title guifg=#bbbef2
 
 " popup menu
 highlight PMenu guifg=#E1B686
