@@ -124,4 +124,5 @@ let g:lsc_server_commands = {
             \}
 let g:lsc_auto_map = {
     \ 'defaults': v:true,
+    \ 'PreviousReference': '',
     \}
