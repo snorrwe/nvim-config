@@ -124,6 +124,7 @@ command! ChangeCwdHere call ChangeCwdHere()
 let g:lsc_server_commands = {
             \ 'cpp': 'clangd'
             \, 'rust': 'rust-analyzer'
+            \, 'javascriptreact':'javascript-typescript-stdio'
             \}
 let g:lsc_auto_map = {
     \ 'defaults': v:true,
