@@ -61,7 +61,10 @@ noremap <A-f> :FernFindCurrentFile<CR>
 noremap <leader>a :Autoformat 
 
 " ctrlp
-" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.(git|hg|svn))|(node_modules|target|build)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 " Go to last file(s) if invoked without arguments.
 autocmd VimLeave * nested if (!isdirectory($HOME . "/.vim")) |
