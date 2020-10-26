@@ -60,6 +60,22 @@ noremap <A-n> :Fern . -drawer -toggle<CR>
 noremap <A-f> :FernFindCurrentFile<CR>
 noremap <leader>a :Autoformat 
 
+" autoformat
+"
+let g:formatter_path = ["c:/tools"]
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+" let g:formatters_sql = ['sqlfmt']
+let g:formatters_js = ['prettier']
+let g:formatters_jsx = ['prettier']
+let g:formatters_ts = ['prettier']
+let g:formatters_javascript = ['prettier']
+let g:formatters_typescript = ['prettier']
+let g:formatters_javascriptreact = ['prettier']
+let g:formatters_html = ['prettier']
+let g:formatters_css = ['prettier']
+let g:formatters_json = ['prettier']
+
 " ctrlp
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.(git|hg|svn))|(node_modules|target|build)$',
