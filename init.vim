@@ -1,10 +1,10 @@
 " REQUIRES nvim 0.5+ !!!
 "
-let HOME = 'C:/Users/dkiss/AppData/Local/nvim/'
+let HOME = 'C:/Users/dkiss/AppData/Local/nvim'
 
 set termguicolors
 
-let g:python3_host_prog = HOME . 'python3/Scripts/python.exe'
+let g:python3_host_prog = HOME . '/python3/Scripts/python.exe'
 let g:mapleader = ','
 
 call plug#begin('~/.vim/plugged')
@@ -58,23 +58,29 @@ noremap <Space> :noh<CR>
 noremap <A-o> :only<CR>
 noremap <A-n> :Fern . -drawer -toggle<CR>
 noremap <A-f> :FernFindCurrentFile<CR>
-noremap <leader>a :Autoformat 
+noremap <leader>a :Autoformat
+noremap <leader>r :LSClient
 
 " autoformat
 "
 let g:formatter_path = ["c:/tools"]
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
-" let g:formatters_sql = ['sqlfmt']
 let g:formatters_js = ['prettier']
 let g:formatters_jsx = ['prettier']
 let g:formatters_ts = ['prettier']
 let g:formatters_javascript = ['prettier']
 let g:formatters_typescript = ['prettier']
 let g:formatters_javascriptreact = ['prettier']
+let g:formatters_typescriptreact = ['prettier']
 let g:formatters_html = ['prettier']
 let g:formatters_css = ['prettier']
 let g:formatters_json = ['prettier']
+let g:formatters_toml = ['prettier']
+let g:formatters_md = ['prettier']
+let g:formatters_yaml = ['prettier']
+let g:formatters_sql = []
+
 
 " ctrlp
 let g:ctrlp_custom_ignore = {
@@ -118,7 +124,7 @@ if !exists("*DeleteHiddenBuffers") " Clear all hidden buffers when running
 endif
 command! DeleteHiddenBuffers call DeleteHiddenBuffers()
 
-if !exists("*FernFindCurrentFile") 
+if !exists("*FernFindCurrentFile")
 	function FernFindCurrentFile() " Vim with the 'hidden' option
         let current=expand('%:p:h')
         silent execute 'Fern ' current ' -drawer'
@@ -126,7 +132,7 @@ if !exists("*FernFindCurrentFile")
 endif
 command! FernFindCurrentFile call FernFindCurrentFile()
 
-if !exists("*ChangeCwdHere") 
+if !exists("*ChangeCwdHere")
 	function ChangeCwdHere() " Vim with the 'hidden' option
         let current=expand('%:p:h')
         silent execute 'chdir ' current

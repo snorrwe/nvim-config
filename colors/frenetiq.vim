@@ -27,5 +27,5 @@ highlight PmenuSel guibg=#032C3E
 highlight LineNr guifg=#EFF1F2
 highlight CursorLineNr guifg=#AFA1F2
 
-highlight Folded guibg=#55545f
+highlight Folded guibg=#433b3e
 
