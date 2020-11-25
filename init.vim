@@ -79,6 +79,7 @@ let g:formatters_json = ['prettier']
 let g:formatters_toml = ['prettier']
 let g:formatters_md = ['prettier']
 let g:formatters_yaml = ['prettier']
+let g:formatters_svelte = ['prettier']
 let g:formatters_sql = []
 
 
