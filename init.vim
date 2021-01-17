@@ -11,20 +11,21 @@ call plug#begin('~/.vim/plugged')
 Plug 'luochen1990/rainbow'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
-Plug 'https://github.com/itchyny/lightline.vim.git'
 Plug 'https://github.com/Shougo/vimproc.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
 Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
-Plug 'segeljakt/vim-silicon'
 Plug 'psliwka/vim-smoothie'
 Plug 'https://github.com/vifm/vifm.vim.git'
-Plug 'https://github.com/vimwiki/vimwiki.git'
 Plug 'gko/vim-coloresque'
 Plug 'altercation/vim-colors-solarized'
 Plug 'lambdalisue/fern.vim'
-Plug 'https://github.com/natebosch/vim-lsc.git'
+Plug 'neovim/nvim-lspconfig'
 Plug 'https://github.com/Chiel92/vim-autoformat.git'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tjdevries/lsp_extensions.nvim'
+Plug 'nvim-lua/completion-nvim'
 call plug#end()
 
 syntax on
@@ -33,10 +34,6 @@ colorscheme frenetiq
 
 " Some nonsense :)
 let g:neovide_cursor_vfx_mode = "railgun"
-
-" VimTex
-
-let g:vimtex_compiler_progname = 'nvr'
 
 set nocompatible
 filetype plugin indent on
@@ -81,6 +78,7 @@ let g:formatters_md = ['prettier']
 let g:formatters_yaml = ['prettier']
 let g:formatters_svelte = ['prettier']
 let g:formatters_sql = []
+let g:formatters_python = ['black']
 
 
 " ctrlp
@@ -142,14 +140,60 @@ endif
 command! ChangeCwdHere call ChangeCwdHere()
 
 
-" lsp client
+" lsp
 "
-let g:lsc_server_commands = {
-            \ 'cpp': 'clangd'
-            \, 'rust': 'rust-analyzer'
-            \, 'javascriptreact':'javascript-typescript-stdio'
-            \}
-let g:lsc_auto_map = {
-    \ 'defaults': v:true,
-    \ 'PreviousReference': '',
-    \}
+set shortmess-=F
+set shortmess+=c
+
+lua << EOF
+
+local lsp = require'lspconfig'
+
+-- function to attach completion when setting up lsp
+local on_attach = function(client)
+    require'completion'.on_attach(client)
+end
+
+lsp.rust_analyzer.setup({on_attach=on_attach})
+lsp.clangd.setup({on_attach=on_attach})
+lsp.pyls.setup({on_attach=on_attach})
+
+
+
+-- Enable diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = true,
+    signs = true,
+    update_in_insert = true,
+  }
+)
+EOF
+
+set completeopt=menuone,noinsert,noselect
+
+" Code navigation shortcuts
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
+
+" Set updatetime for CursorHold
+" 300ms of no cursor movement to trigger CursorHold
+set updatetime=300
+" Show diagnostic popup on cursor hold
+autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+
+" Goto previous/next diagnostic warning/error
+nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+
+" Enable type inlay hints
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
+\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
