@@ -14,7 +14,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'https://github.com/Shougo/vimproc.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/scrooloose/nerdcommenter.git'
-Plug 'https://github.com/ctrlpvim/ctrlp.vim.git'
 Plug 'psliwka/vim-smoothie'
 Plug 'https://github.com/vifm/vifm.vim.git'
 Plug 'gko/vim-coloresque'
@@ -26,6 +25,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
+
+Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 syntax on
@@ -50,13 +52,16 @@ set ignorecase
 set smartcase
 
 vnoremap // y/<C-R>"<CR>
-noremap <C-T> :CtrlPTag<CR>
 noremap <Space> :noh<CR>
 noremap <A-o> :only<CR>
 noremap <A-n> :Fern . -drawer -toggle<CR>
 noremap <A-f> :FernFindCurrentFile<CR>
 noremap <leader>a :Autoformat
 noremap <leader>r :LSClient
+
+" fzf
+"
+nnoremap <C-P> :GFiles<CR>
 
 " autoformat
 "
@@ -80,12 +85,6 @@ let g:formatters_svelte = ['prettier']
 let g:formatters_sql = []
 let g:formatters_python = ['black']
 
-
-" ctrlp
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.(git|hg|svn))|(node_modules|target|build)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
 
 " Go to last file(s) if invoked without arguments.
 autocmd VimLeave * nested if (!isdirectory($HOME . "/.vim")) |
