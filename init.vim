@@ -28,11 +28,13 @@ Plug 'nvim-lua/completion-nvim'
 
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
+
+Plug 'windwp/wind-colors'
 call plug#end()
 
 syntax on
 set background=dark
-colorscheme frenetiq
+colorscheme wind
 
 " Some nonsense :)
 let g:neovide_cursor_vfx_mode = "railgun"
@@ -157,6 +159,7 @@ lsp.rust_analyzer.setup({on_attach=on_attach})
 lsp.clangd.setup({on_attach=on_attach})
 lsp.pyls.setup({on_attach=on_attach})
 lsp.gopls.setup({on_attach=on_attach})
+lsp.tsserver.setup({on_attach=on_attach})
 
 
 
