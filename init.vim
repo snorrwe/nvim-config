@@ -87,16 +87,6 @@ let g:formatters_svelte = ['prettier']
 let g:formatters_sql = []
 let g:formatters_python = ['black']
 
-
-" Go to last file(s) if invoked without arguments.
-autocmd VimLeave * nested if (!isdirectory($HOME . "/.vim")) |
-            \ call mkdir($HOME . "/.vim") |
-            \ endif |
-            \ execute "mksession! " . $HOME . "/.vim/Session.vim"
-
-autocmd VimEnter * nested if argc() == 0 && filereadable($HOME . "/.vim/Session.vim") |
-            \ execute "source " . $HOME . "/.vim/Session.vim"
-
 " NERDcommenter
 filetype plugin on
 let g:NERDSpaceDelims = 1
