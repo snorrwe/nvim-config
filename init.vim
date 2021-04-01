@@ -21,10 +21,10 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'lambdalisue/fern.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'https://github.com/Chiel92/vim-autoformat.git'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
+
+Plug 'hoob3rt/lualine.nvim'
 
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
@@ -32,34 +32,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'windwp/wind-colors'
 call plug#end()
 
-syntax on
-set background=dark
-colorscheme wind
+lua << EOF
+require'tools'.initialize()
+EOF
 
 " Some nonsense :)
 let g:neovide_cursor_vfx_mode = "railgun"
-
-set nocompatible
-filetype plugin indent on
-" show existing tab with 4 spaces width
-set tabstop=4
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-" On pressing tab, insert 4 spaces
-set expandtab
-set autoread
-set number
-set relativenumber
-set ignorecase
-set smartcase
-
-vnoremap // y/<C-R>"<CR>
-noremap <Space> :noh<CR>
-noremap <A-o> :only<CR>
-noremap <A-n> :Fern . -drawer -toggle<CR>
-noremap <A-f> :FernFindCurrentFile<CR>
-noremap <leader>a :Autoformat
-noremap <leader>r :LSClient
 
 " fzf
 "
@@ -88,7 +66,6 @@ let g:formatters_sql = []
 let g:formatters_python = ['black']
 
 " NERDcommenter
-filetype plugin on
 let g:NERDSpaceDelims = 1
 
 " Use compact syntax for prettified multi-line comments
@@ -136,33 +113,6 @@ command! ChangeCwdHere call ChangeCwdHere()
 set shortmess-=F
 set shortmess+=c
 
-lua << EOF
-
-local lsp = require'lspconfig'
-
--- function to attach completion when setting up lsp
-local on_attach = function(client)
-    require'completion'.on_attach(client)
-end
-
-lsp.rust_analyzer.setup({on_attach=on_attach})
-lsp.clangd.setup({on_attach=on_attach})
-lsp.pyls.setup({on_attach=on_attach})
-lsp.gopls.setup({on_attach=on_attach})
-lsp.tsserver.setup({on_attach=on_attach})
-
-
-
--- Enable diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = true,
-    signs = true,
-    update_in_insert = true,
-  }
-)
-EOF
-
 set completeopt=menuone,noinsert,noselect
 
 " Code navigation shortcuts
@@ -191,3 +141,36 @@ nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
+
+
+
+
+
+" lualine
+"
+let g:lualine = {
+    \'options' : {
+    \  'theme' : 'gruvbox',
+    \  'section_separators' : ['', ''],
+    \  'component_separators' : ['', ''],
+    \  'icons_enabled' : v:true,
+    \},
+    \'sections' : {
+    \  'lualine_a' : [ ['mode', {'upper': v:true,},], ],
+    \  'lualine_b' : [ ['branch', {'icon': '',}, ], ],
+    \  'lualine_c' : [ ['filename', {'file_status': v:true,},], ],
+    \  'lualine_x' : [ 'encoding', 'fileformat', 'filetype' ],
+    \  'lualine_y' : [ 'progress' ],
+    \  'lualine_z' : [ 'location'  ],
+    \},
+    \'inactive_sections' : {
+    \  'lualine_a' : [  ],
+    \  'lualine_b' : [  ],
+    \  'lualine_c' : [ 'filename' ],
+    \  'lualine_x' : [ 'location' ],
+    \  'lualine_y' : [  ],
+    \  'lualine_z' : [  ],
+    \},
+    \'extensions' : [ 'fzf' ],
+    \}
+lua require("lualine").setup()
