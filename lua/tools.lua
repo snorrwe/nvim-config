@@ -30,7 +30,7 @@ end
 
 function M.initialize()
     api.nvim_command('set background=dark')
-    api.nvim_command('colorscheme wind')
+    api.nvim_command('colorscheme frenetiq')
     api.nvim_command('syntax on')
 
     api.nvim_command('set nocompatible')

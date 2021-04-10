@@ -28,8 +28,6 @@ Plug 'hoob3rt/lualine.nvim'
 
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
-
-Plug 'windwp/wind-colors'
 call plug#end()
 
 lua << EOF
@@ -41,7 +39,7 @@ let g:neovide_cursor_vfx_mode = "railgun"
 
 " fzf
 "
-nnoremap <C-P> :GFiles<CR>
+nnoremap <C-P> :Files<CR>
 
 " autoformat
 "
@@ -85,7 +83,7 @@ if !exists("*DeleteHiddenBuffers") " Clear all hidden buffers when running
 		let tpbl=[]
 		call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
 		for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
-			silent execute 'bwipeout' buf
+			silent execute 'bwipeout!' buf
 		endfor
 	endfunction
 endif
