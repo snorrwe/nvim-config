@@ -24,7 +24,8 @@ Plug 'https://github.com/Chiel92/vim-autoformat.git'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
 
-Plug 'hoob3rt/lualine.nvim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
@@ -140,35 +141,3 @@ nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
 
-
-
-
-
-" lualine
-"
-let g:lualine = {
-    \'options' : {
-    \  'theme' : 'gruvbox',
-    \  'section_separators' : ['', ''],
-    \  'component_separators' : ['', ''],
-    \  'icons_enabled' : v:true,
-    \},
-    \'sections' : {
-    \  'lualine_a' : [ ['mode', {'upper': v:true,},], ],
-    \  'lualine_b' : [ ['branch', {'icon': '',}, ], ],
-    \  'lualine_c' : [ ['filename', {'file_status': v:true,},], ],
-    \  'lualine_x' : [ 'encoding', 'fileformat', 'filetype' ],
-    \  'lualine_y' : [ 'progress' ],
-    \  'lualine_z' : [ 'location'  ],
-    \},
-    \'inactive_sections' : {
-    \  'lualine_a' : [  ],
-    \  'lualine_b' : [  ],
-    \  'lualine_c' : [ 'filename' ],
-    \  'lualine_x' : [ 'location' ],
-    \  'lualine_y' : [  ],
-    \  'lualine_z' : [  ],
-    \},
-    \'extensions' : [ 'fzf' ],
-    \}
-lua require("lualine").setup()

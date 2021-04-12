@@ -55,6 +55,10 @@ function M.initialize()
     api.nvim_command('noremap <leader>a :Autoformat')
     api.nvim_command('noremap <leader>r :LSClient')
 
+    -- show the next match in the middle of the screen
+    api.nvim_command('noremap n nzz')
+    api.nvim_command('noremap N Nzz')
+
     setupLsp()
 end
 
