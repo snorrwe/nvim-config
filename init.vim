@@ -24,6 +24,9 @@ Plug 'https://github.com/Chiel92/vim-autoformat.git'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
 
+" github plugin
+Plug 'https://github.com/tpope/vim-rhubarb'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
