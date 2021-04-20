@@ -32,6 +32,8 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
+
+Plug 'folke/tokyonight.nvim'
 call plug#end()
 
 lua << EOF
@@ -44,28 +46,6 @@ let g:neovide_cursor_vfx_mode = "railgun"
 " fzf
 "
 nnoremap <C-P> :Files<CR>
-
-" autoformat
-"
-let g:formatter_path = ["c:/tools"]
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:formatters_js = ['prettier']
-let g:formatters_jsx = ['prettier']
-let g:formatters_ts = ['prettier']
-let g:formatters_javascript = ['prettier']
-let g:formatters_typescript = ['prettier']
-let g:formatters_javascriptreact = ['prettier']
-let g:formatters_typescriptreact = ['prettier']
-let g:formatters_html = ['prettier']
-let g:formatters_css = ['prettier']
-let g:formatters_json = ['prettier']
-let g:formatters_toml = ['prettier']
-let g:formatters_md = ['prettier']
-let g:formatters_yaml = ['prettier']
-let g:formatters_svelte = ['prettier']
-let g:formatters_sql = []
-let g:formatters_python = ['black']
 
 " NERDcommenter
 let g:NERDSpaceDelims = 1
@@ -108,39 +88,3 @@ if !exists("*ChangeCwdHere")
 	endfunction
 endif
 command! ChangeCwdHere call ChangeCwdHere()
-
-
-" lsp
-"
-set shortmess-=F
-set shortmess+=c
-
-set completeopt=menuone,noinsert,noselect
-
-" Code navigation shortcuts
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> gR    <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
-
-" Set updatetime for CursorHold
-" 800ms of no cursor movement to trigger CursorHold
-set updatetime=800
-" Show diagnostic popup on cursor hold
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
-
-" Goto previous/next diagnostic warning/error
-nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-
-" Enable type inlay hints
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
-\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }
-
