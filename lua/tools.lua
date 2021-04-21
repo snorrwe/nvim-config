@@ -83,13 +83,18 @@ function initAutoformat()
 end
 
 function initTokyonight()
-    vim.g.tokyonight_style="night"
+    vim.g.tokyonight_style = "night"
+    vim.g.tokyonight_italic_functions = true
     vim.g.tokyonight_sidebars = { "quickfix", "__vista__", "terminal" }
 end
 
 function M.initialize()
+
+    setupLsp()
+    initAutoformat()
+    initTokyonight()
+
     vim.cmd[[set background=dark]]
-    vim.cmd[[colorscheme tokyonight]]
     vim.cmd[[syntax on]]
 
     vim.cmd[[set nocompatible]]
@@ -118,9 +123,7 @@ function M.initialize()
     vim.cmd[[noremap n nzz]]
     vim.cmd[[noremap N Nzz]]
 
-    setupLsp()
-    initAutoformat()
-    initTokyonight()
+    vim.cmd[[colorscheme tokyonight]]
 end
 
 return M
