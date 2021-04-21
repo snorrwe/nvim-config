@@ -4,7 +4,10 @@ local api = vim.api
 local M = {}
 
 function setupLsp()
-    local lsp = require'lspconfig'
+    local lsp = require 'lspconfig'
+    local saga = require 'lspsaga'
+
+    saga.init_lsp_saga()
 
     -- function to attach completion when setting up lsp
     local on_attach = function(client)
@@ -27,17 +30,16 @@ function setupLsp()
     )
 
     -- Code navigation shortcuts
-    vim.cmd[[nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>]]
-    vim.cmd[[nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>]]
+    vim.cmd[[nnoremap <silent> <c-[> <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()]]
+    vim.cmd[[nnoremap <silent> <c-]> <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()]]
+    vim.cmd[[nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>]]
     vim.cmd[[nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>]]
-    vim.cmd[[nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>]]
-    vim.cmd[[nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>]]
+    vim.cmd[[nnoremap <silent> <c-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>]]
     vim.cmd[[nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>]]
-    vim.cmd[[nnoremap <silent> gR    <cmd>lua vim.lsp.buf.rename()<CR>]]
-    vim.cmd[[nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>]]
-    vim.cmd[[nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>]]
-    vim.cmd[[nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>]]
-    vim.cmd[[nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>]]
+    vim.cmd[[nnoremap <silent> gR <cmd>lua require('lspsaga.rename').rename()<CR>]]
+    vim.cmd[[nnoremap <silent> gd    <cmd>lua require'lspsaga.provider'.preview_definition()]]
+    vim.cmd[[nnoremap <silent> ga    <cmd>lua require('lspsaga.codeaction').code_action()<CR>]]
+    vim.cmd[[vnoremap <silent> ga    :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>]]
 
     vim.cmd[[set updatetime=800]]
 
