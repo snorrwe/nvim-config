@@ -30,25 +30,24 @@ function setupLsp()
     )
 
     -- Code navigation shortcuts
-    vim.cmd[[nnoremap <silent> <c-[> <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()]]
-    vim.cmd[[nnoremap <silent> <c-]> <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()]]
+    vim.cmd[[nnoremap <silent> <c-]> <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]]
+    vim.cmd[[nnoremap <silent> g[ <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>]]
+    vim.cmd[[nnoremap <silent> g] <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>]]
     vim.cmd[[nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>]]
-    vim.cmd[[nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>]]
-    vim.cmd[[nnoremap <silent> <c-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>]]
-    vim.cmd[[nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>]]
+    vim.cmd[[nnoremap <silent> gD <cmd>lua vim.lsp.buf.implementation()<CR>]]
+    vim.cmd[[nnoremap <silent> <C-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>]]
+    vim.cmd[[nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>]]
     vim.cmd[[nnoremap <silent> gR <cmd>lua require('lspsaga.rename').rename()<CR>]]
-    vim.cmd[[nnoremap <silent> gd    <cmd>lua require'lspsaga.provider'.preview_definition()]]
-    vim.cmd[[nnoremap <silent> ga    <cmd>lua require('lspsaga.codeaction').code_action()<CR>]]
-    vim.cmd[[vnoremap <silent> ga    :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>]]
+    vim.cmd[[nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>]]
+    vim.cmd[[nnoremap <silent> ga <cmd>lua require('lspsaga.codeaction').code_action()<CR>]]
+    vim.cmd[[vnoremap <silent> ga :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>]]
 
-    vim.cmd[[set updatetime=800]]
+    vim.cmd[[set updatetime=300]]
 
     -- Show diagnostic popup on cursor hold
     vim.cmd[[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
 
     -- Goto previous/next diagnostic warning/error
-    vim.cmd[[nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>]]
-    vim.cmd[[nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>]]
 
     -- Enable type inlay hints
     vim.cmd[[
