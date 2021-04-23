@@ -30,17 +30,17 @@ function setupLsp()
     )
 
     -- Code navigation shortcuts
-    vim.cmd[[nnoremap <silent> <c-]> <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>]]
-    vim.cmd[[nnoremap <silent> g[ <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>]]
-    vim.cmd[[nnoremap <silent> g] <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>]]
-    vim.cmd[[nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>]]
-    vim.cmd[[nnoremap <silent> gD <cmd>lua vim.lsp.buf.implementation()<CR>]]
-    vim.cmd[[nnoremap <silent> <C-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>]]
-    vim.cmd[[nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>]]
-    vim.cmd[[nnoremap <silent> gR <cmd>lua require('lspsaga.rename').rename()<CR>]]
-    vim.cmd[[nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>]]
-    vim.cmd[[nnoremap <silent> ga <cmd>lua require('lspsaga.codeaction').code_action()<CR>]]
-    vim.cmd[[vnoremap <silent> ga :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>]]
+    vim.api.nvim_set_keymap("n", "<c-]>", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>",{silent=true,noremap=true})
+    vim.api.nvim_set_keymap("n", "g[", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>",{silent=true,noremap=true})
+    vim.api.nvim_set_keymap("n", "g]", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>",{silent=true,noremap=true})
+    vim.api.nvim_set_keymap("n", "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>",{silent=true,noremap=true})
+    vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.implementation()<CR>",{silent=true,noremap=true})
+    vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>",{silent=true,noremap=true})
+    vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>",{silent=true,noremap=true})
+    vim.api.nvim_set_keymap("n", "gR", "<cmd>lua require('lspsaga.rename').rename()<CR>",{silent=true,noremap=true})
+    vim.api.nvim_set_keymap("n", "gd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>",{silent=true,noremap=true})
+    vim.api.nvim_set_keymap("n", "ga", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>",{silent=true,noremap=true})
+    vim.api.nvim_set_keymap("v", "ga", ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>",{silent=true,noremap=true})
 
     vim.cmd[[set updatetime=300]]
 
@@ -58,6 +58,11 @@ function setupLsp()
     vim.cmd[[set shortmess+=c]]
 
     vim.cmd[[set completeopt=menuone,noinsert,noselect]]
+
+
+    -- lsp-trouble
+    require("trouble").setup { }
+    vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>LspTroubleToggle<CR>", {silent=true, noremap=true})
 
 end
 
@@ -91,9 +96,15 @@ end
 
 function M.initialize()
 
-    setupLsp()
-    initAutoformat()
-    initTokyonight()
+    if not pcall( setupLsp ) then
+        print("Failed to setup LSP")
+    end
+    if not pcall( initAutoformat ) then
+        print("Failed to init Autoformat")
+    end
+    if not pcall( initTokyonight ) then
+        print("Failed to init Tokyonight")
+    end
 
     vim.cmd[[set background=dark]]
     vim.cmd[[syntax on]]
@@ -113,12 +124,12 @@ function M.initialize()
     vim.cmd[[set smartcase]]
 
     vim.cmd[[vnoremap // y/<C-R>"<CR>]]
-    vim.cmd[[noremap <Space> :noh<CR>]]
-    vim.cmd[[noremap <A-o> :only<CR>]]
-    vim.cmd[[noremap <A-n> :Fern . -drawer -toggle<CR>]]
-    vim.cmd[[noremap <A-f> :FernFindCurrentFile<CR>]]
+    vim.cmd[[noremap <Space> <cmd>noh<CR>]]
+    vim.cmd[[noremap <A-o> <cmd>only<CR>]]
+    vim.cmd[[noremap <A-n> <cmd>Fern . -drawer -toggle<CR>]]
+    vim.cmd[[noremap <A-f> <cmd>FernFindCurrentFile<CR>]]
     vim.cmd[[noremap <leader>a :Autoformat]]
-    vim.cmd[[noremap <leader>r :LSClient]]
+    vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>Git<CR>", {silent=true, noremap=true})
 
     -- show the next match in the middle of the screen
     vim.cmd[[noremap n nzz]]

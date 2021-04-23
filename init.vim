@@ -23,6 +23,8 @@ Plug 'https://github.com/Chiel92/vim-autoformat.git'
 Plug 'neovim/nvim-lspconfig'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'folke/lsp-trouble.nvim'
 Plug 'nvim-lua/completion-nvim'
 
 " github plugin
