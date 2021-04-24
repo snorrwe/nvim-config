@@ -25,7 +25,7 @@ Plug 'glepnir/lspsaga.nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/lsp-trouble.nvim'
-Plug 'nvim-lua/completion-nvim'
+Plug 'https://github.com/hrsh7th/nvim-compe'
 
 " github plugin
 Plug 'https://github.com/tpope/vim-rhubarb'

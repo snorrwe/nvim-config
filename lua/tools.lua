@@ -7,18 +7,12 @@ function setupLsp()
     local lsp = require 'lspconfig'
     local saga = require 'lspsaga'
 
-    saga.init_lsp_saga()
-
-    -- function to attach completion when setting up lsp
-    local on_attach = function(client)
-        require'completion'.on_attach(client)
-    end
-
-    lsp.rust_analyzer.setup({on_attach=on_attach})
-    lsp.clangd.setup({on_attach=on_attach})
-    lsp.pyls.setup({on_attach=on_attach})
-    lsp.gopls.setup({on_attach=on_attach})
-    lsp.tsserver.setup({on_attach=on_attach})
+    saga.init_lsp_saga({})
+    lsp.rust_analyzer.setup({})
+    lsp.clangd.setup({})
+    lsp.pyls.setup({})
+    lsp.gopls.setup({})
+    lsp.tsserver.setup({})
 
     -- Enable diagnostics
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -47,8 +41,6 @@ function setupLsp()
     -- Show diagnostic popup on cursor hold
     vim.cmd[[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
 
-    -- Goto previous/next diagnostic warning/error
-
     -- Enable type inlay hints
     vim.cmd[[
     autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
@@ -56,9 +48,6 @@ function setupLsp()
 
     vim.cmd[[set shortmess-=F]]
     vim.cmd[[set shortmess+=c]]
-
-    vim.cmd[[set completeopt=menuone,noinsert,noselect]]
-
 
     -- lsp-trouble
     require("trouble").setup { }
@@ -94,6 +83,38 @@ function initTokyonight()
     vim.g.tokyonight_sidebars = { "quickfix", "__vista__", "terminal" }
 end
 
+function initCompe()
+    vim.o.completeopt="menuone,noselect"
+    require'compe'.setup {
+      enabled = true;
+      autocomplete = true;
+      debug = false;
+      min_length = 1;
+      preselect = 'enable';
+      throttle_time = 80;
+      source_timeout = 200;
+      incomplete_delay = 400;
+      max_abbr_width = 100;
+      max_kind_width = 100;
+      max_menu_width = 100;
+      documentation = true;
+
+      source = {
+        path = true;
+        buffer = true;
+        calc = true;
+        nvim_lsp = true;
+        nvim_lua = true;
+        vsnip = false;
+      };
+    }
+
+    vim.cmd[[inoremap <silent><expr> <C-Space> compe#complete()]]
+    vim.cmd[[inoremap <silent><expr> <CR> compe#confirm('<CR>')]]
+    vim.cmd[[inoremap <silent><expr> <C-e> compe#close('<C-e>')]]
+
+end
+
 function M.initialize()
 
     if not pcall( setupLsp ) then
@@ -105,6 +126,10 @@ function M.initialize()
     if not pcall( initTokyonight ) then
         print("Failed to init Tokyonight")
     end
+    if not pcall( initCompe ) then
+        print("Failed to init compe")
+    end
+    vim.cmd[[colorscheme tokyonight]]
 
     vim.cmd[[set background=dark]]
     vim.cmd[[syntax on]]
@@ -135,7 +160,6 @@ function M.initialize()
     vim.cmd[[noremap n nzz]]
     vim.cmd[[noremap N Nzz]]
 
-    vim.cmd[[colorscheme tokyonight]]
 end
 
 return M
