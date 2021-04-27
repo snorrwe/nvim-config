@@ -27,11 +27,13 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/lsp-trouble.nvim'
 Plug 'https://github.com/hrsh7th/nvim-compe'
 
+Plug 'hoob3rt/lualine.nvim'
+" If you want to have icons in your statusline choose one of these
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
+
 " github plugin
 Plug 'https://github.com/tpope/vim-rhubarb'
-
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
@@ -41,6 +43,7 @@ call plug#end()
 
 lua << EOF
 require'tools'.initialize()
+require'statusline'
 EOF
 
 " Some nonsense :)
