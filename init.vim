@@ -38,7 +38,7 @@ Plug 'https://github.com/tpope/vim-rhubarb'
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
 
-Plug 'folke/tokyonight.nvim'
+Plug 'wojciechkepka/bogster'
 call plug#end()
 
 lua << EOF

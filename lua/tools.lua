@@ -77,12 +77,6 @@ function initAutoformat()
     vim.g.formatters_python = {'black'}
 end
 
-function initTokyonight()
-    vim.g.tokyonight_style = "night"
-    vim.g.tokyonight_italic_functions = true
-    vim.g.tokyonight_sidebars = { "quickfix", "__vista__", "terminal" }
-end
-
 function initCompe()
     vim.o.completeopt="menuone,noselect"
     require'compe'.setup {
@@ -123,13 +117,10 @@ function M.initialize()
     if not pcall( initAutoformat ) then
         print("Failed to init Autoformat")
     end
-    if not pcall( initTokyonight ) then
-        print("Failed to init Tokyonight")
-    end
     if not pcall( initCompe ) then
         print("Failed to init compe")
     end
-    vim.cmd[[colorscheme tokyonight]]
+    vim.cmd[[colorscheme bogster]]
 
     vim.cmd[[set background=dark]]
     vim.cmd[[syntax on]]
