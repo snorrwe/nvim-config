@@ -38,20 +38,13 @@ Plug 'https://github.com/tpope/vim-rhubarb'
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
 
-Plug 'wojciechkepka/bogster'
+Plug 'rafamadriz/neon'
 call plug#end()
 
 lua << EOF
 require'tools'.initialize()
 require'statusline'
 EOF
-
-" Some nonsense :)
-let g:neovide_cursor_vfx_mode = "railgun"
-
-" fzf
-"
-nnoremap <C-P> :Files<CR>
 
 " NERDcommenter
 let g:NERDSpaceDelims = 1

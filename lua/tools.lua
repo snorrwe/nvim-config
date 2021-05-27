@@ -13,6 +13,7 @@ function setupLsp()
     lsp.pyls.setup({})
     lsp.gopls.setup({})
     lsp.tsserver.setup({})
+    lsp.zls.setup({})
 
     -- Enable diagnostics
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -106,7 +107,6 @@ function initCompe()
     vim.cmd[[inoremap <silent><expr> <C-Space> compe#complete()]]
     vim.cmd[[inoremap <silent><expr> <CR> compe#confirm('<CR>')]]
     vim.cmd[[inoremap <silent><expr> <C-e> compe#close('<C-e>')]]
-
 end
 
 function M.initialize()
@@ -120,7 +120,12 @@ function M.initialize()
     if not pcall( initCompe ) then
         print("Failed to init compe")
     end
-    vim.cmd[[colorscheme bogster]]
+    vim.cmd[[colorscheme neon]]
+    vim.g.neon_style = 'doom'
+    vim.g.neon_bold = true
+
+    -- neovide
+    vim.g.neovide_cursor_vfx_mode = "railgun"
 
     vim.cmd[[set background=dark]]
     vim.cmd[[syntax on]]
@@ -145,6 +150,10 @@ function M.initialize()
     vim.cmd[[noremap <A-n> <cmd>Fern . -drawer -toggle<CR>]]
     vim.cmd[[noremap <A-f> <cmd>FernFindCurrentFile<CR>]]
     vim.cmd[[noremap <leader>a :Autoformat]]
+    -- fzf
+    --
+    vim.cmd[[nnoremap <C-p> :Files<Cr>]]
+
     vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>Git<CR>", {silent=true, noremap=true})
 
     -- show the next match in the middle of the screen

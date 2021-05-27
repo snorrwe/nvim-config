@@ -2,8 +2,8 @@ local lualine = require'lualine'
 
 lualine.setup{
     options= {
-        theme='ayu_dark',
-        icons_enabled = true,
+        theme='neon',
+        icons_enabled = false,
     },
     sections = {
         lualine_a = {'FugitiveHead' },
