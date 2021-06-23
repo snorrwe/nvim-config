@@ -3,6 +3,10 @@ local api = vim.api
 
 local M = {}
 
+function setupBufferLine()
+    require('bufferline').setup({})
+end
+
 function setupLsp()
     local lsp = require 'lspconfig'
     local saga = require 'lspsaga'
@@ -12,7 +16,7 @@ function setupLsp()
     lsp.clangd.setup({})
     lsp.pyls.setup({})
     lsp.gopls.setup({})
-    lsp.tsserver.setup({})
+    -- lsp.tsserver.setup({})
     lsp.zls.setup({})
 
     -- Enable diagnostics
@@ -54,6 +58,46 @@ function setupLsp()
     require("trouble").setup { }
     vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>LspTroubleToggle<CR>", {silent=true, noremap=true})
 
+    -- lsp-kind
+    require('lspkind').init({
+        -- enables text annotations
+        --
+        -- default: true
+        with_text = true,
+
+        -- default symbol map
+        -- can be either 'default' or
+        -- 'codicons' for codicon preset (requires vscode-codicons font installed)
+        --
+        -- default: 'default'
+        preset = 'codicons',
+
+        -- override preset symbols
+        --
+        -- default: {}
+        symbol_map = {
+          Text = '',
+          Method = 'ƒ',
+          Function = '',
+          Constructor = '',
+          Variable = '',
+          Class = '',
+          Interface = 'ﰮ',
+          Module = '',
+          Property = '',
+          Unit = '',
+          Value = '',
+          Enum = '了',
+          Keyword = '',
+          Snippet = '﬌',
+          Color = '',
+          File = '',
+          Folder = '',
+          EnumMember = '',
+          Constant = '',
+          Struct = ''
+        },
+    })
 end
 
 function initAutoformat()
@@ -120,6 +164,9 @@ function M.initialize()
     if not pcall( initCompe ) then
         print("Failed to init compe")
     end
+    if not pcall( setupBufferLine ) then
+        print("Failed to init bufferline")
+    end
     vim.cmd[[colorscheme neon]]
     vim.g.neon_style = 'doom'
     vim.g.neon_bold = true
@@ -146,9 +193,9 @@ function M.initialize()
 
     vim.cmd[[vnoremap // y/<C-R>"<CR>]]
     vim.cmd[[noremap <Space> <cmd>noh<CR>]]
-    vim.cmd[[noremap <A-o> <cmd>only<CR>]]
-    vim.cmd[[noremap <A-n> <cmd>Fern . -drawer -toggle<CR>]]
-    vim.cmd[[noremap <A-f> <cmd>FernFindCurrentFile<CR>]]
+    vim.cmd[[noremap <leader>o <cmd>only<CR>]]
+    vim.cmd[[noremap <leader>n <cmd>Fern . -drawer -toggle<CR>]]
+    vim.cmd[[noremap <leader>f <cmd>FernFindCurrentFile<CR>]]
     vim.cmd[[noremap <leader>a :Autoformat]]
     -- fzf
     --
