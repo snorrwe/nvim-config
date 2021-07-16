@@ -13,10 +13,10 @@
 - Edit `init.vim` to your liking. Be sure to edit __HOME__ and __LLVM__
 - Install plugins in vim `:PlugInstall`
 - Install [Vifm](https://vifm.info/)
+- Install [Telescope deps](https://github.com/nvim-telescope/telescope.nvim#optional-dependencies)
 - Install LSPs
     - clangd
     - rust-analyser
-    - javascript-typescript-stdio
     - etc.
 - Profit
 
