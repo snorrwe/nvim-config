@@ -12,11 +12,24 @@ function setupLsp()
     local saga = require 'lspsaga'
 
     saga.init_lsp_saga({})
-    lsp.rust_analyzer.setup({})
-    lsp.clangd.setup({})
-    lsp.pyls.setup({})
-    lsp.gopls.setup({})
-    lsp.zls.setup({})
+
+    local status, retval = pcall( lsp.rust_analyzer.setup, {} )
+    if not status then
+        print("lsp.rust_analyzer.setup({}) failed: ", retval)
+    end
+    local status, retval = pcall( lsp.clangd.setup, {} )
+    if not status then 
+        print("lsp.clangd.setup({}) failed: ", retval)
+    end
+    local status, retval = pcall( lsp.gopls.setup, {} )
+    if not status then 
+        print("lsp.gopls.setup({})  failed: ", retval)
+    end
+    local status, retval = pcall( lsp.zls.setup, {} )
+    if not status then 
+        print("lsp.zls.setup({})  failed: ", retval)
+    end
+
 
     -- Enable diagnostics
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -28,17 +41,15 @@ function setupLsp()
     )
 
     -- Code navigation shortcuts
-    vim.api.nvim_set_keymap("n", "<c-]>", "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>",{silent=true,noremap=true})
-    vim.api.nvim_set_keymap("n", "g[", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>",{silent=true,noremap=true})
-    vim.api.nvim_set_keymap("n", "g]", "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>",{silent=true,noremap=true})
-    vim.api.nvim_set_keymap("n", "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>",{silent=true,noremap=true})
-    vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.implementation()<CR>",{silent=true,noremap=true})
-    vim.api.nvim_set_keymap("n", "<C-k>", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>",{silent=true,noremap=true})
-    vim.api.nvim_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>",{silent=true,noremap=true})
-    vim.api.nvim_set_keymap("n", "gR", "<cmd>lua require('lspsaga.rename').rename()<CR>",{silent=true,noremap=true})
-    vim.api.nvim_set_keymap("n", "gd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>",{silent=true,noremap=true})
-    vim.api.nvim_set_keymap("n", "ga", "<cmd>lua require('lspsaga.codeaction').code_action()<CR>",{silent=true,noremap=true})
-    vim.api.nvim_set_keymap("v", "ga", ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>",{silent=true,noremap=true})
+    vim.cmd[[nnoremap <c-]> <cmd>lua require'lspsaga.provider'.lsp_finder()<cr>]]
+    vim.cmd[[nnoremap g[ <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<cr>]]
+    vim.cmd[[nnoremap g] <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<cr>]]
+    vim.cmd[[nnoremap K <cmd>lua require('lspsaga.hover').render_hover_doc()<cr>]]
+    vim.cmd[[nnoremap gD <cmd>lua vim.lsp.buf.implementation()<cr>]]
+    vim.cmd[[nnoremap <C-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<cr>]]
+    vim.cmd[[nnoremap gR <cmd>lua require('lspsaga.rename').rename()<cr>]]
+    vim.cmd[[nnoremap gd <cmd>lua require'lspsaga.provider'.preview_definition()<cr>]]
+    vim.cmd[[nnoremap ga <cmd>lua require('lspsaga.codeaction').code_action()<cr>]]
 
     vim.cmd[[set updatetime=300]]
 
@@ -55,7 +66,7 @@ function setupLsp()
 
     -- lsp-trouble
     require("trouble").setup { }
-    vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>LspTroubleToggle<CR>", {silent=true, noremap=true})
+    vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>LspTroubleToggle<cr>", {silent=true, noremap=true})
 
     -- lsp-kind
     require('lspkind').init({
@@ -99,7 +110,7 @@ function setupLsp()
     })
 end
 
-function initAutoformat()
+function setupAutoformat()
     vim.g.formatter_path = {"c:/tools"}
     vim.g.autoformat_autoindent = 0
     vim.g.autoformat_retab = 0
@@ -121,7 +132,7 @@ function initAutoformat()
     vim.g.formatters_python = {'black'}
 end
 
-function initCompe()
+function setupCompe()
     vim.o.completeopt = "menuone,noselect"
 
     require'compe'.setup {
@@ -160,7 +171,7 @@ function initCompe()
     }
 
     vim.cmd[[inoremap <silent><expr> <C-Space> compe#complete()]]
-    vim.cmd[[inoremap <silent><expr> <CR> compe#confirm('<CR>')]]
+    vim.cmd[[inoremap <silent><expr> <cr> compe#confirm('<cr>')]]
     vim.cmd[[inoremap <silent><expr> <C-e> compe#close('<C-e>')]]
 end
 
@@ -176,6 +187,13 @@ function setupTelescope()
               '--column',
               '--smart-case'
             }
+            , mappings = {
+                n = {
+                    ["K"] = false,
+                    ["<C-k>"] = false,
+                    ["ga"] = false,
+                }
+            }
         }
     }
 
@@ -183,24 +201,30 @@ function setupTelescope()
     vim.cmd[[nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>]]
     vim.cmd[[nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>]]
     vim.cmd[[nnoremap <leader>ft <cmd>lua require('telescope.builtin').help_tags()<cr>]]
+    vim.cmd[[nnoremap gr <cmd>lua require('telescope.builtin').lsp_references()<cr>]]
 end
 
 function M.initialize()
 
-    if not pcall( setupLsp ) then
-        print("Failed to setup LSP")
+    local status,retval = pcall( setupLsp )
+    if not status then
+        print("Failed to setup LSP", retval)
     end
-    if not pcall( initAutoformat ) then
-        print("Failed to init Autoformat")
+    local status,retval = pcall( setupAutoformat )
+    if not status then
+        print("Failed to init Autoformat", retval)
     end
-    if not pcall( initCompe ) then
-        print("Failed to init compe")
+    local status,retval = pcall( setupCompe )
+    if not status then
+        print("Failed to init compe", retval)
     end
-    if not pcall( setupBufferLine ) then
-        print("Failed to init bufferline")
+    local status,retval = pcall( setupBufferLine )
+    if not status then
+        print("Failed to init bufferline", retval)
     end
-    if not pcall( setupTelescope ) then
-        print("Failed to init telescope")
+    local status,retval = pcall( setupTelescope )
+    if not status then
+        print("Failed to init telescope", retval)
     end
     vim.cmd[[colorscheme neon]]
     vim.g.neon_style = 'doom'
@@ -226,20 +250,20 @@ function M.initialize()
     vim.cmd[[set ignorecase]]
     vim.cmd[[set smartcase]]
 
-    vim.cmd[[vnoremap // y/<C-R>"<CR>]]
-    vim.cmd[[noremap <Space> <cmd>noh<CR>]]
-    vim.cmd[[noremap <leader>o <cmd>only<CR>]]
-    vim.cmd[[noremap <leader>n <cmd>Fern . -drawer -toggle<CR>]]
-    vim.cmd[[noremap <leader>f <cmd>FernFindCurrentFile<CR>]]
+    vim.cmd[[vnoremap // y/<C-R>"<cr>]]
+    vim.cmd[[noremap <Space> <cmd>noh<cr>]]
+    vim.cmd[[noremap <leader>o <cmd>only<cr>]]
+    vim.cmd[[noremap <leader>n <cmd>Fern . -drawer -toggle<cr>]]
+    vim.cmd[[noremap <leader>f <cmd>FernFindCurrentFile<cr>]]
     vim.cmd[[noremap <leader>a :Autoformat]]
 
-    vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>Git<CR>", {silent=true, noremap=true})
+    vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>Git<cr>", {silent=true, noremap=true})
 
     -- show the next match in the middle of the screen
     vim.cmd[[noremap n nzz]]
     vim.cmd[[noremap N Nzz]]
-    vim.cmd[[noremap <leader>] :BufferLineCycleNext<CR>]]
-    vim.cmd[[noremap <leader>[ :BufferLineCyclePrev<CR>]]
+    vim.cmd[[noremap <leader>] :BufferLineCycleNext<cr>]]
+    vim.cmd[[noremap <leader>[ :BufferLineCyclePrev<cr>]]
 
 end
 
