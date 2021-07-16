@@ -16,7 +16,6 @@ function setupLsp()
     lsp.clangd.setup({})
     lsp.pyls.setup({})
     lsp.gopls.setup({})
-    -- lsp.tsserver.setup({})
     lsp.zls.setup({})
 
     -- Enable diagnostics
@@ -123,34 +122,67 @@ function initAutoformat()
 end
 
 function initCompe()
-    vim.o.completeopt="menuone,noselect"
+    vim.o.completeopt = "menuone,noselect"
+
     require'compe'.setup {
       enabled = true;
       autocomplete = true;
       debug = false;
       min_length = 1;
       preselect = 'enable';
-      throttle_time = 80;
+      throttle_time = 120;
       source_timeout = 200;
+      resolve_timeout = 800;
       incomplete_delay = 400;
-      max_abbr_width = 100;
-      max_kind_width = 100;
-      max_menu_width = 100;
-      documentation = true;
+      max_abbr_width = 150;
+      max_kind_width = 150;
+      max_menu_width = 150;
+      documentation = {
+        border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
+        winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+        max_width = 120,
+        min_width = 60,
+        max_height = math.floor(vim.o.lines * 0.3),
+        min_height = 1,
+      };
 
       source = {
         path = true;
         buffer = true;
         calc = true;
+        omni = false,
         nvim_lsp = true;
         nvim_lua = true;
         vsnip = false;
+        ultisnips = false;
+        luasnip = false;
       };
     }
 
     vim.cmd[[inoremap <silent><expr> <C-Space> compe#complete()]]
     vim.cmd[[inoremap <silent><expr> <CR> compe#confirm('<CR>')]]
     vim.cmd[[inoremap <silent><expr> <C-e> compe#close('<C-e>')]]
+end
+
+function setupTelescope()
+    require('telescope').setup{
+        defaults ={
+            vimgrep_arguments= {
+              'rg',
+              '--color=never',
+              '--no-heading',
+              '--with-filename',
+              '--line-number',
+              '--column',
+              '--smart-case'
+            }
+        }
+    }
+
+    vim.cmd[[nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>]]
+    vim.cmd[[nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>]]
+    vim.cmd[[nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>]]
+    vim.cmd[[nnoremap <leader>ft <cmd>lua require('telescope.builtin').help_tags()<cr>]]
 end
 
 function M.initialize()
@@ -166,6 +198,9 @@ function M.initialize()
     end
     if not pcall( setupBufferLine ) then
         print("Failed to init bufferline")
+    end
+    if not pcall( setupTelescope ) then
+        print("Failed to init telescope")
     end
     vim.cmd[[colorscheme neon]]
     vim.g.neon_style = 'doom'
@@ -197,15 +232,14 @@ function M.initialize()
     vim.cmd[[noremap <leader>n <cmd>Fern . -drawer -toggle<CR>]]
     vim.cmd[[noremap <leader>f <cmd>FernFindCurrentFile<CR>]]
     vim.cmd[[noremap <leader>a :Autoformat]]
-    -- fzf
-    --
-    vim.cmd[[nnoremap <C-p> :Files<Cr>]]
 
     vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>Git<CR>", {silent=true, noremap=true})
 
     -- show the next match in the middle of the screen
     vim.cmd[[noremap n nzz]]
     vim.cmd[[noremap N Nzz]]
+    vim.cmd[[noremap <leader>] :BufferLineCycleNext<CR>]]
+    vim.cmd[[noremap <leader>[ :BufferLineCyclePrev<CR>]]
 
 end
 
