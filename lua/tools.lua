@@ -201,6 +201,7 @@ function setupTelescope()
     vim.cmd[[nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>]]
     vim.cmd[[nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>]]
     vim.cmd[[nnoremap <leader>ft <cmd>lua require('telescope.builtin').help_tags()<cr>]]
+    vim.cmd[[nnoremap <leader>fl <cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>]]
     vim.cmd[[nnoremap gr <cmd>lua require('telescope.builtin').lsp_references()<cr>]]
 end
 
