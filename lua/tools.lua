@@ -3,10 +3,6 @@ local api = vim.api
 
 local M = {}
 
-function setupBufferLine()
-    require('bufferline').setup({})
-end
-
 function setupLsp()
     local lsp = require 'lspconfig'
     local saga = require 'lspsaga'
@@ -218,10 +214,6 @@ function M.initialize()
     local status,retval = pcall( setupCompe )
     if not status then
         print("Failed to init compe", retval)
-    end
-    local status,retval = pcall( setupBufferLine )
-    if not status then
-        print("Failed to init bufferline", retval)
     end
     local status,retval = pcall( setupTelescope )
     if not status then

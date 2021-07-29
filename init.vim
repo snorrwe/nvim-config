@@ -28,10 +28,7 @@ Plug 'folke/lsp-trouble.nvim'
 Plug 'https://github.com/hrsh7th/nvim-compe', {'commit': '9a1ab398bfdb4bda1134b7a0e7a379017d3bdefa'}
 
 Plug 'hoob3rt/lualine.nvim'
-" If you want to have icons in your statusline choose one of these
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'https://github.com/onsails/lspkind-nvim.git'
-Plug 'akinsho/nvim-bufferline.lua'
 
 " github plugin
 Plug 'https://github.com/tpope/vim-rhubarb'
