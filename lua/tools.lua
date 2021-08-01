@@ -11,21 +11,24 @@ function setupLsp()
 
     local status, retval = pcall( lsp.rust_analyzer.setup, {} )
     if not status then
-        print("lsp.rust_analyzer.setup({}) failed: ", retval)
+        print("lsp.rust_analyzer.setup failed: ", retval)
     end
     local status, retval = pcall( lsp.clangd.setup, {} )
     if not status then 
-        print("lsp.clangd.setup({}) failed: ", retval)
+        print("lsp.clangd.setup failed: ", retval)
     end
     local status, retval = pcall( lsp.gopls.setup, {} )
     if not status then 
-        print("lsp.gopls.setup({})  failed: ", retval)
+        print("lsp.gopls.setup  failed: ", retval)
     end
     local status, retval = pcall( lsp.zls.setup, {} )
     if not status then 
-        print("lsp.zls.setup({})  failed: ", retval)
+        print("lsp.zls.setup  failed: ", retval)
     end
-
+    local status, retval = pcall( lsp.pyright.setup, {} )
+    if not status then 
+        print("lsp.pyright.setup  failed: ", retval)
+    end
 
     -- Enable diagnostics
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
