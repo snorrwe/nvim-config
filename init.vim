@@ -27,7 +27,6 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/lsp-trouble.nvim'
 Plug 'https://github.com/hrsh7th/nvim-compe', {'commit': '9a1ab398bfdb4bda1134b7a0e7a379017d3bdefa'}
 
-Plug 'hoob3rt/lualine.nvim'
 Plug 'https://github.com/onsails/lspkind-nvim.git'
 
 " github plugin
@@ -38,11 +37,14 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'rafamadriz/neon'
+
+
+Plug 'glepnir/galaxyline.nvim'
+Plug 'Avimitin/nerd-galaxyline'
 call plug#end()
 
 lua << EOF
 require'tools'.initialize()
-require'statusline'
 EOF
 
 autocmd BufRead,BufNewFile *.frag set filetype=glsl
