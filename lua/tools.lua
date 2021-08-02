@@ -226,6 +226,8 @@ function M.initialize()
     vim.g.neon_style = 'doom'
     vim.g.neon_bold = true
 
+    -- gui
+    vim.cmd[[set guifont=CaskaydiaCove\ NF:h17]]
     -- neovide
     vim.g.neovide_cursor_vfx_mode = "railgun"
 

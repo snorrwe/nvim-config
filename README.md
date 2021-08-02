@@ -18,6 +18,7 @@
     - clangd
     - rust-analyser
     - etc.
+- Install [Caskaydia Cove Nerd Font](https://www.nerdfonts.com/font-downloads) (optional)
 - Profit
 
 
