@@ -184,6 +184,7 @@ function setupTelescope()
               '--column',
               '--smart-case'
             }
+            , layout_strategy = "vertical"
             , mappings = {
                 n = {
                     ["K"] = false,
