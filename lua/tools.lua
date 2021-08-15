@@ -127,6 +127,8 @@ function setupAutoformat()
     vim.g.formatters_svelte = {'prettier'}
     vim.g.formatters_sql = {}
     vim.g.formatters_python = {'black'}
+
+    vim.cmd[[ au BufWrite * :Autoformat ]]
 end
 
 function setupCompe()
