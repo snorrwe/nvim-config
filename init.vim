@@ -36,11 +36,11 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-Plug 'rafamadriz/neon'
-
 
 Plug 'glepnir/galaxyline.nvim'
 Plug 'Avimitin/nerd-galaxyline'
+
+Plug 'EdenEast/nightfox.nvim'
 call plug#end()
 
 lua << EOF

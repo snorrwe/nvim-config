@@ -14,19 +14,19 @@ function setupLsp()
         print("lsp.rust_analyzer.setup failed: ", retval)
     end
     local status, retval = pcall( lsp.clangd.setup, {} )
-    if not status then 
+    if not status then
         print("lsp.clangd.setup failed: ", retval)
     end
     local status, retval = pcall( lsp.gopls.setup, {} )
-    if not status then 
+    if not status then
         print("lsp.gopls.setup  failed: ", retval)
     end
     local status, retval = pcall( lsp.zls.setup, {} )
-    if not status then 
+    if not status then
         print("lsp.zls.setup  failed: ", retval)
     end
     local status, retval = pcall( lsp.pyright.setup, {} )
-    if not status then 
+    if not status then
         print("lsp.pyright.setup  failed: ", retval)
     end
 
@@ -186,6 +186,7 @@ function setupTelescope()
               '--column',
               '--smart-case'
             }
+            , file_ignore_patterns = {}
             , layout_strategy = "vertical"
             , mappings = {
                 n = {
@@ -203,6 +204,10 @@ function setupTelescope()
     vim.cmd[[nnoremap <leader>ft <cmd>lua require('telescope.builtin').help_tags()<cr>]]
     vim.cmd[[nnoremap <leader>fl <cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>]]
     vim.cmd[[nnoremap gr <cmd>lua require('telescope.builtin').lsp_references()<cr>]]
+end
+
+function setupColor()
+    require('nightfox').set()
 end
 
 function M.initialize()
@@ -223,9 +228,10 @@ function M.initialize()
     if not status then
         print("Failed to init telescope", retval)
     end
-    vim.cmd[[colorscheme neon]]
-    vim.g.neon_style = 'doom'
-    vim.g.neon_bold = true
+    local status,retval = pcall( setupColor )
+    if not status then
+        print("Failed to init colorscheme", retval)
+    end
 
     -- gui
     vim.cmd[[set guifont=CaskaydiaCove\ NF:h17]]
