@@ -25,7 +25,7 @@ Plug 'glepnir/lspsaga.nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/lsp-trouble.nvim'
-Plug 'https://github.com/hrsh7th/nvim-compe', {'commit': '9a1ab398bfdb4bda1134b7a0e7a379017d3bdefa'}
+Plug 'https://github.com/hrsh7th/nvim-compe'
 
 Plug 'https://github.com/onsails/lspkind-nvim.git'
 
