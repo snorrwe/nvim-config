@@ -205,7 +205,53 @@ function setupTelescope()
 end
 
 function setupColor()
-    require('nightfox').set()
+    local catppuccino = require("catppuccino")
+
+    -- configure it
+    catppuccino.setup(
+        {
+            colorscheme = "neon_latte",
+            -- colorscheme = "catppuccino",
+            transparency = false,
+            styles = {
+                comments = "italic",
+                functions = "NONE",
+                keywords = "NONE",
+                strings = "italic",
+                variables = "NONE",
+            },
+            integrations = {
+                treesitter = true,
+                native_lsp = {
+                    enabled = true,
+                    styles = {
+                        errors = "italic",
+                        hints = "italic",
+                        warnings = "italic",
+                        information = "italic"
+                    }
+                },
+            lsp_trouble = true,
+                lsp_saga = true,
+                gitgutter = false,
+                gitsigns = false,
+                telescope = true,
+                nvimtree = false,
+                which_key = false,
+                indent_blankline = true,
+                dashboard = false,
+                neogit = false,
+                vim_sneak = false,
+                fern = true,
+                barbar = false,
+                bufferline = false,
+                markdown = true,
+            }
+        }
+    )
+
+    -- load it
+    catppuccino.load()
 end
 
 function M.initialize()

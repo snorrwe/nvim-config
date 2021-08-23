@@ -40,7 +40,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'glepnir/galaxyline.nvim'
 Plug 'Avimitin/nerd-galaxyline'
 
-Plug 'EdenEast/nightfox.nvim'
+Plug 'Pocco81/Catppuccino.nvim'
 call plug#end()
 
 lua << EOF
