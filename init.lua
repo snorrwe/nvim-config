@@ -39,6 +39,7 @@ function packages()
     paq { 'glepnir/galaxyline.nvim' }
     paq { 'Avimitin/nerd-galaxyline' }
     paq { 'Pocco81/Catppuccino.nvim' }
+    paq { 'editorconfig/editorconfig-vim' }
 
     paq {'ms-jpq/coq_nvim', {branch= 'coq'}}
 end
