@@ -3,10 +3,9 @@ local M = {}
 function setupLsp()
     vim.g.coq_settings = {
         auto_start=true
-        , ['clients.lsp.resolve_timeout']=0.93
-        , ['match.max_results']=60
-        , ['limits.completion_manual_timeout']=0.93
         , ['display.pum.source_context'] = {'[', ']'}
+        , ['clients.lsp.resolve_timeout']=0.93
+        , ['limits.completion_manual_timeout']=0.93
     }
 
     local nvim_lsp = require 'lspconfig'
@@ -175,8 +174,8 @@ function setupColor()
                         information = "italic"
                     }
                 },
-            lsp_trouble = true,
                 lsp_saga = true,
+                lsp_trouble = true,
                 gitgutter = false,
                 gitsigns = false,
                 telescope = true,
