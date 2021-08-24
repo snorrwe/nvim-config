@@ -41,7 +41,8 @@ function packages()
     paq { 'Pocco81/Catppuccino.nvim' }
     paq { 'editorconfig/editorconfig-vim' }
 
-    paq {'ms-jpq/coq_nvim', {branch= 'coq'}}
+    paq {'ms-jpq/coq_nvim', { branch= 'coq'} }
+    paq {'ms-jpq/coq.artifacts', { branch= 'artifacts'} }
 end
 
 local status, res = pcall(packages, {})
