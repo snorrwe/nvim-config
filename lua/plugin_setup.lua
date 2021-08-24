@@ -3,7 +3,10 @@ local M = {}
 function setupLsp()
     vim.g.coq_settings = {
         auto_start=true
-        , ['clients.lsp.resolve_timeout']=80
+        , ['clients.lsp.resolve_timeout']=0.93
+        , ['match.max_results']=60
+        , ['limits.completion_manual_timeout']=0.93
+        , ['display.pum.source_context'] = {'[', ']'}
     }
 
     local nvim_lsp = require 'lspconfig'
@@ -39,11 +42,6 @@ function setupLsp()
     vim.cmd[[nnoremap gR <cmd>lua require('lspsaga.rename').rename()<cr>]]
     vim.cmd[[nnoremap gd <cmd>lua require'lspsaga.provider'.preview_definition()<cr>]]
     vim.cmd[[nnoremap ga <cmd>Telescope lsp_code_actions<cr>]]
-
-    vim.cmd[[set updatetime=300]]
-
-    -- Show diagnostic popup on cursor hold
-    vim.cmd[[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
 
     -- Enable type inlay hints
     vim.cmd[[autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }]]
