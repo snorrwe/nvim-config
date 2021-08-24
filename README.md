@@ -10,8 +10,8 @@
     python3/Scripts/activate
     pip install neovim pynvim
     ```
-- Edit `init.vim` to your liking. Be sure to edit __HOME__ and __LLVM__
-- Install plugins in vim `:PlugInstall`
+- Edit `init.lua` to your liking. Be sure to edit __HOME__!
+- Install plugins in vim `:PaqInstall`
 - Install [Vifm](https://vifm.info/)
 - Install [Telescope deps](https://github.com/nvim-telescope/telescope.nvim#optional-dependencies)
 - Install LSPs
