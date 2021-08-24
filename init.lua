@@ -24,7 +24,6 @@ function packages()
     paq { 'psliwka/vim-smoothie' }
     paq { 'vifm/vifm.vim' }
     paq { 'gko/vim-coloresque' }
-    paq { 'altercation/vim-colors-solarized' }
     paq { 'lambdalisue/fern.vim' }
     paq { 'Chiel92/vim-autoformat' }
     paq { 'neovim/nvim-lspconfig' }
@@ -47,8 +46,6 @@ local status, res = pcall(packages, {})
 if not status then
     print("Failed to set up packages", res)
 end
-
-require'tools'.initialize()
 
 
 vim.cmd[[
@@ -105,3 +102,6 @@ if !exists("*ChangeCwdHere")
 endif
 command! ChangeCwdHere call ChangeCwdHere()
 ]]
+
+require'plugin_setup'.initialize()
+

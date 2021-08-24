@@ -130,7 +130,6 @@ function setupAutoformat()
 end
 
 function setupCompe()
-    vim.o.completeopt = "menuone,noselect"
 
     require'compe'.setup {
       enabled = true;
@@ -171,6 +170,7 @@ function setupCompe()
     vim.cmd[[inoremap <silent><expr> <cr> compe#confirm('<cr>')]]
     vim.cmd[[inoremap <silent><expr> <C-e> compe#close('<C-e>')]]
 end
+
 function setupTelescope()
     require('telescope').setup{
         defaults ={
@@ -253,28 +253,7 @@ function setupColor()
 end
 
 function M.initialize()
-
-    local status,retval = pcall( setupLsp )
-    if not status then
-        print("Failed to setup LSP", retval)
-    end
-    local status,retval = pcall( setupAutoformat )
-    if not status then
-        print("Failed to init Autoformat", retval)
-    end
-    local status,retval = pcall( setupCompe )
-    if not status then
-        print("Failed to init compe", retval)
-    end
-    local status,retval = pcall( setupTelescope )
-    if not status then
-        print("Failed to init telescope", retval)
-    end
-    local status,retval = pcall( setupColor )
-    if not status then
-        print("Failed to init colorscheme", retval)
-    end
-
+    vim.o.completeopt = "menuone,noselect"
     -- gui
     vim.cmd[[set guifont=CaskaydiaCove\ NF:h17]]
     -- neovide
@@ -296,6 +275,27 @@ function M.initialize()
     vim.cmd[[set relativenumber]]
     vim.cmd[[set ignorecase]]
     vim.cmd[[set smartcase]]
+
+    local status,retval = pcall( setupLsp )
+    if not status then
+        print("Failed to setup LSP", retval)
+    end
+    local status,retval = pcall( setupAutoformat )
+    if not status then
+        print("Failed to init Autoformat", retval)
+    end
+    local status,retval = pcall( setupCompe )
+    if not status then
+        print("Failed to init compe", retval)
+    end
+    local status,retval = pcall( setupTelescope )
+    if not status then
+        print("Failed to init telescope", retval)
+    end
+    local status,retval = pcall( setupColor )
+    if not status then
+        print("Failed to init colorscheme", retval)
+    end
 
     vim.cmd[[vnoremap // y/<C-R>"<cr>]]
     vim.cmd[[noremap <Space> <cmd>noh<cr>]]
