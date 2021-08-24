@@ -1,6 +1,6 @@
 " REQUIRES nvim 0.5+ !!!
 "
-let HOME = 'C:/Users/dkiss/AppData/Local/nvim'
+let HOME = $HOME . '/AppData/Local/nvim'
 
 set termguicolors
 

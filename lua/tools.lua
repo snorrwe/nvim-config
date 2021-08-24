@@ -6,13 +6,12 @@ local M = {}
 function setupLsp()
     vim.g.coq_settings = { ['auto_start']= true,
                            ['clients.lsp.resolve_timeout']= 6.66,
-                           ['clients.lsp.enabled']=true,
                            ['limits.completion_manual_timeout']=30,
                          }
 
     local lsp = require 'lspconfig'
     local saga = require 'lspsaga'
-    local coq = require "coq"
+    local coq = require 'coq'
 
     saga.init_lsp_saga({})
 
@@ -175,7 +174,6 @@ function setupColor()
     catppuccino.setup(
         {
             colorscheme = "neon_latte",
-            -- colorscheme = "catppuccino",
             transparency = false,
             styles = {
                 comments = "italic",
