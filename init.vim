@@ -25,9 +25,11 @@ Plug 'glepnir/lspsaga.nvim'
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'folke/lsp-trouble.nvim'
-Plug 'https://github.com/hrsh7th/nvim-compe'
-
 Plug 'https://github.com/onsails/lspkind-nvim.git'
+
+" coq
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 
 " github plugin
 Plug 'https://github.com/tpope/vim-rhubarb'

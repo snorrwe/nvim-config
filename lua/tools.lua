@@ -4,28 +4,35 @@ local api = vim.api
 local M = {}
 
 function setupLsp()
+    vim.g.coq_settings = { ['auto_start']= true,
+                           ['clients.lsp.resolve_timeout']= 6.66,
+                           ['clients.lsp.enabled']=true,
+                           ['limits.completion_manual_timeout']=30,
+                         }
+
     local lsp = require 'lspconfig'
     local saga = require 'lspsaga'
+    local coq = require "coq"
 
     saga.init_lsp_saga({})
 
-    local status, retval = pcall( lsp.rust_analyzer.setup, {} )
+    local status, retval = pcall( lsp.rust_analyzer.setup, coq.lsp_ensure_capabilities{} )
     if not status then
         print("lsp.rust_analyzer.setup failed: ", retval)
     end
-    local status, retval = pcall( lsp.clangd.setup, {} )
+    local status, retval = pcall( lsp.clangd.setup, coq.lsp_ensure_capabilities{} )
     if not status then
         print("lsp.clangd.setup failed: ", retval)
     end
-    local status, retval = pcall( lsp.gopls.setup, {} )
+    local status, retval = pcall( lsp.gopls.setup, coq.lsp_ensure_capabilities{} )
     if not status then
         print("lsp.gopls.setup  failed: ", retval)
     end
-    local status, retval = pcall( lsp.zls.setup, {} )
+    local status, retval = pcall( lsp.zls.setup, coq.lsp_ensure_capabilities{} )
     if not status then
         print("lsp.zls.setup  failed: ", retval)
     end
-    local status, retval = pcall( lsp.pyright.setup, {} )
+    local status, retval = pcall( lsp.pyright.setup, coq.lsp_ensure_capabilities{} )
     if not status then
         print("lsp.pyright.setup  failed: ", retval)
     end
@@ -129,49 +136,6 @@ function setupAutoformat()
     vim.g.formatters_python = {'black'}
 end
 
-function setupCompe()
-    vim.o.completeopt = "menuone,noselect"
-
-    require'compe'.setup {
-      enabled = true;
-      autocomplete = true;
-      debug = false;
-      min_length = 1;
-      preselect = 'enable';
-      throttle_time = 120;
-      source_timeout = 200;
-      resolve_timeout = 800;
-      incomplete_delay = 400;
-      max_abbr_width = 150;
-      max_kind_width = 150;
-      max_menu_width = 150;
-      documentation = {
-        border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
-        winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
-        max_width = 120,
-        min_width = 60,
-        max_height = math.floor(vim.o.lines * 0.3),
-        min_height = 1,
-      };
-
-      source = {
-        path = true;
-        buffer = true;
-        calc = true;
-        omni = false,
-        nvim_lsp = true;
-        nvim_lua = true;
-        vsnip = false;
-        ultisnips = false;
-        luasnip = false;
-      };
-    }
-
-    vim.cmd[[inoremap <silent><expr> <C-Space> compe#complete()]]
-    vim.cmd[[inoremap <silent><expr> <cr> compe#confirm('<cr>')]]
-    vim.cmd[[inoremap <silent><expr> <C-e> compe#close('<C-e>')]]
-end
-
 function setupTelescope()
     require('telescope').setup{
         defaults ={
@@ -263,10 +227,6 @@ function M.initialize()
     local status,retval = pcall( setupAutoformat )
     if not status then
         print("Failed to init Autoformat", retval)
-    end
-    local status,retval = pcall( setupCompe )
-    if not status then
-        print("Failed to init compe", retval)
     end
     local status,retval = pcall( setupTelescope )
     if not status then
