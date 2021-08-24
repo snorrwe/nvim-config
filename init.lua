@@ -31,7 +31,6 @@ function packages()
     paq { 'tjdevries/lsp_extensions.nvim' }
     paq { 'kyazdani42/nvim-web-devicons' }
     paq { 'folke/lsp-trouble.nvim' }
-    paq { 'hrsh7th/nvim-compe' }
     paq { 'onsails/lspkind-nvim' }
     paq { 'tpope/vim-rhubarb' } -- github plugin
     paq { 'nvim-lua/popup.nvim' }
@@ -40,6 +39,8 @@ function packages()
     paq { 'glepnir/galaxyline.nvim' }
     paq { 'Avimitin/nerd-galaxyline' }
     paq { 'Pocco81/Catppuccino.nvim' }
+
+    paq {'ms-jpq/coq_nvim', {branch= 'coq'}}
 end
 
 local status, res = pcall(packages, {})
@@ -47,6 +48,7 @@ if not status then
     print("Failed to set up packages", res)
 end
 
+require'plugin_setup'.initialize()
 
 vim.cmd[[
 autocmd BufRead,BufNewFile *.frag set filetype=glsl
@@ -102,6 +104,4 @@ if !exists("*ChangeCwdHere")
 endif
 command! ChangeCwdHere call ChangeCwdHere()
 ]]
-
-require'plugin_setup'.initialize()
 

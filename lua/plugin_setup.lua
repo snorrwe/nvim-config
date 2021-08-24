@@ -1,33 +1,23 @@
-local api = vim.api
-
-
 local M = {}
 
 function setupLsp()
-    local lsp = require 'lspconfig'
+    vim.g.coq_settings = {
+        auto_start=true
+        , ['clients.lsp.resolve_timeout']=80
+    }
+
+    local nvim_lsp = require 'lspconfig'
     local saga = require 'lspsaga'
+    local coq = require 'coq'
 
     saga.init_lsp_saga({})
 
-    local status, retval = pcall( lsp.rust_analyzer.setup, {} )
-    if not status then
-        print("lsp.rust_analyzer.setup failed: ", retval)
-    end
-    local status, retval = pcall( lsp.clangd.setup, {} )
-    if not status then
-        print("lsp.clangd.setup failed: ", retval)
-    end
-    local status, retval = pcall( lsp.gopls.setup, {} )
-    if not status then
-        print("lsp.gopls.setup  failed: ", retval)
-    end
-    local status, retval = pcall( lsp.zls.setup, {} )
-    if not status then
-        print("lsp.zls.setup  failed: ", retval)
-    end
-    local status, retval = pcall( lsp.pyright.setup, {} )
-    if not status then
-        print("lsp.pyright.setup  failed: ", retval)
+    local servers = { 'rust_analyzer', 'clangd', 'gopls', 'zls', 'pyright' }
+    for _, lsp in ipairs(servers) do
+        local status, retval = pcall( nvim_lsp[lsp].setup, coq.lsp_ensure_capabilities() )
+        if not status then
+            print("lsp setup failed: ", lsp, retval)
+        end
     end
 
     -- Enable diagnostics
@@ -62,7 +52,7 @@ function setupLsp()
     vim.cmd[[set shortmess+=c]]
 
     -- lsp-trouble
-    require("trouble").setup { }
+    require("trouble").setup {}
     vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>LspTroubleToggle<cr>", {silent=true, noremap=true})
 
     -- lsp-kind
@@ -127,48 +117,6 @@ function setupAutoformat()
     vim.g.formatters_svelte = {'prettier'}
     vim.g.formatters_sql = {}
     vim.g.formatters_python = {'black'}
-end
-
-function setupCompe()
-
-    require'compe'.setup {
-      enabled = true;
-      autocomplete = true;
-      debug = false;
-      min_length = 1;
-      preselect = 'enable';
-      throttle_time = 120;
-      source_timeout = 200;
-      resolve_timeout = 800;
-      incomplete_delay = 400;
-      max_abbr_width = 150;
-      max_kind_width = 150;
-      max_menu_width = 150;
-      documentation = {
-        border = { '', '' ,'', ' ', '', '', '', ' ' }, -- the border option is the same as `|help nvim_open_win|`
-        winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
-        max_width = 120,
-        min_width = 60,
-        max_height = math.floor(vim.o.lines * 0.3),
-        min_height = 1,
-      };
-
-      source = {
-        path = true;
-        buffer = true;
-        calc = true;
-        omni = false,
-        nvim_lsp = true;
-        nvim_lua = true;
-        vsnip = false;
-        ultisnips = false;
-        luasnip = false;
-      };
-    }
-
-    vim.cmd[[inoremap <silent><expr> <C-Space> compe#complete()]]
-    vim.cmd[[inoremap <silent><expr> <cr> compe#confirm('<cr>')]]
-    vim.cmd[[inoremap <silent><expr> <C-e> compe#close('<C-e>')]]
 end
 
 function setupTelescope()
@@ -253,6 +201,23 @@ function setupColor()
 end
 
 function M.initialize()
+    local status,retval = pcall( setupLsp )
+    if not status then
+        print("Failed to setup LSP", retval)
+    end
+    local status,retval = pcall( setupAutoformat )
+    if not status then
+        print("Failed to init Autoformat", retval)
+    end
+    local status,retval = pcall( setupTelescope )
+    if not status then
+        print("Failed to init telescope", retval)
+    end
+    local status,retval = pcall( setupColor )
+    if not status then
+        print("Failed to init colorscheme", retval)
+    end
+
     vim.o.completeopt = "menuone,noselect"
     -- gui
     vim.cmd[[set guifont=CaskaydiaCove\ NF:h17]]
@@ -276,26 +241,6 @@ function M.initialize()
     vim.cmd[[set ignorecase]]
     vim.cmd[[set smartcase]]
 
-    local status,retval = pcall( setupLsp )
-    if not status then
-        print("Failed to setup LSP", retval)
-    end
-    local status,retval = pcall( setupAutoformat )
-    if not status then
-        print("Failed to init Autoformat", retval)
-    end
-    local status,retval = pcall( setupCompe )
-    if not status then
-        print("Failed to init compe", retval)
-    end
-    local status,retval = pcall( setupTelescope )
-    if not status then
-        print("Failed to init telescope", retval)
-    end
-    local status,retval = pcall( setupColor )
-    if not status then
-        print("Failed to init colorscheme", retval)
-    end
 
     vim.cmd[[vnoremap // y/<C-R>"<cr>]]
     vim.cmd[[noremap <Space> <cmd>noh<cr>]]
