@@ -4,8 +4,6 @@ function setupLsp()
     vim.g.coq_settings = {
         auto_start=true
         , ['display.pum.source_context'] = {'[', ']'}
-        , ['clients.lsp.resolve_timeout']=0.93
-        , ['limits.completion_manual_timeout']=0.93
     }
 
     local nvim_lsp = require 'lspconfig'
