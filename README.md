@@ -2,25 +2,30 @@
 
 ## Install (Windows)
 
-- Install neovim (0.6 nightly+)
-- clone into your nvim directory (AppData/Local/nvim on Windows) `git clone https://github.com/snorrwe/nvim-config.git` 
-- Init venv `python -m venv python3`
-- Install the `neovim` python package in virtual environment
+-   Install neovim (0.6 nightly+)
+-   clone into your nvim directory (`AppData/Local/nvim` on Windows, `~/.config/nvim` on Unix-like systems)
+    e.g.
     ```
-    python3/Scripts/activate
-    pip install neovim pynvim
+    cd ~/.config
+    git clone https://github.com/snorrwe/nvim-config.git nvim
     ```
-- Edit `init.lua` to your liking. Be sure to edit __HOME__!
-- Install plugins in vim `:PaqInstall`
-- Install [Vifm](https://vifm.info/)
-- Install [Telescope deps](https://github.com/nvim-telescope/telescope.nvim#optional-dependencies)
-- Install LSPs
-    - clangd
-    - rust-analyser
-    - etc.
-- Install [Caskaydia Cove Nerd Font](https://www.nerdfonts.com/font-downloads) (optional)
-- Profit
-
+-   Init venv `python3 -m venv python3`
+-   Install the `neovim` python package in virtual environment
+    ```
+    python3/bin/pip install wheel neovim pynvim
+    ```
+-   Edit `init.lua` to your liking. Be sure to edit **HOME**!
+-   Install plugins in vim
+    `:PaqInstall`
+    `:COQdeps`
+-   Install [Vifm](https://vifm.info/)
+-   Install [Telescope deps](https://github.com/nvim-telescope/telescope.nvim#optional-dependencies)
+-   Install LSPs
+    -   clangd
+    -   rust-analyser
+    -   etc.
+-   Install [Caskaydia Cove Nerd Font](https://www.nerdfonts.com/font-downloads) (optional)
+-   Profit
 
 ## Notes
 
