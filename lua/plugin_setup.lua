@@ -153,7 +153,7 @@ function setupColor()
     catppuccino.setup(
         {
             colorscheme = "neon_latte",
-            transparency = true,
+            transparency = false,
             styles = {
                 comments = "italic",
                 functions = "NONE",
@@ -219,7 +219,7 @@ function M.initialize()
     -- neovide
     vim.g.neovide_cursor_vfx_mode = "railgun"
 
-    -- vim.cmd[[set background=dark]]
+    vim.cmd[[set background=dark]]
     vim.cmd[[syntax on]]
 
     vim.cmd[[set nocompatible]]
