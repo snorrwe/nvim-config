@@ -215,7 +215,7 @@ function M.initialize()
 
     vim.o.completeopt = "menuone,noselect"
     -- gui
-    vim.cmd[[set guifont=CaskaydiaCove\ NF:h17]]
+    vim.cmd[[set guifont=CaskaydiaCove\ NF:h13]]
     -- neovide
     vim.g.neovide_cursor_vfx_mode = "railgun"
 
