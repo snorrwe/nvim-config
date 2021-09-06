@@ -152,7 +152,7 @@ function setupColor()
     -- configure it
     catppuccino.setup(
         {
-            colorscheme = "neon_latte",
+            colorscheme = "dark_catppuccino",
             transparency = false,
             styles = {
                 comments = "italic",
@@ -179,7 +179,10 @@ function setupColor()
                 telescope = true,
                 nvimtree = false,
                 which_key = false,
-                indent_blankline = true,
+                indent_blankline = {
+                    enabled = true,
+                    colored_indent_levels = true,
+                },
                 dashboard = false,
                 neogit = false,
                 vim_sneak = false,
