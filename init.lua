@@ -3,7 +3,7 @@ local fn = vim.fn
 
 vim.o.termguicolors = true;
 vim.g.mapleader = ','
-vim.g.python3_host_prog = HOME .. '/python3/Scripts/python'
+vim.g.python3_host_prog = HOME .. '/python3/Scripts/python.exe'
 
 local install_path = fn.stdpath('data') .. '/site/pack/paqs/start/paq-nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
