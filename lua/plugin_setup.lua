@@ -12,7 +12,7 @@ function setupLsp()
 
     saga.init_lsp_saga({})
 
-    local servers = { 'rust_analyzer', 'clangd', 'gopls', 'zls', 'pyright' }
+    local servers = { 'rust_analyzer', 'clangd', 'gopls', 'zls', 'pyright', 'tsserver' }
     for _, lsp in ipairs(servers) do
         local status, retval = pcall( nvim_lsp[lsp].setup, coq.lsp_ensure_capabilities() )
         if not status then
@@ -147,6 +147,8 @@ function setupTelescope()
 end
 
 function setupColor()
+    require'alpha'.setup(require'alpha.themes.dashboard'.opts)
+
     local catppuccino = require("catppuccino")
 
     -- configure it

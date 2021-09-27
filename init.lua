@@ -43,6 +43,8 @@ function packages()
 
     paq {'ms-jpq/coq_nvim', { branch= 'coq'} }
     paq {'ms-jpq/coq.artifacts', { branch= 'artifacts'} }
+
+    paq {'goolord/alpha-nvim'}
 end
 
 local status, res = pcall(packages, {})
