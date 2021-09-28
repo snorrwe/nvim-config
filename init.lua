@@ -41,10 +41,13 @@ function packages()
     paq { 'Pocco81/Catppuccino.nvim' }
     paq { 'editorconfig/editorconfig-vim' }
 
-    paq {'ms-jpq/coq_nvim', { branch= 'coq'} }
-    paq {'ms-jpq/coq.artifacts', { branch= 'artifacts'} }
+    paq { 'ms-jpq/coq_nvim', { branch= 'coq'} }
+    paq { 'ms-jpq/coq.artifacts', { branch= 'artifacts'} }
 
-    paq {'goolord/alpha-nvim'}
+    paq { 'goolord/alpha-nvim' }
+    paq { 'weilbith/nvim-code-action-menu' }
+	paq { 'mfussenegger/nvim-dap' }
+	paq { 'simrat39/symbols-outline.nvim' }
 end
 
 local status, res = pcall(packages, {})

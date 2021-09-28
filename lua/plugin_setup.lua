@@ -38,7 +38,7 @@ function setupLsp()
     vim.cmd[[nnoremap <C-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<cr>]]
     vim.cmd[[nnoremap gR <cmd>lua require('lspsaga.rename').rename()<cr>]]
     vim.cmd[[nnoremap gd <cmd>lua require'lspsaga.provider'.preview_definition()<cr>]]
-    vim.cmd[[nnoremap ga <cmd>Telescope lsp_code_actions<cr>]]
+    vim.cmd[[nnoremap ga <cmd>CodeActionMenu<cr>]]
 
     -- Enable type inlay hints
     vim.cmd[[autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }]]
@@ -200,6 +200,40 @@ function setupColor()
     catppuccino.load()
 end
 
+function setupDap()
+    local dap = require('dap')
+    dap.configurations.cpp = {
+--      {
+--        type = 'lldb',
+--        request = 'launch',
+--        name = "Launch Air Sample",
+--		program = "",
+--		runInTerminal = true,
+--      },
+    }
+	dap.adapters.lldb = {
+	  type = 'executable',
+	  command = 'lldb-vscode.exe',
+	  name = "lldb"
+	}
+
+    vim.cmd[[nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>]]
+    vim.cmd[[nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>]]
+    vim.cmd[[nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>]]
+    vim.cmd[[nnoremap <silent> <leader>dr :lua require'dap'.continue()<CR>]]
+    vim.cmd[[nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>]]
+    vim.cmd[[nnoremap <silent> <leader>dB :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>]]
+    vim.cmd[[nnoremap <silent> <leader>dp :lua require'dap'.repl.open()<CR>]]
+    vim.cmd[[nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>]]
+end
+
+function setupSymbolsOutline()
+    vim.g.symbols_outline = {
+        width= 50
+    }
+    vim.cmd[[noremap <leader>s :SymbolsOutline<cr>]]
+end
+
 function M.initialize()
     local status,retval = pcall( setupLsp )
     if not status then
@@ -216,6 +250,14 @@ function M.initialize()
     local status,retval = pcall( setupColor )
     if not status then
         print("Failed to init colorscheme", retval)
+    end
+    local status,retval = pcall( setupDap )
+    if not status then
+        print("Failed to init setupDap", retval)
+    end
+    local status,retval = pcall( setupSymbolsOutline )
+    if not status then
+        print("Failed to init setupSymbolsOutline", retval)
     end
 
     vim.o.completeopt = "menuone,noselect"
