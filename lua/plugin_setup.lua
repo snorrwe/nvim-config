@@ -38,7 +38,7 @@ function setupLsp()
     vim.cmd[[nnoremap <C-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<cr>]]
     vim.cmd[[nnoremap gR <cmd>lua require('lspsaga.rename').rename()<cr>]]
     vim.cmd[[nnoremap gd <cmd>lua require'lspsaga.provider'.preview_definition()<cr>]]
-    vim.cmd[[nnoremap ga <cmd>CodeActionMenu<cr>]]
+    vim.cmd[[nnoremap ga <cmd>Telescope lsp_code_actions<cr>]]
 
     -- Enable type inlay hints
     vim.cmd[[autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }]]
