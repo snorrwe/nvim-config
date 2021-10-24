@@ -232,30 +232,17 @@ function setupSymbolsOutline()
     vim.cmd[[noremap <leader>s :SymbolsOutline<cr>]]
 end
 
+function setupBufferline()
+    require("bufferline").setup{}
+end
+
 function M.initialize()
-    local status,retval = pcall( setupLsp )
-    if not status then
-        print("Failed to setup LSP", retval)
-    end
-    local status,retval = pcall( setupAutoformat )
-    if not status then
-        print("Failed to init Autoformat", retval)
-    end
-    local status,retval = pcall( setupTelescope )
-    if not status then
-        print("Failed to init telescope", retval)
-    end
-    local status,retval = pcall( setupColor )
-    if not status then
-        print("Failed to init colorscheme", retval)
-    end
-    local status,retval = pcall( setupDap )
-    if not status then
-        print("Failed to init setupDap", retval)
-    end
-    local status,retval = pcall( setupSymbolsOutline )
-    if not status then
-        print("Failed to init setupSymbolsOutline", retval)
+    local setupfunctions = { setupLsp, setupAutoformat, setupTelescope, setupColor, setupDap, setupSymbolsOutline }
+    for i, setup in ipairs(setupfunctions) do
+        local status, retval = pcall( setup )
+        if not status then
+            print("Failed to setup:", i, retval)
+        end
     end
 
     vim.o.completeopt = "menuone,noselect"

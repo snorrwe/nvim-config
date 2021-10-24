@@ -46,6 +46,11 @@ function packages()
 
 	paq { 'mfussenegger/nvim-dap' }
 	paq { 'simrat39/symbols-outline.nvim' }
+	paq { 'simrat39/symbols-outline.nvim' }
+
+    -- bufferline
+    paq {'kyazdani42/nvim-web-devicons' }
+    paq {'akinsho/bufferline.nvim' }
 end
 
 local status, res = pcall(packages, {})
