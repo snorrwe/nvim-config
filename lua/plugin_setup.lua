@@ -147,8 +147,6 @@ function setupTelescope()
 end
 
 function setupColor()
-    require'alpha'.setup(require'alpha.themes.dashboard'.opts)
-
     local catppuccino = require("catppuccino")
 
     -- configure it
@@ -262,7 +260,7 @@ function M.initialize()
 
     vim.o.completeopt = "menuone,noselect"
     -- gui
-    vim.cmd[[set guifont=CaskaydiaCove\ NF:h18]]
+    vim.cmd[[set guifont=CaskaydiaCove\ NF:h12]]
     -- neovide
     vim.g.neovide_cursor_vfx_mode = "railgun"
 
