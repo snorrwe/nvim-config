@@ -234,6 +234,9 @@ end
 
 function setupBufferline()
     require("bufferline").setup{}
+
+    vim.cmd[[nnoremap <silent> <leader>wd <cmd>BufferLineCycleNext<cr>]]
+    vim.cmd[[nnoremap <silent> <leader>wa <cmd>BufferLineCyclePrev<cr>]]
 end
 
 function M.initialize()
