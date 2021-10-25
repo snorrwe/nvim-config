@@ -188,7 +188,7 @@ function setupColor()
                 vim_sneak = false,
                 fern = true,
                 barbar = false,
-                bufferline = false,
+                bufferline = true,
                 markdown = true,
             }
         }
@@ -237,8 +237,8 @@ function setupBufferline()
 end
 
 function M.initialize()
-    local setupfunctions = { setupLsp, setupAutoformat, setupTelescope, setupColor, setupDap, setupSymbolsOutline }
-    for i, setup in ipairs(setupfunctions) do
+    local setupFunctions = { setupLsp, setupAutoformat, setupTelescope, setupColor, setupDap, setupSymbolsOutline, setupBufferline }
+    for i, setup in ipairs(setupFunctions) do
         local status, retval = pcall( setup )
         if not status then
             print("Failed to setup:", i, retval)
