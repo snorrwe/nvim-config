@@ -104,11 +104,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\galaxyline.nvim",
     url = "https://github.com/glepnir/galaxyline.nvim"
   },
-  ["lsp-trouble.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lsp-trouble.nvim",
-    url = "https://github.com/folke/lsp-trouble.nvim"
-  },
   ["lsp_extensions.nvim"] = {
     loaded = true,
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lsp_extensions.nvim",
@@ -169,11 +164,6 @@ _G.packer_plugins = {
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
-  rainbow = {
-    loaded = true,
-    path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\rainbow",
-    url = "https://github.com/luochen1990/rainbow"
-  },
   ["symbols-outline.nvim"] = {
     loaded = true,
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\symbols-outline.nvim",
@@ -213,11 +203,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-smoothie",
     url = "https://github.com/psliwka/vim-smoothie"
-  },
-  ["vimproc.vim"] = {
-    loaded = true,
-    path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vimproc.vim",
-    url = "https://github.com/Shougo/vimproc.vim"
   }
 }
 

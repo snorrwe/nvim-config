@@ -1,7 +1,5 @@
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim' -- manage itself
-    use { 'luochen1990/rainbow' }
-    use { 'Shougo/vimproc.vim' }
     use { 'tpope/vim-fugitive' }
     use { 'scrooloose/nerdcommenter' }
     use { 'psliwka/vim-smoothie' }
@@ -13,7 +11,6 @@ return require('packer').startup(function()
     use { 'glepnir/lspsaga.nvim' }
     use { 'tjdevries/lsp_extensions.nvim' }
     use { 'kyazdani42/nvim-web-devicons' }
-    use { 'folke/lsp-trouble.nvim' }
     use { 'onsails/lspkind-nvim' }
     use { 'tpope/vim-rhubarb' } -- github plugin
     use { 'nvim-lua/popup.nvim' }

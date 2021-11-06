@@ -46,10 +46,6 @@ function setupLsp()
     vim.cmd[[set shortmess-=F]]
     vim.cmd[[set shortmess+=c]]
 
-    -- lsp-trouble
-    require("trouble").setup {}
-    vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>LspTroubleToggle<cr>", {silent=true, noremap=true})
-
     -- lsp-kind
     require('lspkind').init({
         -- enables text annotations
