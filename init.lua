@@ -44,9 +44,9 @@ function packages()
     paq { 'ms-jpq/coq_nvim', { branch= 'coq'} }
     paq { 'ms-jpq/coq.artifacts', { branch= 'artifacts'} }
 
-	paq { 'mfussenegger/nvim-dap' }
-	paq { 'simrat39/symbols-outline.nvim' }
-	paq { 'simrat39/symbols-outline.nvim' }
+    paq { 'mfussenegger/nvim-dap' }
+    paq { 'simrat39/symbols-outline.nvim' }
+    paq { 'simrat39/symbols-outline.nvim' }
 
     -- bufferline
     paq {'kyazdani42/nvim-web-devicons' }
@@ -88,29 +88,29 @@ setupNERDcommenter()
 --
 vim.cmd[[
 if !exists("*DeleteHiddenBuffers") " Clear all hidden buffers when running
-	function DeleteHiddenBuffers() " Vim with the 'hidden' option
-		let tpbl=[]
-		call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
-		for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
-			silent execute 'bwipeout!' buf
-		endfor
-	endfunction
+    function DeleteHiddenBuffers() " Vim with the 'hidden' option
+        let tpbl=[]
+        call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+        for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+            silent execute 'bwipeout!' buf
+        endfor
+    endfunction
 endif
 command! DeleteHiddenBuffers call DeleteHiddenBuffers()
 
 if !exists("*FernFindCurrentFile")
-	function FernFindCurrentFile() " Vim with the 'hidden' option
+    function FernFindCurrentFile() " Vim with the 'hidden' option
         let current=expand('%:p:h')
         silent execute 'Fern ' current ' -drawer'
-	endfunction
+    endfunction
 endif
 command! FernFindCurrentFile call FernFindCurrentFile()
 
 if !exists("*ChangeCwdHere")
-	function ChangeCwdHere() " Vim with the 'hidden' option
+    function ChangeCwdHere() " Vim with the 'hidden' option
         let current=expand('%:p:h')
         silent execute 'chdir ' current
-	endfunction
+    endfunction
 endif
 command! ChangeCwdHere call ChangeCwdHere()
 ]]
