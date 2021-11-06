@@ -15,8 +15,9 @@
     python3/bin/pip install wheel neovim pynvim
     ```
 -   Edit `init.lua` to your liking. Be sure to edit **HOME**!
+-  [Install packer](https://github.com/wbthomason/packer.nvim#quickstart)
 -   Install plugins in vim
-    `:PaqInstall`
+    `:PackerInstall`
     `:COQdeps`
 -   Install [Vifm](https://vifm.info/)
 -   Install [Telescope deps](https://github.com/nvim-telescope/telescope.nvim#optional-dependencies)

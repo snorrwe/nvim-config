@@ -10,54 +10,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
   fn.system({'git', 'clone', '--depth=1', 'https://github.com/savq/paq-nvim.git', install_path})
 end
 
+
 vim.cmd 'packadd paq-nvim'
 local paq = require('paq-nvim').paq
 paq{'savq/paq-nvim', opt=true}
 
-function packages()
-    paq { 'luochen1990/rainbow' }
-    paq { 'ryanoasis/vim-devicons' }
-    paq { 'sheerun/vim-polyglot' }
-    paq { 'Shougo/vimproc.vim' }
-    paq { 'tpope/vim-fugitive' }
-    paq { 'scrooloose/nerdcommenter' }
-    paq { 'psliwka/vim-smoothie' }
-    paq { 'vifm/vifm.vim' }
-    paq { 'gko/vim-coloresque' }
-    paq { 'lambdalisue/fern.vim' }
-    paq { 'Chiel92/vim-autoformat' }
-    paq { 'neovim/nvim-lspconfig' }
-    paq { 'glepnir/lspsaga.nvim' }
-    paq { 'tjdevries/lsp_extensions.nvim' }
-    paq { 'kyazdani42/nvim-web-devicons' }
-    paq { 'folke/lsp-trouble.nvim' }
-    paq { 'onsails/lspkind-nvim' }
-    paq { 'tpope/vim-rhubarb' } -- github plugin
-    paq { 'nvim-lua/popup.nvim' }
-    paq { 'nvim-lua/plenary.nvim' }
-    paq { 'nvim-telescope/telescope.nvim' }
-    paq { 'glepnir/galaxyline.nvim' }
-    paq { 'Avimitin/nerd-galaxyline' }
-    paq { 'Pocco81/Catppuccino.nvim' }
-    paq { 'editorconfig/editorconfig-vim' }
-
-    paq { 'ms-jpq/coq_nvim', { branch= 'coq'} }
-    paq { 'ms-jpq/coq.artifacts', { branch= 'artifacts'} }
-
-    paq { 'mfussenegger/nvim-dap' }
-    paq { 'simrat39/symbols-outline.nvim' }
-    paq { 'simrat39/symbols-outline.nvim' }
-
-    -- bufferline
-    paq {'kyazdani42/nvim-web-devicons' }
-    paq {'akinsho/bufferline.nvim' }
-end
-
-local status, res = pcall(packages, {})
-if not status then
-    print("Failed to set up packages", res)
-end
-
+require('plugins')
 require'plugin_setup'.initialize()
 
 vim.cmd[[
@@ -65,24 +23,20 @@ autocmd BufRead,BufNewFile *.frag set filetype=glsl
 autocmd BufRead,BufNewFile *.mm set filetype=objcpp
 ]]
 
-function setupNERDcommenter()
-    -- NERDcommenter
-    vim.g.NERDSpaceDelims = 1
+-- NERDcommenter
+vim.g.NERDSpaceDelims = 1
 
-    -- Use compact syntax for prettified multi-line comments
-    vim.g.NERDCompactSexyComs = 1
+-- Use compact syntax for prettified multi-line comments
+vim.g.NERDCompactSexyComs = 1
 
-    -- Align line-wise comment delimiters flush left instead of following code indentation
-    vim.g.NERDDefaultAlign = 'left'
+-- Align line-wise comment delimiters flush left instead of following code indentation
+vim.g.NERDDefaultAlign = 'left'
 
-    -- Allow commenting and inverting empty lines (useful when commenting a region)
-    vim.g.NERDCommentEmptyLines = 1
+-- Allow commenting and inverting empty lines (useful when commenting a region)
+vim.g.NERDCommentEmptyLines = 1
 
-    -- Enable trimming of trailing whitespace when uncommenting
-    vim.g.NERDTrimTrailingWhitespace = 1
-end
-
-setupNERDcommenter()
+-- Enable trimming of trailing whitespace when uncommenting
+vim.g.NERDTrimTrailingWhitespace = 1
 
 -- Custom, legacy functions
 --
