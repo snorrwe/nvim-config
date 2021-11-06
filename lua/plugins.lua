@@ -1,7 +1,6 @@
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim' -- manage itself
     use { 'luochen1990/rainbow' }
-    use { 'sheerun/vim-polyglot' }
     use { 'Shougo/vimproc.vim' }
     use { 'tpope/vim-fugitive' }
     use { 'scrooloose/nerdcommenter' }
@@ -25,12 +24,14 @@ return require('packer').startup(function()
     use { 'Pocco81/Catppuccino.nvim' }
     use { 'editorconfig/editorconfig-vim' }
 
-    use { 'ms-jpq/coq_nvim', { branch= 'coq'} }
-    use { 'ms-jpq/coq.artifacts', { branch= 'artifacts'} }
+    use { 'ms-jpq/coq_nvim', { branch = 'coq'} }
+    use { 'ms-jpq/coq.artifacts', { branch = 'artifacts'} }
 
     use { 'mfussenegger/nvim-dap' }
     use { 'simrat39/symbols-outline.nvim' }
 
-    -- bufferline
     use {'akinsho/bufferline.nvim' }
+    
+    -- treesitter
+    use {'nvim-treesitter/nvim-treesitter'}
 end )

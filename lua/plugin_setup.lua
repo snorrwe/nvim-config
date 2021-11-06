@@ -225,6 +225,15 @@ function setupDap()
     vim.cmd[[nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>]]
 end
 
+function setupTS()
+    require'nvim-treesitter.configs'.setup {
+        ensure_installed = "all",
+        highlight = {
+            enable=true
+        }
+    }
+end
+
 function setupSymbolsOutline()
     vim.g.symbols_outline = {
         width= 50
@@ -240,7 +249,7 @@ function setupBufferline()
 end
 
 function M.initialize()
-    local setupFunctions = { setupLsp, setupAutoformat, setupTelescope, setupColor, setupDap, setupSymbolsOutline, setupBufferline }
+    local setupFunctions = { setupLsp, setupAutoformat, setupTelescope, setupColor, setupDap, setupSymbolsOutline, setupBufferline, setupTS }
     for i, setup in ipairs(setupFunctions) do
         local status, retval = pcall( setup )
         if not status then
