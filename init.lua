@@ -11,10 +11,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 
-vim.cmd 'packadd paq-nvim'
-local paq = require('paq-nvim').paq
-paq{'savq/paq-nvim', opt=true}
-
 require('plugins')
 require'plugin_setup'.initialize()
 
