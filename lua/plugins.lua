@@ -20,15 +20,10 @@ return require('packer').startup(function()
     use { 'Avimitin/nerd-galaxyline' }
     use { 'Pocco81/Catppuccino.nvim' }
     use { 'editorconfig/editorconfig-vim' }
-
     use { 'ms-jpq/coq_nvim', { branch = 'coq'} }
     use { 'ms-jpq/coq.artifacts', { branch = 'artifacts'} }
-
     use { 'mfussenegger/nvim-dap' }
     use { 'simrat39/symbols-outline.nvim' }
-
     use {'akinsho/bufferline.nvim' }
-    
-    -- treesitter
     use {'nvim-treesitter/nvim-treesitter'}
 end )
