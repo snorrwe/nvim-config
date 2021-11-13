@@ -134,11 +134,12 @@ function setupTelescope()
         }
     }
 
-    vim.cmd[[nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>]]
-    vim.cmd[[nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>]]
-    vim.cmd[[nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>]]
-    vim.cmd[[nnoremap <leader>ft <cmd>lua require('telescope.builtin').help_tags()<cr>]]
-    vim.cmd[[nnoremap <leader>fl <cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>]]
+    vim.cmd[[nnoremap <space>f <cmd>lua require('telescope.builtin').find_files()<cr>]]
+    vim.cmd[[nnoremap <space>g <cmd>lua require('telescope.builtin').live_grep()<cr>]]
+    vim.cmd[[nnoremap <space>b <cmd>lua require('telescope.builtin').buffers()<cr>]]
+    vim.cmd[[nnoremap <space>t <cmd>lua require('telescope.builtin').help_tags()<cr>]]
+    vim.cmd[[nnoremap <space>l <cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>]]
+    vim.cmd[[nnoremap <space>s <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>]]
     vim.cmd[[nnoremap gr <cmd>lua require('telescope.builtin').lsp_references()<cr>]]
 end
 
