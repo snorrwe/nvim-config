@@ -1,9 +1,10 @@
 local HOME = vim.env.HOME .. '/AppData/Local/nvim'
 local fn = vim.fn
 
-vim.o.termguicolors = true;
+vim.o.termguicolors = true
 vim.g.mapleader = ','
 vim.g.python3_host_prog = HOME .. '/python3/Scripts/python.exe'
+vim.g.noswapfile = true
 
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
