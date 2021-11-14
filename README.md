@@ -3,7 +3,7 @@
 ## Install (Windows)
 
 -   Install neovim (0.6 nightly+)
--   clone into your nvim directory (`AppData/Local/nvim` on Windows, `~/.config/nvim` on Unix-like systems)
+-   clone into your nvim directory (`%LOCALAPPDATA%/nvim` on Windows, `~/.config/nvim` on Unix-like systems)
     e.g.
     ```
     cd ~/.config
@@ -15,7 +15,7 @@
     python3/bin/pip install wheel neovim pynvim
     ```
 -   Edit `init.lua` to your liking. Be sure to edit **HOME**!
--  [Install packer](https://github.com/wbthomason/packer.nvim#quickstart)
+-   [Install lazygit](https://github.com/kdheepak/lazygit.nvim)
 -   Install plugins in vim
     `:PackerInstall`
     `:COQdeps`

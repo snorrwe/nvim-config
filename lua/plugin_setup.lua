@@ -285,7 +285,7 @@ function M.initialize()
     vim.cmd[[noremap <leader>f <cmd>FernFindCurrentFile<cr>]]
     vim.cmd[[noremap <leader>a :Autoformat]]
 
-    vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>Git<cr>", {silent=true, noremap=true})
+    vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>LazyGit<cr>", {silent=true, noremap=true})
 
     -- show the next match in the middle of the screen
     vim.cmd[[noremap n nzz]]

@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\galaxyline.nvim",
     url = "https://github.com/glepnir/galaxyline.nvim"
   },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
+  },
   ["lsp_extensions.nvim"] = {
     loaded = true,
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\lsp_extensions.nvim",
@@ -188,11 +193,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-coloresque",
     url = "https://github.com/gko/vim-coloresque"
-  },
-  ["vim-fugitive"] = {
-    loaded = true,
-    path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-fugitive",
-    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-rhubarb"] = {
     loaded = true,

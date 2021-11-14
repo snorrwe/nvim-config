@@ -1,6 +1,5 @@
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim' -- manage itself
-    use { 'tpope/vim-fugitive' }
     use { 'scrooloose/nerdcommenter' }
     use { 'psliwka/vim-smoothie' }
     use { 'vifm/vifm.vim' }
@@ -26,4 +25,5 @@ return require('packer').startup(function()
     use { 'simrat39/symbols-outline.nvim' }
     use {'akinsho/bufferline.nvim' }
     use {'nvim-treesitter/nvim-treesitter'}
+    use {'kdheepak/lazygit.nvim'}
 end )
