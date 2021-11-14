@@ -17,7 +17,6 @@ return require('packer').startup(function()
     use { 'nvim-telescope/telescope.nvim' }
     use { 'glepnir/galaxyline.nvim' }
     use { 'Avimitin/nerd-galaxyline' }
-    use { 'Pocco81/Catppuccino.nvim' }
     use { 'editorconfig/editorconfig-vim' }
     use { 'ms-jpq/coq_nvim', { branch = 'coq'} }
     use { 'ms-jpq/coq.artifacts', { branch = 'artifacts'} }
@@ -26,4 +25,15 @@ return require('packer').startup(function()
     use {'akinsho/bufferline.nvim' }
     use {'nvim-treesitter/nvim-treesitter'}
     use {'kdheepak/lazygit.nvim'}
+    use({
+        'rose-pine/neovim',
+        as = 'rose-pine',
+        config = function()
+            -- Options (see available options below)
+            vim.g.rose_pine_variant = 'moon'
+
+            -- Load colorscheme after options
+            vim.cmd('colorscheme rose-pine')
+        end
+    })
 end )

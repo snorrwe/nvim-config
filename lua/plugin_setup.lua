@@ -143,58 +143,6 @@ function setupTelescope()
     vim.cmd[[nnoremap gr <cmd>lua require('telescope.builtin').lsp_references()<cr>]]
 end
 
-function setupColor()
-    local catppuccino = require("catppuccino")
-
-    -- configure it
-    catppuccino.setup(
-        {
-            colorscheme = "dark_catppuccino",
-            transparency = false,
-            styles = {
-                comments = "italic",
-                functions = "NONE",
-                keywords = "NONE",
-                strings = "italic",
-                variables = "NONE",
-            },
-            integrations = {
-                treesitter = true,
-                native_lsp = {
-                    enabled = true,
-                    styles = {
-                        errors = "italic",
-                        hints = "italic",
-                        warnings = "italic",
-                        information = "italic"
-                    }
-                },
-                lsp_saga = true,
-                lsp_trouble = true,
-                gitgutter = false,
-                gitsigns = false,
-                telescope = true,
-                nvimtree = false,
-                which_key = false,
-                indent_blankline = {
-                    enabled = true,
-                    colored_indent_levels = true,
-                },
-                dashboard = false,
-                neogit = false,
-                vim_sneak = false,
-                fern = true,
-                barbar = false,
-                bufferline = true,
-                markdown = true,
-            }
-        }
-    )
-
-    -- load it
-    catppuccino.load()
-end
-
 function setupDap()
     local dap = require('dap')
     dap.configurations.cpp = {
@@ -202,15 +150,15 @@ function setupDap()
 --        type = 'lldb',
 --        request = 'launch',
 --        name = "Launch Air Sample",
---		program = "",
---		runInTerminal = true,
+--      program = "",
+--      runInTerminal = true,
 --      },
     }
-	dap.adapters.lldb = {
-	  type = 'executable',
-	  command = 'lldb-vscode.exe',
-	  name = "lldb"
-	}
+    dap.adapters.lldb = {
+      type = 'executable',
+      command = 'lldb-vscode.exe',
+      name = "lldb"
+    }
 
     vim.cmd[[nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>]]
     vim.cmd[[nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>]]
@@ -246,7 +194,7 @@ function setupBufferline()
 end
 
 function M.initialize()
-    local setupFunctions = { setupLsp, setupAutoformat, setupTelescope, setupColor, setupDap, setupSymbolsOutline, setupBufferline, setupTS }
+    local setupFunctions = { setupLsp, setupAutoformat, setupTelescope, setupDap, setupSymbolsOutline, setupBufferline, setupTS }
     for i, setup in ipairs(setupFunctions) do
         local status, retval = pcall( setup )
         if not status then

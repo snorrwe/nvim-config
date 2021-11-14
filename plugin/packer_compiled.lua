@@ -69,11 +69,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ["Catppuccino.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\Catppuccino.nvim",
-    url = "https://github.com/Pocco81/Catppuccino.nvim"
-  },
   ["bufferline.nvim"] = {
     loaded = true,
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\bufferline.nvim",
@@ -169,6 +164,12 @@ _G.packer_plugins = {
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
+  ["rose-pine"] = {
+    config = { "\27LJ\2\nb\0\0\3\0\6\0\t6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\4\0'\2\5\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\tbase\22rose_pine_variant\6g\bvim\0" },
+    loaded = true,
+    path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\rose-pine",
+    url = "https://github.com/rose-pine/neovim"
+  },
   ["symbols-outline.nvim"] = {
     loaded = true,
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\symbols-outline.nvim",
@@ -207,6 +208,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: rose-pine
+time([[Config for rose-pine]], true)
+try_loadstring("\27LJ\2\nb\0\0\3\0\6\0\t6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\4\0'\2\5\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\tbase\22rose_pine_variant\6g\bvim\0", "config", "rose-pine")
+time([[Config for rose-pine]], false)
 if should_profile then save_profiles() end
 
 end)
