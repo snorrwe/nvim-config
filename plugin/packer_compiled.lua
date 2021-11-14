@@ -69,7 +69,14 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["ayu-vim"] = {
+    config = { "\27LJ\2\n3\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\20colorscheme ayu\bcmd\bvim\0" },
+    loaded = true,
+    path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\ayu-vim",
+    url = "https://github.com/ayu-theme/ayu-vim"
+  },
   ["bufferline.nvim"] = {
+    config = { "\27LJ\2\nD\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\20setupBufferline\17plugin_setup\frequire\0" },
     loaded = true,
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
@@ -80,6 +87,7 @@ _G.packer_plugins = {
     url = "https://github.com/ms-jpq/coq.artifacts"
   },
   coq_nvim = {
+    config = { "\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\rsetupLsp\17plugin_setup\frequire\0" },
     loaded = true,
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\coq_nvim",
     url = "https://github.com/ms-jpq/coq_nvim"
@@ -130,6 +138,7 @@ _G.packer_plugins = {
     url = "https://github.com/scrooloose/nerdcommenter"
   },
   ["nvim-dap"] = {
+    config = { "\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\rsetupDap\17plugin_setup\frequire\0" },
     loaded = true,
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-dap",
     url = "https://github.com/mfussenegger/nvim-dap"
@@ -140,6 +149,7 @@ _G.packer_plugins = {
     url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-treesitter"] = {
+    config = { "\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\fsetupTS\17plugin_setup\frequire\0" },
     loaded = true,
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
@@ -164,18 +174,13 @@ _G.packer_plugins = {
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
-  ["rose-pine"] = {
-    config = { "\27LJ\2\nb\0\0\3\0\6\0\t6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\4\0'\2\5\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\tbase\22rose_pine_variant\6g\bvim\0" },
-    loaded = true,
-    path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\rose-pine",
-    url = "https://github.com/rose-pine/neovim"
-  },
   ["symbols-outline.nvim"] = {
     loaded = true,
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\symbols-outline.nvim",
     url = "https://github.com/simrat39/symbols-outline.nvim"
   },
   ["telescope.nvim"] = {
+    config = { "\27LJ\2\nC\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\19setupTelescope\17plugin_setup\frequire\0" },
     loaded = true,
     path = "C:\\Users\\dkiss\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
@@ -208,10 +213,30 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: rose-pine
-time([[Config for rose-pine]], true)
-try_loadstring("\27LJ\2\nb\0\0\3\0\6\0\t6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\4\0'\2\5\0B\0\2\1K\0\1\0\26colorscheme rose-pine\bcmd\tbase\22rose_pine_variant\6g\bvim\0", "config", "rose-pine")
-time([[Config for rose-pine]], false)
+-- Config for: bufferline.nvim
+time([[Config for bufferline.nvim]], true)
+try_loadstring("\27LJ\2\nD\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\20setupBufferline\17plugin_setup\frequire\0", "config", "bufferline.nvim")
+time([[Config for bufferline.nvim]], false)
+-- Config for: nvim-treesitter
+time([[Config for nvim-treesitter]], true)
+try_loadstring("\27LJ\2\n<\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\fsetupTS\17plugin_setup\frequire\0", "config", "nvim-treesitter")
+time([[Config for nvim-treesitter]], false)
+-- Config for: ayu-vim
+time([[Config for ayu-vim]], true)
+try_loadstring("\27LJ\2\n3\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\20colorscheme ayu\bcmd\bvim\0", "config", "ayu-vim")
+time([[Config for ayu-vim]], false)
+-- Config for: nvim-dap
+time([[Config for nvim-dap]], true)
+try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\rsetupDap\17plugin_setup\frequire\0", "config", "nvim-dap")
+time([[Config for nvim-dap]], false)
+-- Config for: coq_nvim
+time([[Config for coq_nvim]], true)
+try_loadstring("\27LJ\2\n=\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\rsetupLsp\17plugin_setup\frequire\0", "config", "coq_nvim")
+time([[Config for coq_nvim]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+try_loadstring("\27LJ\2\nC\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\19setupTelescope\17plugin_setup\frequire\0", "config", "telescope.nvim")
+time([[Config for telescope.nvim]], false)
 if should_profile then save_profiles() end
 
 end)

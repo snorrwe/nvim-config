@@ -1,6 +1,6 @@
 local M = {}
 
-function setupLsp()
+function M.setupLsp()
     vim.g.coq_settings = {
         auto_start=true
         , ['display.pum.source_context'] = {'[', ']'}
@@ -110,7 +110,7 @@ function setupAutoformat()
     vim.g.formatters_python = {'black'}
 end
 
-function setupTelescope()
+function M.setupTelescope()
     require('telescope').setup{
         defaults ={
             vimgrep_arguments= {
@@ -143,7 +143,7 @@ function setupTelescope()
     vim.cmd[[nnoremap gr <cmd>lua require('telescope.builtin').lsp_references()<cr>]]
 end
 
-function setupDap()
+function M.setupDap()
     local dap = require('dap')
     dap.configurations.cpp = {
 --      {
@@ -170,7 +170,7 @@ function setupDap()
     vim.cmd[[nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>]]
 end
 
-function setupTS()
+function M.setupTS()
     require'nvim-treesitter.configs'.setup {
         ensure_installed = "all",
         highlight = {
@@ -186,7 +186,7 @@ function setupSymbolsOutline()
     vim.cmd[[noremap <leader>s :SymbolsOutline<cr>]]
 end
 
-function setupBufferline()
+function M.setupBufferline()
     require("bufferline").setup{}
 
     vim.cmd[[nnoremap <silent> <leader>wd <cmd>BufferLineCycleNext<cr>]]
@@ -194,7 +194,7 @@ function setupBufferline()
 end
 
 function M.initialize()
-    local setupFunctions = { setupLsp, setupAutoformat, setupTelescope, setupDap, setupSymbolsOutline, setupBufferline, setupTS }
+    local setupFunctions = { setupAutoformat, setupSymbolsOutline }
     for i, setup in ipairs(setupFunctions) do
         local status, retval = pcall( setup )
         if not status then
