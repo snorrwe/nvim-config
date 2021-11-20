@@ -11,18 +11,16 @@ return require('packer').startup(function()
     use { 'tjdevries/lsp_extensions.nvim' }
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'onsails/lspkind-nvim' }
-    use { 'tpope/vim-rhubarb' } -- github plugin
-    use { 'nvim-lua/popup.nvim' }
-    use { 'nvim-lua/plenary.nvim' }
+    use { 'glepnir/galaxyline.nvim' }
+    use { 'Avimitin/nerd-galaxyline' }
+    use { 'editorconfig/editorconfig-vim' }
     use {
         'nvim-telescope/telescope.nvim',
+        requires = {{ 'nvim-lua/plenary.nvim' }},
         config=function()
             require("plugin_setup").setupTelescope()
         end
     }
-    use { 'glepnir/galaxyline.nvim' }
-    use { 'Avimitin/nerd-galaxyline' }
-    use { 'editorconfig/editorconfig-vim' }
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',

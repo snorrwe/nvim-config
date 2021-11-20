@@ -41,7 +41,7 @@ function M.setupLsp()
     vim.cmd[[nnoremap ga <cmd>Telescope lsp_code_actions<cr>]]
 
     -- Enable type inlay hints
-    vim.cmd[[autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment" }]]
+    vim.cmd [[ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '» ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} } ]]
 
     vim.cmd[[set shortmess-=F]]
     vim.cmd[[set shortmess+=c]]
