@@ -26,7 +26,7 @@ return require('packer').startup(function()
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
-        requires = { { 'ms-jpq/coq.artifacts', { branch = 'artifacts'} }},
+        requires = { { 'ms-jpq/coq.artifacts', { branch = 'artifacts'} , opt=true}},
         config = function()
             require("plugin_setup").setupLsp()
         end
@@ -50,7 +50,7 @@ return require('packer').startup(function()
             require("plugin_setup").setupTS()
         end
     }
-    use {'kdheepak/lazygit.nvim'}
+    use {'kdheepak/lazygit.nvim', cmd="LazyGit"}
     use {
         'ayu-theme/ayu-vim',
         config = function()
