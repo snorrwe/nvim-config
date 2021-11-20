@@ -36,6 +36,9 @@ return require('packer').startup(function()
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
+        run = function()
+            vim.cmd[[COQdeps]]
+        end,
         requires = {{ 'ms-jpq/coq.artifacts', { branch = 'artifacts'}}},
         config = function()
             require("plugin_setup").setupLsp()

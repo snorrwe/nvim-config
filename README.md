@@ -15,10 +15,9 @@
     python3/bin/pip install wheel neovim pynvim
     ```
 -   Edit `init.lua` to your liking. Be sure to edit **HOME**!
--   [Install lazygit](https://github.com/kdheepak/lazygit.nvim)
 -   Install plugins in vim
-    `:PackerInstall`
-    `:COQdeps`
+    `:PackerSync`
+-   [Install lazygit](https://github.com/kdheepak/lazygit.nvim)
 -   Install [Vifm](https://vifm.info/)
 -   Install [Telescope deps](https://github.com/nvim-telescope/telescope.nvim#optional-dependencies)
 -   Install LSPs
