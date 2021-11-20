@@ -224,6 +224,7 @@ function M.initialize()
     vim.cmd[[set relativenumber]]
     vim.cmd[[set ignorecase]]
     vim.cmd[[set smartcase]]
+    vim.cmd[[set list]]
 
 
     vim.cmd[[vnoremap // y/<C-R>"<cr>]]
