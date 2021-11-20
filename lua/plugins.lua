@@ -21,10 +21,12 @@ return require('packer').startup(function()
             require("plugin_setup").setupLspKind()
         end
     }
-    -- statusline
-    use { 'glepnir/galaxyline.nvim',
-          -- some optional icons
-          requires = {{ "kyazdani42/nvim-web-devicons" }, { 'Avimitin/nerd-galaxyline' }}
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = {'kyazdani42/nvim-web-devicons', opt = true},
+      config = function()
+          require("config_lualine")
+      end
     }
     use { 'editorconfig/editorconfig-vim' }
     use {
