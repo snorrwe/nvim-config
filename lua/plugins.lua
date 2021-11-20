@@ -65,9 +65,10 @@ return require('packer').startup(function()
     }
     use {'kdheepak/lazygit.nvim', cmd="LazyGit"}
     use {
-        'ayu-theme/ayu-vim',
+        'folke/tokyonight.nvim',
         config = function()
-            vim.cmd('colorscheme ayu')
+            vim.g.tokyonight_style = "night"
+            vim.cmd('colorscheme tokyonight')
         end
     }
 end )
