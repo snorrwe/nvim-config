@@ -21,6 +21,7 @@ return require('packer').startup(function()
             require("plugin_setup").setupLspKind()
         end
     }
+    -- statusline
     use { 'glepnir/galaxyline.nvim',
           -- some optional icons
           requires = {{ "kyazdani42/nvim-web-devicons" }, { 'Avimitin/nerd-galaxyline' }}
@@ -50,7 +51,6 @@ return require('packer').startup(function()
             require("plugin_setup").setupDap()
         end
     }
-    use { 'simrat39/symbols-outline.nvim' }
     use {
         'akinsho/bufferline.nvim',
         config=function()

@@ -182,13 +182,6 @@ function M.setupTS()
     }
 end
 
-function setupSymbolsOutline()
-    vim.g.symbols_outline = {
-        width= 50
-    }
-    vim.cmd[[noremap <leader>s :SymbolsOutline<cr>]]
-end
-
 function M.setupBufferline()
     require("bufferline").setup{}
 
@@ -197,7 +190,7 @@ function M.setupBufferline()
 end
 
 function M.initialize()
-    local setupFunctions = { setupAutoformat, setupSymbolsOutline }
+    local setupFunctions = { setupAutoformat }
     for i, setup in ipairs(setupFunctions) do
         local status, retval = pcall( setup )
         if not status then
