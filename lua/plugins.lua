@@ -11,8 +11,10 @@ return require('packer').startup(function()
     use { 'tjdevries/lsp_extensions.nvim' }
     use { 'kyazdani42/nvim-web-devicons' }
     use { 'onsails/lspkind-nvim' }
-    use { 'glepnir/galaxyline.nvim' }
-    use { 'Avimitin/nerd-galaxyline' }
+    use { 'glepnir/galaxyline.nvim',
+          -- some optional icons
+          requires = {{ "kyazdani42/nvim-web-devicons" }, { 'Avimitin/nerd-galaxyline' }}
+    }
     use { 'editorconfig/editorconfig-vim' }
     use {
         'nvim-telescope/telescope.nvim',
@@ -24,7 +26,7 @@ return require('packer').startup(function()
     use {
         'ms-jpq/coq_nvim',
         branch = 'coq',
-        requires = { { 'ms-jpq/coq.artifacts', { branch = 'artifacts'} , opt=true}},
+        requires = {{ 'ms-jpq/coq.artifacts', { branch = 'artifacts'}}},
         config = function()
             require("plugin_setup").setupLsp()
         end
