@@ -8,7 +8,7 @@ return require('packer').startup(function()
     use { 'Chiel92/vim-autoformat' }
     use { 'neovim/nvim-lspconfig' }
     use {
-        'glepnir/lspsaga.nvim',
+        'tami5/lspsaga.nvim',
         config = function()
             require("plugin_setup").setupLspSaga()
         end

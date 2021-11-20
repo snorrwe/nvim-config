@@ -36,7 +36,7 @@ end
 
 function M.setupLspSaga() 
     local saga = require 'lspsaga'
-    saga.init_lsp_saga({})
+    saga.init_lsp_saga()
 
     -- Code navigation shortcuts
     vim.cmd[[nnoremap <c-]> <cmd>lua require'lspsaga.provider'.lsp_finder()<cr>]]
@@ -44,10 +44,8 @@ function M.setupLspSaga()
     vim.cmd[[nnoremap g] <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<cr>]]
     vim.cmd[[nnoremap K <cmd>lua require('lspsaga.hover').render_hover_doc()<cr>]]
     vim.cmd[[nnoremap gD <cmd>lua vim.lsp.buf.implementation()<cr>]]
-    vim.cmd[[nnoremap <C-k> <cmd>lua require('lspsaga.signaturehelp').signature_help()<cr>]]
     vim.cmd[[nnoremap gR <cmd>lua require('lspsaga.rename').rename()<cr>]]
     vim.cmd[[nnoremap gd <cmd>lua require'lspsaga.provider'.preview_definition()<cr>]]
-    vim.cmd[[nnoremap ga <cmd>Telescope lsp_code_actions<cr>]]
 end
 
 function M.setupLspKind()
@@ -143,7 +141,9 @@ function M.setupTelescope()
     vim.cmd[[nnoremap <space>t <cmd>lua require('telescope.builtin').help_tags()<cr>]]
     vim.cmd[[nnoremap <space>l <cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>]]
     vim.cmd[[nnoremap <space>s <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>]]
+    vim.cmd[[nnoremap <space>S <cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>]]
     vim.cmd[[nnoremap gr <cmd>lua require('telescope.builtin').lsp_references()<cr>]]
+    vim.cmd[[nnoremap ga <cmd>Telescope lsp_code_actions<cr>]]
 end
 
 function M.setupDap()
