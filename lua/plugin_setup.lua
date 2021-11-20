@@ -7,10 +7,8 @@ function M.setupLsp()
     }
 
     local nvim_lsp = require 'lspconfig'
-    local saga = require 'lspsaga'
     local coq = require 'coq'
 
-    saga.init_lsp_saga({})
 
     local servers = { 'rust_analyzer', 'clangd', 'gopls', 'zls', 'pyright', 'tsserver' }
     for _, lsp in ipairs(servers) do
@@ -29,6 +27,17 @@ function M.setupLsp()
       }
     )
 
+    -- Enable type inlay hints
+    vim.cmd [[ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '» ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} } ]]
+
+    vim.cmd[[set shortmess-=F]]
+    vim.cmd[[set shortmess+=c]]
+end
+
+function M.setupLspSaga() 
+    local saga = require 'lspsaga'
+    saga.init_lsp_saga({})
+
     -- Code navigation shortcuts
     vim.cmd[[nnoremap <c-]> <cmd>lua require'lspsaga.provider'.lsp_finder()<cr>]]
     vim.cmd[[nnoremap g[ <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<cr>]]
@@ -39,14 +48,9 @@ function M.setupLsp()
     vim.cmd[[nnoremap gR <cmd>lua require('lspsaga.rename').rename()<cr>]]
     vim.cmd[[nnoremap gd <cmd>lua require'lspsaga.provider'.preview_definition()<cr>]]
     vim.cmd[[nnoremap ga <cmd>Telescope lsp_code_actions<cr>]]
+end
 
-    -- Enable type inlay hints
-    vim.cmd [[ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '» ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} } ]]
-
-    vim.cmd[[set shortmess-=F]]
-    vim.cmd[[set shortmess+=c]]
-
-    -- lsp-kind
+function M.setupLspKind()
     require('lspkind').init({
         -- enables text annotations
         --
@@ -133,7 +137,6 @@ function M.setupTelescope()
             }
         }
     }
-
     vim.cmd[[nnoremap <space>f <cmd>lua require('telescope.builtin').find_files()<cr>]]
     vim.cmd[[nnoremap <space>g <cmd>lua require('telescope.builtin').live_grep()<cr>]]
     vim.cmd[[nnoremap <space>b <cmd>lua require('telescope.builtin').buffers()<cr>]]
@@ -172,7 +175,7 @@ end
 
 function M.setupTS()
     require'nvim-treesitter.configs'.setup {
-        ensure_installed = "all",
+        -- ensure_installed = "all",
         highlight = {
             enable=true
         }

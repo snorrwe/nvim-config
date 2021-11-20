@@ -7,10 +7,20 @@ return require('packer').startup(function()
     use { 'lambdalisue/fern.vim' }
     use { 'Chiel92/vim-autoformat' }
     use { 'neovim/nvim-lspconfig' }
-    use { 'glepnir/lspsaga.nvim' }
+    use {
+        'glepnir/lspsaga.nvim',
+        config = function()
+            require("plugin_setup").setupLspSaga()
+        end
+    }
     use { 'tjdevries/lsp_extensions.nvim' }
     use { 'kyazdani42/nvim-web-devicons' }
-    use { 'onsails/lspkind-nvim' }
+    use {
+        'onsails/lspkind-nvim',
+        config = function()
+            require("plugin_setup").setupLspKind()
+        end
+    }
     use { 'glepnir/galaxyline.nvim',
           -- some optional icons
           requires = {{ "kyazdani42/nvim-web-devicons" }, { 'Avimitin/nerd-galaxyline' }}
