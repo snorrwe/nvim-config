@@ -14,7 +14,7 @@ return require('packer').startup(function()
     use { 'tpope/vim-rhubarb' } -- github plugin
     use { 'nvim-lua/popup.nvim' }
     use { 'nvim-lua/plenary.nvim' }
-    use { 
+    use {
         'nvim-telescope/telescope.nvim',
         config=function()
             require("plugin_setup").setupTelescope()
@@ -23,15 +23,15 @@ return require('packer').startup(function()
     use { 'glepnir/galaxyline.nvim' }
     use { 'Avimitin/nerd-galaxyline' }
     use { 'editorconfig/editorconfig-vim' }
-    use { 
-        'ms-jpq/coq_nvim', 
+    use {
+        'ms-jpq/coq_nvim',
         branch = 'coq',
         requires = { { 'ms-jpq/coq.artifacts', { branch = 'artifacts'} }},
         config = function()
             require("plugin_setup").setupLsp()
         end
     }
-    use { 
+    use {
         'mfussenegger/nvim-dap',
         config = function()
             require("plugin_setup").setupDap()
