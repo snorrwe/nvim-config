@@ -28,8 +28,7 @@ function M.setupLsp()
     )
 
     -- Enable type inlay hints
-    vim.cmd [[ autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * :lua require'lsp_extensions'.inlay_hints{ prefix = '» ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} } ]]
-    vim.cmd[[autocmd User LspProgressUpdate redrawstatus]]
+    vim.cmd [[autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * silent! :lua require'lsp_extensions'.inlay_hints{ prefix = '» ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} } ]]
 
     vim.cmd[[set shortmess-=F]]
     vim.cmd[[set shortmess+=c]]
