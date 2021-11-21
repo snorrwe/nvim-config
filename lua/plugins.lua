@@ -2,7 +2,6 @@ return require('packer').startup(function()
     use 'wbthomason/packer.nvim' -- manage itself
     use { 'scrooloose/nerdcommenter' }
     use { 'psliwka/vim-smoothie' }
-    use { 'vifm/vifm.vim' }
     use { 'gko/vim-coloresque' }
     use { 'lambdalisue/fern.vim' }
     use { 'Chiel92/vim-autoformat' }
@@ -65,12 +64,17 @@ return require('packer').startup(function()
             require("plugin_setup").setupTS()
         end
     }
-    use {'kdheepak/lazygit.nvim', cmd="LazyGit"}
     use {
         'folke/tokyonight.nvim',
         config = function()
             vim.g.tokyonight_style = "night"
             vim.cmd('colorscheme tokyonight')
+        end
+    }
+    use {
+        'voldikss/vim-floaterm',
+        config = function()
+            require("plugin_setup").setupFloaterm()
         end
     }
 end )
