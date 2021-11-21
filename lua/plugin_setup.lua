@@ -41,9 +41,10 @@ function M.setupLspSaga()
 
     -- Code navigation shortcuts
     vim.cmd[[nnoremap <c-]> <cmd>lua require'lspsaga.provider'.lsp_finder()<cr>]]
-    vim.cmd[[nnoremap g[ <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<cr>]]
-    vim.cmd[[nnoremap g] <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<cr>]]
-    vim.cmd[[nnoremap K <cmd>lua require('lspsaga.hover').render_hover_doc()<cr>]]
+    vim.cmd[[nnoremap go <cmd>Lspsaga show_line_diagnostics<cr>]]
+    vim.cmd[[nnoremap g[ <cmd>Lspsaga diagnostic_jump_prev<cr>]]
+    vim.cmd[[nnoremap g] <cmd>Lspsaga diagnostic_jump_next<cr>]]
+    vim.cmd[[nnoremap K <cmd>Lspsaga hover_doc<cr>]]
     vim.cmd[[nnoremap gD <cmd>lua vim.lsp.buf.implementation()<cr>]]
     vim.cmd[[nnoremap gR <cmd>lua require('lspsaga.rename').rename()<cr>]]
     vim.cmd[[nnoremap gd <cmd>lua require'lspsaga.provider'.preview_definition()<cr>]]
