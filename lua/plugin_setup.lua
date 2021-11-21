@@ -191,14 +191,14 @@ function M.setupBufferline()
 end
 
 function M.setupFloaterm()
-    vim.cmd[[nnoremap <silent> <leader>t <cmd>FloatermNew<cr>]]
+    vim.cmd[[nnoremap <silent> <leader>tn <cmd>FloatermNew<cr>]]
+    vim.cmd[[nnoremap <silent> <leader>tt <cmd>FloatermToggle<cr>]]
     vim.cmd[[command! Vifm FloatermNew vifm]]
     vim.cmd[[command! LazyGit FloatermNew lazygit]]
     vim.cmd[[nnoremap <silent> <F12> <cmd>FloatermToggle<CR>]]
     vim.cmd[[tnoremap <silent> <F12> <C-\><C-n><cmd>FloatermToggle<CR>]]
 
     vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>LazyGit<cr>", {silent=true, noremap=true})
-
 
     vim.g.floaterm_width = 0.8
     vim.g.floaterm_height = 0.8
