@@ -164,7 +164,7 @@ ins_left {
 }
 
 ins_left {
-  -- Lsp server name .
+  -- Lsp server .
   function()
     local msg = '∅'
     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
@@ -175,7 +175,21 @@ ins_left {
     for _, client in ipairs(clients) do
       local filetypes = client.config.filetypes
       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
+
+        function lsp_msgs_to_string(messages)
+           local result = ""
+           for _, v in pairs(messages) do
+               if v['percentage'] ~= nil then
+                   result = result .. v['title'].. ": " .. v['percentage'] .. "%% "
+               end
+           end
+           return result
+        end
+
+
+        local messages = vim.lsp.util.get_progress_messages()
+
+        return client.name .. " " .. lsp_msgs_to_string(messages)
       end
     end
     return msg
