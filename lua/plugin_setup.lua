@@ -91,26 +91,17 @@ function M.setupLspKind()
     })
 end
 
-function setupAutoformat()
-    vim.g.formatter_path = {"c:/tools"}
-    vim.g.autoformat_autoindent = 0
-    vim.g.autoformat_retab = 0
-    vim.g.formatters_js = {'prettier'}
-    vim.g.formatters_jsx = {'prettier'}
-    vim.g.formatters_ts = {'prettier'}
-    vim.g.formatters_javascript = {'prettier'}
-    vim.g.formatters_typescript = {'prettier'}
-    vim.g.formatters_javascriptreact = {'prettier'}
-    vim.g.formatters_typescriptreact = {'prettier'}
-    vim.g.formatters_html = {'prettier'}
-    vim.g.formatters_css = {'prettier'}
-    vim.g.formatters_json = {'prettier'}
-    vim.g.formatters_toml = {'prettier'}
-    vim.g.formatters_md = {'prettier'}
-    vim.g.formatters_yaml = {'prettier'}
-    vim.g.formatters_svelte = {'prettier'}
-    vim.g.formatters_sql = {}
-    vim.g.formatters_python = {'black'}
+function M.setupAutoformat()
+    vim.cmd[[noremap <leader>a :Neoformat]]
+
+    -- Enable alignment
+    vim.g.neoformat_basic_format_align = 1
+
+    -- Enable tab to spaces conversion
+    vim.g.neoformat_basic_format_retab = 1
+
+    -- Enable trimmming of trailing whitespace
+    vim.g.neoformat_basic_format_trim = 1
 end
 
 function M.setupTelescope()
@@ -206,14 +197,6 @@ function M.setupFloaterm()
 end
 
 function M.initialize()
-    local setupFunctions = { setupAutoformat }
-    for i, setup in ipairs(setupFunctions) do
-        local status, retval = pcall( setup )
-        if not status then
-            print("Failed to setup:", i, retval)
-        end
-    end
-
     vim.o.completeopt = "menuone,noselect"
     -- gui
     vim.cmd[[set guifont=CaskaydiaCove\ NF:h12]]
@@ -244,7 +227,6 @@ function M.initialize()
     vim.cmd[[noremap <leader>o <cmd>only<cr>]]
     vim.cmd[[noremap <leader>n <cmd>Fern . -drawer -toggle<cr>]]
     vim.cmd[[noremap <leader>f <cmd>FernFindCurrentFile<cr>]]
-    vim.cmd[[noremap <leader>a :Autoformat]]
 
 
     -- show the next match in the middle of the screen

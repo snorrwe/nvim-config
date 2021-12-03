@@ -4,7 +4,12 @@ return require('packer').startup(function()
     use { 'psliwka/vim-smoothie' }
     use { 'gko/vim-coloresque' }
     use { 'lambdalisue/fern.vim' }
-    use { 'Chiel92/vim-autoformat' }
+    use {
+        'sbdchd/neoformat',
+        config = function()
+            require("plugin_setup").setupAutoformat()
+        end
+    }
     use { 'neovim/nvim-lspconfig' }
     use {
         'tami5/lspsaga.nvim',
