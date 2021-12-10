@@ -236,6 +236,7 @@ function M.initialize()
     vim.cmd[[noremap <leader>[ :BufferLineCyclePrev<cr>]]
 
     vim.cmd[[autocmd User LspProgressUpdate redrawstatus]]
+    vim.cmd[[autocmd FocusGained,TabEnter,BufEnter * :checktime]] -- trigger autoread
 end
 
 return M
