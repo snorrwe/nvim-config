@@ -70,16 +70,15 @@ return require('packer').startup(function()
         end
     }
     use {
-        'folke/tokyonight.nvim',
-        config = function()
-            vim.g.tokyonight_style = "night"
-            vim.cmd('colorscheme tokyonight')
-        end
-    }
-    use {
         'voldikss/vim-floaterm',
         config = function()
             require("plugin_setup").setupFloaterm()
+        end
+    }
+    use {
+        'ful1e5/onedark.nvim',
+        config = function()
+            require("onedark").setup{}
         end
     }
 end )
