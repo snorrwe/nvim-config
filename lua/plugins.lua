@@ -78,7 +78,15 @@ return require('packer').startup(function()
     use {
         'ful1e5/onedark.nvim',
         config = function()
-            require("onedark").setup{}
+            require("onedark").setup{
+                dark_sidebar = true,
+                highlight_linenumber = true,
+                dark_float = true,
+                comment_style = "NONE",
+                keyword_style = "NONE",
+                function_style = "NONE",
+                variable_style = "NONE"
+            }
         end
     }
 end )
