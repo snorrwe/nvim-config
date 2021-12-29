@@ -174,6 +174,19 @@ function M.setupTS()
     }
 end
 
+function M.setupTree()
+    require'nvim-tree'.setup {
+          update_cwd          = true,
+          update_to_buf_dir   = {
+            enable = true,
+            auto_open = true,
+          },
+    }
+
+    vim.cmd[[nnoremap <silent> <leader>n <cmd>NvimTreeToggle<CR>]]
+    vim.cmd[[nnoremap <silent> <leader>f <cmd>NvimTreeFindFile<CR>]]
+end
+
 function M.setupBufferline()
     require("bufferline").setup{}
 
@@ -221,13 +234,9 @@ function M.initialize()
     vim.cmd[[set smartcase]]
     vim.cmd[[set list]]
 
-
     vim.cmd[[vnoremap // y/<C-R>"<cr>]]
     vim.cmd[[noremap <Space> <cmd>noh<cr>]]
     vim.cmd[[noremap <leader>o <cmd>only<cr>]]
-    vim.cmd[[noremap <leader>n <cmd>Fern . -drawer -toggle<cr>]]
-    vim.cmd[[noremap <leader>f <cmd>FernFindCurrentFile<cr>]]
-
 
     -- show the next match in the middle of the screen
     vim.cmd[[noremap n nzz]]

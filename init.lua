@@ -48,14 +48,6 @@ if !exists("*DeleteHiddenBuffers") " Clear all hidden buffers when running
 endif
 command! DeleteHiddenBuffers call DeleteHiddenBuffers()
 
-if !exists("*FernFindCurrentFile")
-    function FernFindCurrentFile() " Vim with the 'hidden' option
-        let current=expand('%:p:h')
-        silent execute 'Fern ' current ' -drawer'
-    endfunction
-endif
-command! FernFindCurrentFile call FernFindCurrentFile()
-
 if !exists("*ChangeCwdHere")
     function ChangeCwdHere() " Vim with the 'hidden' option
         let current=expand('%:p:h')
