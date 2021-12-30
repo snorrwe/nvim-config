@@ -7,12 +7,32 @@ function M.setupLsp()
     }
 
     local nvim_lsp = require 'lspconfig'
-    local coq = require 'coq'
+    local cmp = require 'cmp'
 
+    cmp.setup({
+        snippet = {
+          expand = function(args)
+            require('snippy').expand_snippet(args.body)
+          end,
+        }
+        , sources = cmp.config.sources({
+            { name = 'nvim_lsp' }
+            , { name = 'snippy' }
+        }, {
+            { name = 'buffer' } ,
+        })
+        , mapping = {
+          ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+          ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+          ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        }
+    })
 
+    local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
     local servers = { 'rust_analyzer', 'clangd', 'gopls', 'zls', 'pyright', 'tsserver' }
     for _, lsp in ipairs(servers) do
-        local status, retval = pcall( nvim_lsp[lsp].setup, coq.lsp_ensure_capabilities() )
+        local status, retval = pcall( nvim_lsp[lsp].setup, { capabilities = capabilities } )
         if not status then
             print("lsp setup failed: ", lsp, retval)
         end

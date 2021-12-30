@@ -49,12 +49,15 @@ return require('packer').startup(function()
         end
     }
     use {
-        'ms-jpq/coq_nvim',
-        branch = 'coq',
-        run = function()
-            vim.cmd[[COQdeps]]
-        end,
-        requires = {{ 'ms-jpq/coq.artifacts', { branch = 'artifacts'}}},
+        'hrsh7th/nvim-cmp',
+        requires = { 
+            'hrsh7th/cmp-nvim-lsp'
+            , 'hrsh7th/cmp-buffer'
+            , 'hrsh7th/cmp-path'
+            , 'hrsh7th/cmp-cmdline'
+            , 'dcampos/nvim-snippy'
+            , 'dcampos/cmp-snippy'
+        },
         config = function()
             require("plugin_setup").setupLsp()
         end
