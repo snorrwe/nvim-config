@@ -34,26 +34,3 @@ vim.g.NERDCommentEmptyLines = 1
 -- Enable trimming of trailing whitespace when uncommenting
 vim.g.NERDTrimTrailingWhitespace = 1
 
--- Custom, legacy functions
---
-vim.cmd[[
-if !exists("*DeleteHiddenBuffers") " Clear all hidden buffers when running
-    function DeleteHiddenBuffers() " Vim with the 'hidden' option
-        let tpbl=[]
-        call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
-        for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
-            silent execute 'bwipeout!' buf
-        endfor
-    endfunction
-endif
-command! DeleteHiddenBuffers call DeleteHiddenBuffers()
-
-if !exists("*ChangeCwdHere")
-    function ChangeCwdHere() " Vim with the 'hidden' option
-        let current=expand('%:p:h')
-        silent execute 'chdir ' current
-    endfunction
-endif
-command! ChangeCwdHere call ChangeCwdHere()
-]]
-
