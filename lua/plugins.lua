@@ -57,6 +57,7 @@ return require('packer').startup(function()
             , 'hrsh7th/cmp-cmdline'
             , 'dcampos/nvim-snippy'
             , 'dcampos/cmp-snippy'
+            , "lukas-reineke/cmp-rg"
         },
         config = function()
             require("plugin_setup").setupLsp()

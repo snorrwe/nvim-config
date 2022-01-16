@@ -9,6 +9,10 @@ function M.setupLsp()
     local nvim_lsp = require 'lspconfig'
     local cmp = require 'cmp'
 
+require'cmp'.setup {
+    sources = {
+    }
+}
     cmp.setup({
         snippet = {
           expand = function(args)
@@ -18,8 +22,9 @@ function M.setupLsp()
         , sources = cmp.config.sources({
             { name = 'nvim_lsp' }
             , { name = 'snippy' }
+            , { name = 'rg' }
         }, {
-            { name = 'buffer' } ,
+            { name = 'buffer' },
         })
         , mapping = {
           ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
