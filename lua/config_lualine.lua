@@ -39,7 +39,7 @@ local config = {
     -- Disable sections and component separators
     component_separators = '',
     section_separators = '',
-    theme = 'onedark-nvim',
+    theme = 'material-nvim',
   },
   sections = {
     -- these are to remove the defaults
