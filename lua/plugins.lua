@@ -88,10 +88,18 @@ return require('packer').startup(function()
         end
     }
     use {
-        'marko-cerovac/material.nvim',
+        "themercorp/themer.lua",
         config = function()
-            vim.g.material_style = 'deep ocean'
-            vim.cmd 'colorscheme material'
+            require("themer").setup({
+                colorscheme = "doom_one",
+                plugins = {
+                    treesitter=true,
+                    lualine=true,
+                    telescope=true,
+                    lsp=true,
+                    cmp=true
+                }
+            })
         end
     }
 end )
