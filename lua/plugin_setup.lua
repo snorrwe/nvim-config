@@ -142,7 +142,6 @@ function M.setupTelescope()
               '--smart-case'
             }
             , file_ignore_patterns = {}
-            , layout_strategy = "vertical"
             , mappings = {
                 n = {
                     ["K"] = false,
