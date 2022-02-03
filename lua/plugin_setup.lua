@@ -120,8 +120,6 @@ function M.setupAutoformat()
     local null_ls = require "null-ls"
     -- check supported formatters
     local formatting = null_ls.builtins.formatting
-    -- check supported linters
-    local diagnostics = null_ls.builtins.diagnostics
 
     null_ls.setup {
         debug = false,
@@ -129,7 +127,6 @@ function M.setupAutoformat()
             formatting.rufo,
             formatting.black,
             formatting.prettier,
-            diagnostics.rubocop
         }
     }
 
