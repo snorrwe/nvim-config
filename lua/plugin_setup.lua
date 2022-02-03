@@ -129,8 +129,6 @@ function M.setupAutoformat()
             formatting.rufo,
             formatting.black,
             formatting.prettier,
-            formatting.clang_format,
-            formatting.gofmt,
             diagnostics.rubocop
         }
     }
