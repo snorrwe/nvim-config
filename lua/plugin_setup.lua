@@ -117,16 +117,26 @@ function M.setupLspKind()
 end
 
 function M.setupAutoformat()
-    vim.cmd[[noremap <leader>a :Neoformat]]
+    local null_ls = require "null-ls"
+    -- check supported formatters
+    local formatting = null_ls.builtins.formatting
+    -- check supported linters
+    local diagnostics = null_ls.builtins.diagnostics
 
-    -- Enable alignment
-    vim.g.neoformat_basic_format_align = 1
+    null_ls.setup {
+        debug = false,
+        sources = {
+            formatting.rufo,
+            formatting.black,
+            formatting.prettier,
+            formatting.clang_format,
+            formatting.gofmt,
+            diagnostics.rubocop
+        }
+    }
 
-    -- Enable tab to spaces conversion
-    vim.g.neoformat_basic_format_retab = 1
-
-    -- Enable trimmming of trailing whitespace
-    vim.g.neoformat_basic_format_trim = 1
+    vim.cmd[[nnoremap <leader>a :lua vim.lsp.buf.formatting()]]
+    vim.cmd[[vnoremap <leader>a :lua vim.lsp.buf.range_formatting()]]
 end
 
 function M.setupTelescope()
@@ -191,10 +201,23 @@ end
 
 function M.setupTS()
     require'nvim-treesitter.configs'.setup {
-        -- ensure_installed = "all",
+        ensure_installed = {},
         highlight = {
-            enable=true
-        }
+            enable=true,
+            additional_vim_regex_highlighting=false,
+        },
+        autopairs = {
+            enable = true
+        },
+        indent = {
+            enable = true
+        },
+        rainbow = {
+            enable = true
+        },
+        autotag = {
+            enable = true
+        },
     }
 end
 

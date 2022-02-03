@@ -12,11 +12,13 @@ return require('packer').startup(function()
             require("plugin_setup").setupTree()
         end
     }
+    -- autoformat
     use {
-        'sbdchd/neoformat',
-        config = function()
-            require("plugin_setup").setupAutoformat()
-        end
+      "jose-elias-alvarez/null-ls.nvim",
+      event = "BufRead",
+      config = function()
+        require "plugin_setup".setupAutoformat()
+      end,
     }
     use { 'neovim/nvim-lspconfig' }
     use {
@@ -77,9 +79,38 @@ return require('packer').startup(function()
     }
     use {
         'nvim-treesitter/nvim-treesitter',
+        run = ":TSUpdate",
+        event = "BufRead",
+        cmd = {
+          "TSInstall",
+          "TSInstallInfo",
+          "TSInstallSync",
+          "TSUninstall",
+          "TSUpdate",
+          "TSUpdateSync",
+          "TSDisableAll",
+          "TSEnableAll",
+        },
         config=function()
             require("plugin_setup").setupTS()
-        end
+        end,
+        requires = {
+          {
+            -- Parenthesis highlighting
+            "p00f/nvim-ts-rainbow",
+            after = "nvim-treesitter",
+          },
+          {
+            -- Autoclose tags
+            "windwp/nvim-ts-autotag",
+            after = "nvim-treesitter",
+          },
+          {
+            -- Context based commenting
+            "JoosepAlviste/nvim-ts-context-commentstring",
+            after = "nvim-treesitter",
+          },
+        },
     }
     use {
         'voldikss/vim-floaterm',
