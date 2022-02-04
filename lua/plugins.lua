@@ -30,12 +30,6 @@ return require('packer').startup(function()
     use { 'tjdevries/lsp_extensions.nvim' }
     use { 'kyazdani42/nvim-web-devicons' }
     use {
-        'onsails/lspkind-nvim',
-        config = function()
-            require("plugin_setup").setupLspKind()
-        end
-    }
-    use {
       'nvim-lualine/lualine.nvim',
       requires = {'kyazdani42/nvim-web-devicons', opt = true},
       config = function()

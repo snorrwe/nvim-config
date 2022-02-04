@@ -74,48 +74,6 @@ function M.setupLspSaga()
     vim.cmd[[nnoremap gd <cmd>lua require'lspsaga.provider'.preview_definition()<cr>]]
 end
 
-function M.setupLspKind()
-    require('lspkind').init({
-        -- enables text annotations
-        --
-        -- default: true
-        with_text = true,
-
-        -- default symbol map
-        -- can be either 'default' or
-        -- 'codicons' for codicon preset (requires vscode-codicons font installed)
-        --
-        -- default: 'default'
-        preset = 'codicons',
-
-        -- override preset symbols
-        --
-        -- default: {}
-        symbol_map = {
-          Text = '',
-          Method = 'ƒ',
-          Function = '',
-          Constructor = '',
-          Variable = '',
-          Class = '',
-          Interface = 'ﰮ',
-          Module = '',
-          Property = '',
-          Unit = '',
-          Value = '',
-          Enum = '了',
-          Keyword = '',
-          Snippet = '﬌',
-          Color = '',
-          File = '',
-          Folder = '',
-          EnumMember = '',
-          Constant = '',
-          Struct = ''
-        },
-    })
-end
-
 function M.setupAutoformat()
     local null_ls = require "null-ls"
     -- check supported formatters
