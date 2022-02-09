@@ -35,7 +35,7 @@ require'cmp'.setup {
     })
 
     local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-    local servers = { 'rust_analyzer', 'gopls', 'zls', 'pyright', 'tsserver' }
+    local servers = { 'rust_analyzer', 'gopls', 'zls', 'pyright', 'tsserver', 'svelte' }
     for _, lsp in ipairs(servers) do
         local status, retval = pcall( nvim_lsp[lsp].setup, { capabilities = capabilities } )
         if not status then
