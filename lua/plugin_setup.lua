@@ -35,13 +35,24 @@ require'cmp'.setup {
     })
 
     local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-    local servers = { 'rust_analyzer', 'clangd', 'gopls', 'zls', 'pyright', 'tsserver' }
+    local servers = { 'rust_analyzer', 'gopls', 'zls', 'pyright', 'tsserver' }
     for _, lsp in ipairs(servers) do
         local status, retval = pcall( nvim_lsp[lsp].setup, { capabilities = capabilities } )
         if not status then
             print("lsp setup failed: ", lsp, retval)
         end
     end
+
+    -- this will registed `clangd` language server
+    require("clangd_extensions").setup {
+        server = {
+            -- options to pass to nvim-lspconfig
+            -- i.e. the arguments to require("lspconfig").clangd.setup({})
+            capabilities = capabilities
+        },
+        -- use the defaults
+        extensions = { }
+    }
 
     -- Enable diagnostics
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -52,7 +63,7 @@ require'cmp'.setup {
       }
     )
 
-    -- Enable type inlay hints
+    -- Enable type inlay hints (when the LSP supports is)
     vim.cmd [[autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * silent! :lua require'lsp_extensions'.inlay_hints{ prefix = '» ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} } ]]
 
     vim.cmd[[set shortmess-=F]]

@@ -20,7 +20,10 @@ return require('packer').startup(function()
         require "plugin_setup".setupAutoformat()
       end,
     }
-    use { 'neovim/nvim-lspconfig' }
+    use {
+        'neovim/nvim-lspconfig',
+        requires={ "https://github.com/p00f/clangd_extensions.nvim", },
+    }
     use {
         'tami5/lspsaga.nvim',
         config = function()
