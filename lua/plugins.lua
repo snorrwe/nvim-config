@@ -116,18 +116,9 @@ return require('packer').startup(function()
         end
     }
     use {
-        "themercorp/themer.lua",
+        "EdenEast/nightfox.nvim",
         config = function()
-            require("themer").setup({
-                colorscheme = "doom_one",
-                plugins = {
-                    treesitter=true,
-                    lualine=true,
-                    telescope=true,
-                    lsp=true,
-                    cmp=true
-                }
-            })
+            vim.cmd[[colorscheme duskfox]]
         end
     }
 end )
