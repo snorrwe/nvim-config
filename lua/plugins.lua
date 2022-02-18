@@ -118,6 +118,10 @@ return require('packer').startup(function()
     use {
         "EdenEast/nightfox.nvim",
         config = function()
+            require('nightfox').setup({
+                fox = "duskfox",
+                transparent=true
+            })
             vim.cmd[[colorscheme duskfox]]
         end
     }
