@@ -48,18 +48,21 @@ return require('packer').startup(function()
         end
     }
     use {
-        'hrsh7th/nvim-cmp',
+        'ms-jpq/coq_nvim',
+        branch = 'coq',
         requires = { 
-            'hrsh7th/cmp-nvim-lsp'
-            , 'hrsh7th/cmp-buffer'
-            , 'hrsh7th/cmp-path'
-            , 'hrsh7th/cmp-cmdline'
-            , 'dcampos/nvim-snippy'
-            , 'dcampos/cmp-snippy'
-            , "lukas-reineke/cmp-rg"
+            {
+                'ms-jpq/coq.artifacts',
+                branch='artifacts'
+            },
+            {
+                'ms-jpq/coq.thirdparty',
+                branch='3p'
+            }
         },
         config = function()
             require("plugin_setup").setupLsp()
+            vim.cmd[[COQnow]]
         end
     }
     use {
