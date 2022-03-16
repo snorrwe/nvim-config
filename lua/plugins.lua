@@ -63,7 +63,11 @@ return require('packer').startup(function()
         config = function()
             require("plugin_setup").setupLsp()
             vim.cmd[[COQnow]]
+        end,
+        run = function()
+            vim.cmd[[COQdeps]]
         end
+
     }
     use {
         'mfussenegger/nvim-dap',
@@ -122,10 +126,21 @@ return require('packer').startup(function()
         "EdenEast/nightfox.nvim",
         config = function()
             require('nightfox').setup({
-                fox = "duskfox",
-                transparent=true
+                options = {
+                    transparent = true,
+                    dim_inactive = true,
+                },
             })
             vim.cmd[[colorscheme duskfox]]
+        end,
+        run = function()
+            require('nightfox').setup({
+                options = {
+                    transparent = true,
+                    dim_inactive = true,
+                },
+            })
+            require('nightfox').compile()
         end
     }
 end )
