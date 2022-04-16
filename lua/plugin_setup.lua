@@ -187,7 +187,7 @@ function M.setupFloaterm()
     vim.cmd[[nnoremap <silent> <F12> <cmd>FloatermToggle<CR>]]
     vim.cmd[[tnoremap <silent> <F12> <C-\><C-n><cmd>FloatermToggle<CR>]]
 
-    vim.api.nvim_set_keymap("n", "lg", "<cmd>LazyGit<cr>", {silent=true, noremap=true})
+    vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>LazyGit<cr>", {silent=true, noremap=true})
 
     vim.g.floaterm_width = 0.8
     vim.g.floaterm_height = 0.8
