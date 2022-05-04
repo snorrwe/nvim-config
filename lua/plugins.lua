@@ -1,7 +1,6 @@
 return require('packer').startup(function()
     use 'wbthomason/packer.nvim' -- manage itself
     use { 'scrooloose/nerdcommenter' }
-    use { 'psliwka/vim-smoothie' }
     use { 'gko/vim-coloresque' }
     use {
         'kyazdani42/nvim-tree.lua',
