@@ -107,7 +107,7 @@ function M.setupTelescope()
     vim.cmd[[nnoremap <space>s <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>]]
     vim.cmd[[nnoremap <space>S <cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>]]
     vim.cmd[[nnoremap gr <cmd>lua require('telescope.builtin').lsp_references()<cr>]]
-    vim.cmd[[nnoremap ga <cmd>Telescope lsp_code_actions<cr>]]
+    vim.cmd[[nnoremap ga <cmd>lua vim.lsp.buf.code_action()<cr>]]
 end
 
 function M.setupDap()
