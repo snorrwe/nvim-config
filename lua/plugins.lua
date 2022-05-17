@@ -76,6 +76,7 @@ return require('packer').startup(function()
     }
     use {
         'akinsho/bufferline.nvim',
+        branch = 'main',
         config=function()
             require("plugin_setup").setupBufferline()
         end
