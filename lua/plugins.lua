@@ -143,10 +143,5 @@ return require('packer').startup(function()
             require('nightfox').compile()
         end
     }
-    use {
-        'airblade/vim-gitgutter',
-        config = function() 
-            vim.cmd[[GitGutterEnable]]
-        end
-    }
+    use { 'airblade/vim-gitgutter' }
 end )
