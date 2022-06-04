@@ -144,4 +144,12 @@ return require('packer').startup(function()
         end
     }
     use { 'airblade/vim-gitgutter' }
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup {
+                  triggers = "auto",
+            }
+      end
+    }
 end )

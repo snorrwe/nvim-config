@@ -33,3 +33,4 @@ vim.g.NERDCommentEmptyLines = 1
 -- Enable trimming of trailing whitespace when uncommenting
 vim.g.NERDTrimTrailingWhitespace = 1
 
+vim.cmd[[set timeoutlen=500]]

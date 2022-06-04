@@ -103,7 +103,7 @@ function M.setupTelescope()
     vim.cmd[[nnoremap <space>g <cmd>lua require('telescope.builtin').live_grep()<cr>]]
     vim.cmd[[nnoremap <space>b <cmd>lua require('telescope.builtin').buffers()<cr>]]
     vim.cmd[[nnoremap <space>t <cmd>lua require('telescope.builtin').help_tags()<cr>]]
-    vim.cmd[[nnoremap <space>l <cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>]]
+    vim.cmd[[nnoremap <space>l <cmd>lua require('telescope.builtin').diagnostics()<cr>]]
     vim.cmd[[nnoremap <space>s <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>]]
     vim.cmd[[nnoremap <space>S <cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>]]
     vim.cmd[[nnoremap gr <cmd>lua require('telescope.builtin').lsp_references()<cr>]]
@@ -220,7 +220,6 @@ function M.initialize()
     vim.cmd[[set list]]
 
     vim.cmd[[vnoremap // y/<C-R>"<cr>]]
-    vim.cmd[[noremap <Space> <cmd>noh<cr>]]
     vim.cmd[[noremap <leader>o <cmd>only<cr>]]
 
     -- show the next match in the middle of the screen
