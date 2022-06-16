@@ -114,6 +114,16 @@ return require('packer').startup(function()
             "JoosepAlviste/nvim-ts-context-commentstring",
             after = "nvim-treesitter",
           },
+          {
+            -- show context
+            "nvim-treesitter/nvim-treesitter-context",
+            after = "nvim-treesitter",
+            config = function()
+                require'treesitter-context'.setup {
+                    enable = true
+                }
+            end,
+          },
         },
     }
     use {
@@ -151,11 +161,5 @@ return require('packer').startup(function()
                   triggers = "auto",
             }
       end
-    }
-    use {
-        "wellle/context.vim",
-        config = function()
-           vim.g.context_enabled=1 
-        end,
     }
 end )
