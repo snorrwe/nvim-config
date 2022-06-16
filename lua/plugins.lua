@@ -152,4 +152,10 @@ return require('packer').startup(function()
             }
       end
     }
+    use {
+        "wellle/context.vim",
+        config = function()
+           vim.g.context_enabled=1 
+        end,
+    }
 end )
