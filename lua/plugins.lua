@@ -162,4 +162,10 @@ return require('packer').startup(function()
             }
       end
     }
+    use {
+      'lewis6991/satellite.nvim',
+      config = function()
+        require('satellite').setup()
+      end
+    }
 end )
