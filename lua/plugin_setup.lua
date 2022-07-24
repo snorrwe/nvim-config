@@ -162,10 +162,6 @@ end
 function M.setupTree()
     require'nvim-tree'.setup {
           update_cwd          = true,
-          update_to_buf_dir   = {
-            enable = true,
-            auto_open = true,
-          },
     }
 
     vim.cmd[[nnoremap <silent> <leader>n <cmd>NvimTreeToggle<CR>]]
