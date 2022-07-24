@@ -31,14 +31,9 @@ function M.setupLsp()
     -- Enable diagnostics
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
       vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = true,
-        signs = true,
         update_in_insert = true,
       }
     )
-
-    -- Enable type inlay hints (when the LSP supports is)
-    vim.cmd [[autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * silent! :lua require'lsp_extensions'.inlay_hints{ prefix = '» ', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} } ]]
 
     vim.cmd[[set shortmess-=F]]
     vim.cmd[[set shortmess+=c]]

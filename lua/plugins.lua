@@ -29,7 +29,6 @@ return require('packer').startup(function()
             require("plugin_setup").setupLspSaga()
         end
     }
-    use { 'tjdevries/lsp_extensions.nvim' }
     use { 'kyazdani42/nvim-web-devicons' }
     use {
       'nvim-lualine/lualine.nvim',
