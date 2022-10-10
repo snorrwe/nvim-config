@@ -170,4 +170,7 @@ return require('packer').startup(function()
     use {
         "junegunn/vim-slash",
     }
+    use {
+        "gerw/vim-latex-suite"
+    }
 end )
