@@ -68,8 +68,8 @@ function M.setupAutoformat()
         }
     }
 
-    vim.cmd[[nnoremap <leader>a :lua vim.lsp.buf.formatting()<CR>]]
-    vim.cmd[[vnoremap <leader>a :lua vim.lsp.buf.range_formatting()<CR>]]
+    vim.cmd[[nnoremap <leader>a :lua vim.lsp.buf.format()<CR>]]
+    vim.cmd[[vnoremap <leader>a :lua vim.lsp.buf.format()<CR>]]
 end
 
 function M.setupTelescope()
