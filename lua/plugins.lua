@@ -173,4 +173,14 @@ return require('packer').startup(function()
     use {
         "gerw/vim-latex-suite"
     }
+    -- Mason can be used to install lsp servers
+    -- Be sure to configure the installed lsp servers
+    -- in plugin_setup.lua / setupLsp
+    use {
+        "williamboman/mason.nvim" ,
+        requires = {
+            "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",
+        },
+    }
 end )

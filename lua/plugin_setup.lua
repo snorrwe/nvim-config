@@ -1,6 +1,8 @@
 local M = {}
 
 function M.setupLsp()
+    require("mason").setup{}
+    require("mason-lspconfig").setup{}
     vim.g.coq_settings = {
         auto_start=true
         , ['display.pum.source_context'] = {'[', ']'}
