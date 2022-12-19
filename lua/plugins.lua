@@ -19,16 +19,6 @@ return require('packer').startup(function()
             require "plugin_setup".setupAutoformat()
         end,
     }
-    use {
-        'neovim/nvim-lspconfig',
-        requires = { "https://github.com/p00f/clangd_extensions.nvim", },
-    }
-    use {
-        'tami5/lspsaga.nvim',
-        config = function()
-            require("plugin_setup").setupLspSaga()
-        end
-    }
     use { 'kyazdani42/nvim-web-devicons' }
     use {
         'nvim-lualine/lualine.nvim',
@@ -44,28 +34,6 @@ return require('packer').startup(function()
         config = function()
             require("plugin_setup").setupTelescope()
         end
-    }
-    use {
-        'ms-jpq/coq_nvim',
-        branch = 'coq',
-        requires = {
-            {
-                'ms-jpq/coq.artifacts',
-                branch = 'artifacts'
-            },
-            {
-                'ms-jpq/coq.thirdparty',
-                branch = '3p'
-            }
-        },
-        config = function()
-            require("plugin_setup").setupLsp()
-            vim.cmd [[COQnow]]
-        end,
-        run = function()
-            vim.cmd [[COQdeps]]
-        end
-
     }
     use {
         'akinsho/bufferline.nvim',
@@ -167,14 +135,44 @@ return require('packer').startup(function()
     use {
         "gerw/vim-latex-suite"
     }
-    -- Mason can be used to install lsp servers
-    -- Be sure to configure the installed lsp servers
-    -- in plugin_setup.lua / setupLsp
     use {
-        "williamboman/mason.nvim",
+        'VonHeikemen/lsp-zero.nvim',
+        config = function()
+            local lsp = require('lsp-zero')
+            lsp.preset('recommended')
+            lsp.ensure_installed({
+                'rust_analyzer',
+                'sumneko_lua',
+                'clangd',
+            })
+            lsp.set_preferences({
+                suggest_lsp_servers = false
+            })
+            local cmp = require('cmp')
+            local cmp_mappings = lsp.defaults.cmp_mappings {
+                ['<C-Space>'] = cmp.mapping.complete(),
+            }
+            lsp.setup_nvim_cmp {
+                mapping = cmp_mappings
+            }
+            lsp.setup()
+        end,
         requires = {
-            "williamboman/mason-lspconfig.nvim",
-            "neovim/nvim-lspconfig",
-        },
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
+
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-nvim-lua' },
+
+            -- Snippets
+            { 'L3MON4D3/LuaSnip' },
+        }
     }
 end)
