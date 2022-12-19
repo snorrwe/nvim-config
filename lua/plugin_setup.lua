@@ -107,13 +107,10 @@ function M.setupFloaterm()
 end
 
 function M.initialize()
-    vim.o.completeopt = "menuone,noselect"
-    -- gui
-    vim.cmd [[set guifont=CaskaydiaCove\ NF:h12]]
-    -- neovide
-    vim.g.neovide_cursor_vfx_mode = "railgun"
 
-    -- vim.cmd[[set background=dark]]
+    vim.opt.incsearch = true
+    vim.opt.smartindent = true
+    vim.o.completeopt = "menuone,noselect"
     vim.cmd [[syntax on]]
 
     vim.cmd [[set nocompatible]]
