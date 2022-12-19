@@ -13,11 +13,6 @@ end
 require('plugins')
 require'plugin_setup'.initialize()
 
-vim.cmd[[
-autocmd BufRead,BufNewFile *.frag set filetype=glsl
-autocmd BufRead,BufNewFile *.mm set filetype=objcpp
-]]
-
 -- NERDcommenter
 vim.g.NERDSpaceDelims = 1
 
@@ -32,5 +27,3 @@ vim.g.NERDCommentEmptyLines = 1
 
 -- Enable trimming of trailing whitespace when uncommenting
 vim.g.NERDTrimTrailingWhitespace = 1
-
-vim.cmd[[set timeoutlen=500]]
