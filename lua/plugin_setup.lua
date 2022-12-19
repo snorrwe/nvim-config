@@ -14,8 +14,8 @@ function M.setupAutoformat()
         }
     }
 
-    vim.cmd [[nnoremap <leader>a <cmd>lua vim.lsp.buf.format()<CR>]]
-    vim.cmd [[vnoremap <leader>a <cmd>lua vim.lsp.buf.format()<CR>]]
+    vim.keymap.set('n', '<leader>a', '<cmd>lua vim.lsp.buf.format()<CR>')
+    vim.keymap.set('v', '<leader>a', '<cmd>lua vim.lsp.buf.format()<CR>')
 end
 
 function M.setupTelescope()
@@ -40,15 +40,15 @@ function M.setupTelescope()
             }
         }
     }
-    vim.cmd [[nnoremap <space>f <cmd>lua require('telescope.builtin').find_files()<cr>]]
-    vim.cmd [[nnoremap <space>g <cmd>lua require('telescope.builtin').live_grep()<cr>]]
-    vim.cmd [[nnoremap <space>b <cmd>lua require('telescope.builtin').buffers()<cr>]]
-    vim.cmd [[nnoremap <space>t <cmd>lua require('telescope.builtin').help_tags()<cr>]]
-    vim.cmd [[nnoremap <space>l <cmd>lua require('telescope.builtin').diagnostics()<cr>]]
-    vim.cmd [[nnoremap <space>s <cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>]]
-    vim.cmd [[nnoremap <space>S <cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>]]
-    vim.cmd [[nnoremap gr <cmd>lua require('telescope.builtin').lsp_references()<cr>]]
-    vim.cmd [[nnoremap ga <cmd>lua vim.lsp.buf.code_action()<cr>]]
+    vim.keymap.set('n', '<space>f', "<cmd>lua require('telescope.builtin').find_files()<cr>")
+    vim.keymap.set('n', '<space>g', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
+    vim.keymap.set('n', '<space>b <cmd>lua', "require('telescope.builtin').buffers()<cr>")
+    vim.keymap.set('n', '<space>t', "<cmd>lua require('telescope.builtin').help_tags()<cr>")
+    vim.keymap.set('n', '<space>l', "<cmd>lua require('telescope.builtin').diagnostics()<cr>")
+    vim.keymap.set('n', '<space>s', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>")
+    vim.keymap.set('n', '<space>S', "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>")
+    vim.keymap.set('n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
+    vim.keymap.set('n', 'ga', "<cmd>lua vim.lsp.buf.code_action()<cr>")
 end
 
 function M.setupTS()
@@ -80,24 +80,24 @@ function M.setupTree()
         update_cwd = true,
     }
 
-    vim.cmd [[nnoremap <silent> <leader>n <cmd>NvimTreeToggle<CR>]]
-    vim.cmd [[nnoremap <silent> <leader>f <cmd>NvimTreeFindFile<CR>]]
+    vim.keymap.set('n', '<leader>n', '<cmd>NvimTreeToggle<CR>')
+    vim.keymap.set('n', '<leader>f', '<cmd>NvimTreeFindFile<CR>')
 end
 
 function M.setupBufferline()
     require("bufferline").setup {}
 
-    vim.cmd [[nnoremap <silent> <leader>wd <cmd>BufferLineCycleNext<cr>]]
-    vim.cmd [[nnoremap <silent> <leader>wa <cmd>BufferLineCyclePrev<cr>]]
+    vim.keymap.set('n', '<leader>wd', '<cmd>BufferLineCycleNext<cr>')
+    vim.keymap.set('n', '<leader>wa', '<cmd>BufferLineCyclePrev<cr>')
 end
 
 function M.setupFloaterm()
-    vim.cmd [[nnoremap <silent> <leader>tn <cmd>FloatermNew<cr>]]
-    vim.cmd [[nnoremap <silent> <leader>tt <cmd>FloatermToggle<cr>]]
+    vim.keymap.set('n', '<leader>tn', '<cmd>FloatermNew<cr>')
+    vim.keymap.set('n', '<leader>tt', '<cmd>FloatermToggle<cr>')
     vim.cmd [[command! Vifm FloatermNew vifm]]
     vim.cmd [[command! LazyGit FloatermNew lazygit]]
-    vim.cmd [[nnoremap <silent> <F12> <cmd>FloatermToggle<CR>]]
-    vim.cmd [[tnoremap <silent> <F12> <C-\><C-n><cmd>FloatermToggle<CR>]]
+    vim.keymap.set('n', '<F12>', '<cmd>FloatermToggle<CR>')
+    vim.keymap.set('t', '<F12>', '<C-\\><C-n><cmd>FloatermToggle<CR>')
 
     vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>LazyGit<cr>", { silent = true, noremap = true })
 
@@ -131,7 +131,7 @@ function M.initialize()
     vim.cmd [[set smartcase]]
     vim.cmd [[set list]]
 
-    vim.cmd [[vnoremap // y/<C-R>"<cr>]]
+    vim.keymap.set('v', '//', 'y/<C-R>"<cr>')
     vim.cmd [[noremap <leader>o <cmd>only<cr>]]
 
     -- show the next match in the middle of the screen
