@@ -138,6 +138,9 @@ function M.initialize()
     vim.cmd [[noremap <leader>[ :BufferLineCyclePrev<cr>]]
 
     vim.cmd [[autocmd User LspProgressUpdate redrawstatus]]
+
+    vim.opt.scrolloff = 8 -- always have at least 8 lines in the bottom when scrolling
+    vim.opt.signcolumn = "yes"
 end
 
 return M
