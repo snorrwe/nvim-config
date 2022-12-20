@@ -141,6 +141,10 @@ function M.initialize()
 
     vim.opt.scrolloff = 8 -- always have at least 8 lines in the bottom when scrolling
     vim.opt.signcolumn = "yes"
+
+    -- move highlightes stuff
+    vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
+    vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 end
 
 return M
