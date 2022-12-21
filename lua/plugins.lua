@@ -146,7 +146,7 @@ return require('packer').startup(function()
                 'clangd',
             })
             lsp.set_preferences({
-                suggest_lsp_servers = false
+                suggest_lsp_servers = true
             })
             local cmp = require('cmp')
             local cmp_mappings = lsp.defaults.cmp_mappings {
