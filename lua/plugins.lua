@@ -153,7 +153,8 @@ return require('packer').startup(function()
                 ['<C-Space>'] = cmp.mapping.complete(),
             }
             lsp.setup_nvim_cmp {
-                mapping = cmp_mappings
+                mapping = cmp_mappings,
+                preselect = cmp.PreselectMode.None
             }
             lsp.setup()
         end,
