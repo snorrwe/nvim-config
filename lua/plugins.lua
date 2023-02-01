@@ -146,7 +146,10 @@ return require('packer').startup(function()
                 'clangd',
             })
             lsp.set_preferences({
-                suggest_lsp_servers = true
+                suggest_lsp_servers = true,
+                set_lsp_keymaps = {
+                    ['<C-k>'] = 'omit'
+                }
             })
             local cmp = require('cmp')
             local cmp_mappings = lsp.defaults.cmp_mappings {
