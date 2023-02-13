@@ -142,7 +142,6 @@ return require('packer').startup(function()
             lsp.preset('recommended')
             lsp.ensure_installed({
                 'rust_analyzer',
-                'sumneko_lua',
                 'clangd',
             })
             lsp.set_preferences({
