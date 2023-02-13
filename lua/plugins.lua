@@ -141,8 +141,7 @@ return require('packer').startup(function()
             lsp.set_preferences({
                 suggest_lsp_servers = true,
                 set_lsp_keymaps = {
-                    ['<C-k>'] = 'omit',
-                    ['gr'] = 'omit',
+                    omit = { '<C-k>', 'gr' },
                 }
             })
             local cmp = require('cmp')
