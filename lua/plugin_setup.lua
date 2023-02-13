@@ -53,7 +53,7 @@ end
 
 function M.setupTS()
     require 'nvim-treesitter.configs'.setup {
-        ensure_installed = { "lua", "rust", "c", "cpp", "javascript", "typescript", "html", "css" },
+        ensure_installed = { "help", "lua", "rust", "c", "cpp", "javascript", "typescript", "html", "css" },
         sync_install = false,
         auto_install = true,
         highlight = {
@@ -78,6 +78,24 @@ function M.setupTS()
                 init_selection = '<leader><space>',
                 node_incremental = '=',
                 node_decremental = '-',
+            },
+        },
+        textobjects = {
+            move = {
+                enable = true,
+                set_jumps = true,
+                goto_next_start = {
+                    [']m'] = '@function.outer'
+                },
+                goto_previous_start = {
+                    ['[m'] = '@function.outer'
+                },
+                goto_next_end = {
+                    [']M'] = '@function.outer'
+                },
+                goto_previous_end = {
+                    ['[M'] = '@function.outer'
+                },
             },
         },
     }

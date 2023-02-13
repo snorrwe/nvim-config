@@ -66,13 +66,7 @@ return require('packer').startup(function()
                 after = "nvim-treesitter",
             },
             {
-                -- Autoclose tags
-                "windwp/nvim-ts-autotag",
-                after = "nvim-treesitter",
-            },
-            {
-                -- Context based commenting
-                "JoosepAlviste/nvim-ts-context-commentstring",
+                'nvim-treesitter/nvim-treesitter-textobjects',
                 after = "nvim-treesitter",
             },
             {
