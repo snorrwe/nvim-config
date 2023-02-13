@@ -31,13 +31,13 @@ function M.setupTelescope()
                 '--smart-case'
             }
             , file_ignore_patterns = {}
-            , mappings = {
-                n = {
-                    ["K"] = false,
-                    ["<C-k>"] = false,
-                    ["ga"] = false,
-                }
+        , mappings = {
+            n = {
+                ["K"] = false,
+                ["<C-k>"] = false,
+                ["ga"] = false,
             }
+        }
         }
     }
     vim.keymap.set('n', '<space>f', "<cmd>lua require('telescope.builtin').find_files()<cr>")
@@ -71,6 +71,14 @@ function M.setupTS()
         },
         autotag = {
             enable = true
+        },
+        incremental_selection = {
+            enable = true,
+            keymaps = {
+                init_selection = '<leader><space>',
+                node_incremental = '=',
+                node_decremental = '-',
+            },
         },
     }
 end
@@ -107,7 +115,6 @@ function M.setupFloaterm()
 end
 
 function M.initialize()
-
     vim.opt.incsearch = true
     vim.opt.smartindent = true
     vim.o.completeopt = "menuone,noselect"
