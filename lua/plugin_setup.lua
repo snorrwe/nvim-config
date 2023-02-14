@@ -161,6 +161,8 @@ function M.initialize()
     vim.cmd [[noremap <leader>] :BufferLineCycleNext<cr>]]
     vim.cmd [[noremap <leader>[ :BufferLineCyclePrev<cr>]]
     vim.keymap.set('n', 'ga', "<cmd>lua vim.lsp.buf.code_action()<cr>")
+    vim.keymap.set('n', '[d', "<cmd>lua vim.diagnostic.goto_prev()<cr>")
+    vim.keymap.set('n', ']d', "<cmd>lua vim.diagnostic.goto_next()<cr>")
 
     vim.cmd [[autocmd User LspProgressUpdate redrawstatus]]
 
