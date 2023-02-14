@@ -48,7 +48,6 @@ function M.setupTelescope()
     vim.keymap.set('n', '<space>s', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>")
     vim.keymap.set('n', '<space>S', "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>")
     vim.keymap.set('n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
-    vim.keymap.set('n', 'ga', "<cmd>lua vim.lsp.buf.code_action()<cr>")
 end
 
 function M.setupTS()
@@ -161,6 +160,7 @@ function M.initialize()
     vim.cmd [[noremap N Nzz]]
     vim.cmd [[noremap <leader>] :BufferLineCycleNext<cr>]]
     vim.cmd [[noremap <leader>[ :BufferLineCyclePrev<cr>]]
+    vim.keymap.set('n', 'ga', "<cmd>lua vim.lsp.buf.code_action()<cr>")
 
     vim.cmd [[autocmd User LspProgressUpdate redrawstatus]]
 
