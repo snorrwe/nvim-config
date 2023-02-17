@@ -27,3 +27,12 @@ vim.g.NERDCommentEmptyLines = 1
 
 -- Enable trimming of trailing whitespace when uncommenting
 vim.g.NERDTrimTrailingWhitespace = 1
+
+
+-- wgsl
+local wgsl_group = vim.api.nvim_create_augroup("wgsl", { clear = true })
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = { "*.wgsl" },
+    group = wgsl_group,
+    command = "set ft=wgsl"
+})
