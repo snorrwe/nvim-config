@@ -133,6 +133,8 @@ return require('packer').startup(function()
         'VonHeikemen/lsp-zero.nvim',
         config = function()
             local lsp = require('lsp-zero')
+            local clangd_extensions = require('clangd_extensions')
+            local rust_rools = require('rust-tools')
             lsp.preset('recommended')
             lsp.ensure_installed({
                 'rust_analyzer',
@@ -144,6 +146,10 @@ return require('packer').startup(function()
                     omit = { '<C-k>', 'gr' },
                 }
             })
+            -- clangd is set up by clangd_extensions
+            -- rust_analyzer is set up by rust-tools
+            lsp.skip_server_setup({ 'clangd', 'rust_analyzer' })
+
             local cmp = require('cmp')
             local cmp_mappings = lsp.defaults.cmp_mappings {
                 ['<C-Space>'] = cmp.mapping.complete(),
@@ -153,12 +159,19 @@ return require('packer').startup(function()
                 preselect = cmp.PreselectMode.None
             }
             lsp.setup()
+            local clangd_lsp = lsp.build_options('clangd', {})
+            clangd_extensions.setup { server = clangd_lsp }
+
+            local rust_lsp = lsp.build_options('rust_analyzer', {})
+            rust_rools.setup { server = rust_lsp }
         end,
         requires = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
+            { 'p00f/clangd_extensions.nvim' },
+            { 'simrat39/rust-tools.nvim' },
 
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },
@@ -170,6 +183,10 @@ return require('packer').startup(function()
 
             -- Snippets
             { 'L3MON4D3/LuaSnip' },
+
+            -- Debugging
+            { 'nvim-lua/plenary.nvim' },
+            { 'mfussenegger/nvim-dap' },
         }
     }
     use {
