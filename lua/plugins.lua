@@ -196,7 +196,8 @@ return require('packer').startup(function()
     use {
         'mfussenegger/nvim-dap',
         config = function()
-            require("plugin_setup").setupDebugging()
+            local suc, res = pcall(require("plugin_setup").setupDebugging)
+            if not suc then print("Failed to setup dap: ", res) end
         end,
         requires = {
             { "jay-babu/mason-nvim-dap.nvim" },
