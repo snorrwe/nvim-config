@@ -197,10 +197,11 @@ return require('packer').startup(function()
         'mfussenegger/nvim-dap',
         config = function()
             local suc, res = pcall(require("plugin_setup").setupDebugging)
-            if not suc then print("Failed to setup dap: ", res) end
+            if not suc then
+                print("Failed to setup dap: ", res)
+            end
         end,
         requires = {
-            { "jay-babu/mason-nvim-dap.nvim" },
             { "rcarriga/nvim-dap-ui" },
             { 'nvim-telescope/telescope-dap.nvim' },
             { 'theHamsta/nvim-dap-virtual-text' },

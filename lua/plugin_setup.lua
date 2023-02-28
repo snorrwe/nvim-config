@@ -2,9 +2,6 @@ local M = {}
 
 function M.setupDebugging()
     local dap, dapui = require("dap"), require("dapui")
-    local mason_dap = require("mason-nvim-dap");
-    mason_dap.setup { automatic_setup = true }
-    mason_dap.setup_handlers();
     dapui.setup()
     dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
@@ -21,6 +18,15 @@ function M.setupDebugging()
     vim.keymap.set('n', '<F9>', '<cmd>lua require"dap".step_out()<CR>');
     vim.keymap.set('n', '<leader>b', '<cmd>lua require"dap".toggle_breakpoint()<CR>');
     vim.keymap.set('n', '<leader>B', '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>');
+
+    dap.adapters.cppdbg = {
+        type = 'server',
+        port = '${port}',
+        executable = {
+            command = 'codelldb',
+            args = { '--port', '${port}' },
+        },
+    }
 
     dap.configurations.cpp = {
         {
