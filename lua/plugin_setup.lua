@@ -1,5 +1,79 @@
 local M = {}
 
+function M.setupDebugging()
+    local dap, dapui = require("dap"), require("dapui")
+    local mason_dap = require("mason-nvim-dap");
+    mason_dap.setup { automatic_setup = true }
+    mason_dap.setup_handlers();
+    dapui.setup()
+    dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+    end
+    dap.listeners.before.event_terminated["dapui_config"] = function()
+        dapui.close()
+    end
+    dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close()
+    end
+    vim.keymap.set('n', '<F5>', '<cmd>lua require"dap".continue()<CR>');
+    vim.keymap.set('n', '<F10>', '<cmd>lua require"dap".step_over()<CR>');
+    vim.keymap.set('n', '<F11>', '<cmd>lua require"dap".step_into()<CR>');
+    vim.keymap.set('n', '<F9>', '<cmd>lua require"dap".step_out()<CR>');
+    vim.keymap.set('n', '<leader>b', '<cmd>lua require"dap".toggle_breakpoint()<CR>');
+    vim.keymap.set('n', '<leader>B', '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>');
+
+    dap.configurations.cpp = {
+        {
+            name = 'Launch file',
+            type = 'cppdbg',
+            request = 'launch',
+            program = function()
+                return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+            end,
+            cwd = '${workspaceFolder}',
+            stopAtEntry = true,
+        },
+        {
+            name = 'Launch file with args',
+            type = 'cppdbg',
+            request = 'launch',
+            program = function()
+                return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+            end,
+            cwd = '${workspaceFolder}',
+            stopAtEntry = true,
+            args = function()
+                local args = vim.fn.input('Args: ')
+                local result = {}
+                for arg in string.gmatch(args, "[^%s]+") do
+                    table.insert(result, arg)
+                end
+                return result
+            end
+        },
+        {
+            name = 'Launch lpc',
+            type = 'cppdbg',
+            request = 'launch',
+            program = function()
+                return vim.fn.getcwd() .. '/build/looq_pc'
+            end,
+            cwd = '${workspaceFolder}',
+            stopAtEntry = true,
+            args =
+            function()
+                local result = {
+                    "-p",
+                    "~/Downloads/sample_db/sample_db_processed-001/sample_db_processed",
+                    "-r",
+                    "~/raw",
+                }
+                return result
+            end
+        },
+    }
+end
+
 function M.setupAutoformat()
     local null_ls = require "null-ls"
     -- check supported formatters

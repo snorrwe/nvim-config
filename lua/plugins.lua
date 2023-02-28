@@ -192,4 +192,17 @@ return require('packer').startup(function()
     use {
         'christoomey/vim-tmux-navigator',
     }
+    -- Debugger
+    use {
+        'mfussenegger/nvim-dap',
+        config = function()
+            require("plugin_setup").setupDebugging()
+        end,
+        requires = {
+            { "jay-babu/mason-nvim-dap.nvim" },
+            { "rcarriga/nvim-dap-ui" },
+            { 'nvim-telescope/telescope-dap.nvim' },
+            { 'theHamsta/nvim-dap-virtual-text' },
+        }
+    }
 end)
