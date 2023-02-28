@@ -70,9 +70,9 @@ function M.setupDebugging()
             function()
                 local result = {
                     "-p",
-                    "~/Downloads/sample_db/sample_db_processed-001/sample_db_processed",
+                    vim.fn.expand("$HOME/Downloads/sample_db/sample_db_processed-001/sample_db_processed"),
                     "-r",
-                    "~/raw",
+                    vim.fn.expand("$HOME/Downloads/raw"),
                 }
                 return result
             end
