@@ -71,8 +71,9 @@ function M.setupDebugging()
                 local result = {
                     "-p",
                     vim.fn.expand("$HOME/Downloads/sample_db/sample_db_processed-001/sample_db_processed"),
-                    "-r",
-                    vim.fn.expand("$HOME/Downloads/raw"),
+                    "-m",
+                    vim.fn.expand("$HOME/Downloads/masks"),
+                    "-d",
                 }
                 return result
             end
