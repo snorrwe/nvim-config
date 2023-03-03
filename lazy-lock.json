@@ -31,9 +31,9 @@
   "rust-tools.nvim": { "branch": "master", "commit": "71d2cf67b5ed120a0e31b2c8adb210dd2834242f" },
   "telescope-dap.nvim": { "branch": "master", "commit": "313d2ea12ae59a1ca51b62bf01fc941a983d9c9c" },
   "telescope.nvim": { "branch": "master", "commit": "a3f17d3baf70df58b9d3544ea30abe52a7a832c2" },
-  "vim-coloresque": { "branch": "master", "commit": "e12a5007068e74c8ffe5b1da91c25989de9c2081" },
   "vim-floaterm": { "branch": "master", "commit": "ca44a13a379d9af75092bc2fe2efee8c5248e876" },
   "vim-gitgutter": { "branch": "master", "commit": "edb607cc4b329099da825c028c53b1264dbd2350" },
+  "vim-latex-suite": { "branch": "master", "commit": "8b93904252900db24837e8fda359467bdcd2731e" },
   "vim-slash": { "branch": "master", "commit": "31aee09b7ea8893a18fa34f65e63e364fc998444" },
   "vim-tmux-navigator": { "branch": "master", "commit": "cdd66d6a37d991bba7997d593586fc51a5b37aa8" },
   "which-key.nvim": { "branch": "main", "commit": "fb027738340502b556c3f43051f113bcaa7e8e63" }

@@ -129,7 +129,8 @@ return {
         event = "BufEnter",
     },
     {
-        "gerw/vim-latex-suite"
+        "gerw/vim-latex-suite",
+        ft = "tex"
     },
     {
         'VonHeikemen/lsp-zero.nvim',
