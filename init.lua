@@ -1,16 +1,26 @@
 local HOME = vim.env.HOME .. '/.config/nvim'
-local fn = vim.fn
 
 vim.o.termguicolors = true
 vim.g.mapleader = ','
 vim.g.python3_host_prog = HOME .. '/python3/bin/python'
 
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({ 'git', 'clone', '--depth=1', 'https://github.com/wbthomason/packer.nvim', install_path })
+-- bootstrap lazy
+--
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
+vim.opt.rtp:prepend(lazypath)
 
-require('plugins')
+require("lazy").setup("plugins")
+-- FIXME: split plugin_setup to different modules
 require 'plugin_setup'.initialize()
 
 -- NERDcommenter

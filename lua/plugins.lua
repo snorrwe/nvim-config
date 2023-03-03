@@ -1,50 +1,49 @@
-return require('packer').startup(function()
-    use 'wbthomason/packer.nvim' -- manage itself
-    use { 'scrooloose/nerdcommenter' }
-    use { 'gko/vim-coloresque' }
-    use {
+return {
+    { 'scrooloose/nerdcommenter' },
+    { 'gko/vim-coloresque' },
+    {
         'kyazdani42/nvim-tree.lua',
-        requires = {
+        dependencies = {
             'kyazdani42/nvim-web-devicons', -- for file icon
         },
         config = function()
             require("plugin_setup").setupTree()
         end
-    }
+    },
     -- autoformat
-    use {
+    {
         "jose-elias-alvarez/null-ls.nvim",
         event = "BufRead",
         config = function()
             require "plugin_setup".setupAutoformat()
         end,
-    }
-    use { 'kyazdani42/nvim-web-devicons' }
-    use {
+    },
+    { 'kyazdani42/nvim-web-devicons' },
+    {
         'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        dependencies = { 'kyazdani42/nvim-web-devicons' },
         config = function()
             require("config_lualine")
         end
-    }
-    use { 'editorconfig/editorconfig-vim' }
-    use {
+    },
+    { 'editorconfig/editorconfig-vim' },
+    {
         'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' } },
+        dependencies = { { 'nvim-lua/plenary.nvim' } },
         config = function()
             require("plugin_setup").setupTelescope()
         end
-    }
-    use {
+    },
+    {
         'akinsho/bufferline.nvim',
         branch = 'main',
         config = function()
             require("plugin_setup").setupBufferline()
         end
-    }
-    use {
+    },
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = ":TSUpdate",
+        build = ":TSUpdate",
         event = "BufRead",
         cmd = {
             "TSInstall",
@@ -59,20 +58,18 @@ return require('packer').startup(function()
         config = function()
             require("plugin_setup").setupTS()
         end,
-        requires = {
+        dependencies = {
             {
                 -- Parenthesis highlighting
                 "p00f/nvim-ts-rainbow",
-                after = "nvim-treesitter",
+                "nvim-treesitter",
             },
             {
                 'nvim-treesitter/nvim-treesitter-textobjects',
-                after = "nvim-treesitter",
             },
             {
                 -- show context
                 "nvim-treesitter/nvim-treesitter-context",
-                after = "nvim-treesitter",
                 config = function()
                     require 'treesitter-context'.setup {
                         enable = true
@@ -80,14 +77,14 @@ return require('packer').startup(function()
                 end,
             },
         },
-    }
-    use {
+    },
+    {
         'voldikss/vim-floaterm',
         config = function()
             require("plugin_setup").setupFloaterm()
         end
-    }
-    use {
+    },
+    {
         "EdenEast/nightfox.nvim",
         config = function()
             require('nightfox').setup({
@@ -98,7 +95,7 @@ return require('packer').startup(function()
             })
             vim.cmd [[colorscheme duskfox]]
         end,
-        run = function()
+        build = function()
             require('nightfox').setup({
                 options = {
                     transparent = true,
@@ -107,29 +104,29 @@ return require('packer').startup(function()
             })
             require('nightfox').compile()
         end
-    }
-    use { 'airblade/vim-gitgutter' }
-    use {
+    },
+    { 'airblade/vim-gitgutter' },
+    {
         "folke/which-key.nvim",
         config = function()
             require("which-key").setup {
                 triggers = "auto",
             }
         end
-    }
-    use {
+    },
+    {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
         config = function()
             require("lsp_lines").setup()
         end,
-    }
-    use {
+    },
+    {
         "junegunn/vim-slash",
-    }
-    use {
+    },
+    {
         "gerw/vim-latex-suite"
-    }
-    use {
+    },
+    {
         'VonHeikemen/lsp-zero.nvim',
         config = function()
             local lsp = require('lsp-zero')
@@ -165,7 +162,7 @@ return require('packer').startup(function()
             local rust_lsp = lsp.build_options('rust_analyzer', {})
             rust_rools.setup { server = rust_lsp }
         end,
-        requires = {
+        dependencies = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
             { 'williamboman/mason.nvim' },
@@ -188,12 +185,12 @@ return require('packer').startup(function()
             { 'nvim-lua/plenary.nvim' },
             { 'mfussenegger/nvim-dap' },
         }
-    }
-    use {
+    },
+    {
         'christoomey/vim-tmux-navigator',
-    }
+    },
     -- Debugger
-    use {
+    {
         'mfussenegger/nvim-dap',
         config = function()
             local suc, res = pcall(require("plugin_setup").setupDebugging)
@@ -201,10 +198,10 @@ return require('packer').startup(function()
                 print("Failed to setup dap: ", res)
             end
         end,
-        requires = {
+        dependencies = {
             { "rcarriga/nvim-dap-ui" },
             { 'nvim-telescope/telescope-dap.nvim' },
             { 'theHamsta/nvim-dap-virtual-text' },
         }
-    }
-end)
+    },
+}
