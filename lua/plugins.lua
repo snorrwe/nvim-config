@@ -31,6 +31,7 @@ return {
     },
     {
         'akinsho/bufferline.nvim',
+        event = "BufRead",
         branch = 'main',
         config = function()
             require("plugin_setup").setupBufferline()
@@ -193,6 +194,7 @@ return {
     -- Debugger
     {
         'mfussenegger/nvim-dap',
+        keys = "<F5>",
         config = function()
             local suc, res = pcall(require("setup_debugging"))
             if not suc then
