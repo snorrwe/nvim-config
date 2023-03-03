@@ -18,7 +18,6 @@ return {
             vim.g.NERDTrimTrailingWhitespace = 1
         end
     },
-    { 'gko/vim-coloresque' },
     {
         'kyazdani42/nvim-tree.lua',
         dependencies = {
