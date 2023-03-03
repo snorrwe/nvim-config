@@ -105,13 +105,8 @@ return {
         end
     },
     {
-        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-        config = function()
-            require("lsp_lines").setup()
-        end,
-    },
-    {
         "junegunn/vim-slash",
+        event = "BufEnter",
     },
     {
         "gerw/vim-latex-suite"
@@ -160,6 +155,12 @@ return {
             { 'williamboman/mason-lspconfig.nvim' },
             { 'p00f/clangd_extensions.nvim' },
             { 'simrat39/rust-tools.nvim' },
+            {
+                "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+                config = function()
+                    require("lsp_lines").setup()
+                end,
+            },
 
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },
