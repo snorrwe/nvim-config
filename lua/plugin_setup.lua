@@ -1,86 +1,5 @@
 local M = {}
 
-function M.setupDebugging()
-    local dap, dapui = require("dap"), require("dapui")
-    dapui.setup()
-    dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open()
-    end
-    dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close()
-    end
-    dap.listeners.before.event_exited["dapui_config"] = function()
-        dapui.close()
-    end
-    vim.keymap.set('n', '<F5>', '<cmd>lua require"dap".continue()<CR>');
-    vim.keymap.set('n', '<F10>', '<cmd>lua require"dap".step_over()<CR>');
-    vim.keymap.set('n', '<F11>', '<cmd>lua require"dap".step_into()<CR>');
-    vim.keymap.set('n', '<F9>', '<cmd>lua require"dap".step_out()<CR>');
-    vim.keymap.set('n', '<leader>b', '<cmd>lua require"dap".toggle_breakpoint()<CR>');
-    vim.keymap.set('n', '<leader>B', '<cmd>lua require"dap".set_breakpoint(vim.fn.input("Breakpoint condition: "))<CR>');
-
-    dap.adapters.cppdbg = {
-        type = 'server',
-        port = '${port}',
-        executable = {
-            command = 'codelldb',
-            args = { '--port', '${port}' },
-        },
-    }
-
-    dap.configurations.cpp = {
-        {
-            name = 'Launch file',
-            type = 'cppdbg',
-            request = 'launch',
-            program = function()
-                return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-            end,
-            cwd = '${workspaceFolder}',
-            stopAtEntry = true,
-        },
-        {
-            name = 'Launch file with args',
-            type = 'cppdbg',
-            request = 'launch',
-            program = function()
-                return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-            end,
-            cwd = '${workspaceFolder}',
-            stopAtEntry = true,
-            args = function()
-                local args = vim.fn.input('Args: ')
-                local result = {}
-                for arg in string.gmatch(args, "[^%s]+") do
-                    table.insert(result, arg)
-                end
-                return result
-            end
-        },
-        {
-            name = 'Launch lpc',
-            type = 'cppdbg',
-            request = 'launch',
-            program = function()
-                return vim.fn.getcwd() .. '/build/looq_pc'
-            end,
-            cwd = '${workspaceFolder}',
-            stopAtEntry = true,
-            args =
-            function()
-                local result = {
-                    "-p",
-                    vim.fn.expand("$HOME/Downloads/sample_db/sample_db_processed-001/sample_db_processed"),
-                    "-m",
-                    vim.fn.expand("$HOME/Downloads/masks"),
-                    "-d",
-                }
-                return result
-            end
-        },
-    }
-end
-
 function M.setupAutoformat()
     local null_ls = require "null-ls"
     -- check supported formatters
@@ -97,38 +16,6 @@ function M.setupAutoformat()
 
     vim.keymap.set('n', '<leader>a', '<cmd>lua vim.lsp.buf.format()<CR>')
     vim.keymap.set('v', '<leader>a', '<cmd>lua vim.lsp.buf.format()<CR>')
-end
-
-function M.setupTelescope()
-    require('telescope').setup {
-        defaults = {
-            vimgrep_arguments = {
-                'rg',
-                '--color=never',
-                '--no-heading',
-                '--with-filename',
-                '--line-number',
-                '--column',
-                '--smart-case'
-            }
-            , file_ignore_patterns = {}
-        , mappings = {
-            n = {
-                ["K"] = false,
-                ["<C-k>"] = false,
-                ["ga"] = false,
-            }
-        }
-        }
-    }
-    vim.keymap.set('n', '<space>f', "<cmd>lua require('telescope.builtin').find_files()<cr>")
-    vim.keymap.set('n', '<space>g', "<cmd>lua require('telescope.builtin').live_grep()<cr>")
-    vim.keymap.set('n', '<space>b', "<cmd>lua require('telescope.builtin').buffers()<cr>")
-    vim.keymap.set('n', '<space>t', "<cmd>lua require('telescope.builtin').help_tags()<cr>")
-    vim.keymap.set('n', '<space>l', "<cmd>lua require('telescope.builtin').diagnostics()<cr>")
-    vim.keymap.set('n', '<space>s', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>")
-    vim.keymap.set('n', '<space>S', "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>")
-    vim.keymap.set('n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
 end
 
 function M.setupTS()
@@ -165,16 +52,16 @@ function M.setupTS()
                 enable = true,
                 set_jumps = true,
                 goto_next_start = {
-                    [']m'] = '@function.outer'
+                        [']m'] = '@function.outer'
                 },
                 goto_previous_start = {
-                    ['[m'] = '@function.outer'
+                        ['[m'] = '@function.outer'
                 },
                 goto_next_end = {
-                    [']M'] = '@function.outer'
+                        [']M'] = '@function.outer'
                 },
                 goto_previous_end = {
-                    ['[M'] = '@function.outer'
+                        ['[M'] = '@function.outer'
                 },
             },
         },

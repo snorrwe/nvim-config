@@ -10,14 +10,6 @@ return {
             require("plugin_setup").setupTree()
         end
     },
-    -- autoformat
-    {
-        "jose-elias-alvarez/null-ls.nvim",
-        event = "BufRead",
-        config = function()
-            require "plugin_setup".setupAutoformat()
-        end,
-    },
     { 'kyazdani42/nvim-web-devicons' },
     {
         'nvim-lualine/lualine.nvim',
@@ -29,9 +21,12 @@ return {
     { 'editorconfig/editorconfig-vim' },
     {
         'nvim-telescope/telescope.nvim',
-        dependencies = { { 'nvim-lua/plenary.nvim' } },
+        dependencies = { {
+            'nvim-lua/plenary.nvim',
+            lazy = true,
+        } },
         config = function()
-            require("plugin_setup").setupTelescope()
+            require("setup_telescope")()
         end
     },
     {
@@ -59,11 +54,6 @@ return {
             require("plugin_setup").setupTS()
         end,
         dependencies = {
-            {
-                -- Parenthesis highlighting
-                "p00f/nvim-ts-rainbow",
-                "nvim-treesitter",
-            },
             {
                 'nvim-treesitter/nvim-treesitter-textobjects',
             },
@@ -149,7 +139,7 @@ return {
 
             local cmp = require('cmp')
             local cmp_mappings = lsp.defaults.cmp_mappings {
-                ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<C-Space>'] = cmp.mapping.complete(),
             }
             lsp.setup_nvim_cmp {
                 mapping = cmp_mappings,
@@ -184,6 +174,15 @@ return {
             -- Debugging
             { 'nvim-lua/plenary.nvim' },
             { 'mfussenegger/nvim-dap' },
+
+            -- formatting
+            {
+                "jose-elias-alvarez/null-ls.nvim",
+                event = "BufRead",
+                config = function()
+                    require "plugin_setup".setupAutoformat()
+                end,
+            },
         }
     },
     {
@@ -193,7 +192,7 @@ return {
     {
         'mfussenegger/nvim-dap',
         config = function()
-            local suc, res = pcall(require("plugin_setup").setupDebugging)
+            local suc, res = pcall(require("setup_debugging"))
             if not suc then
                 print("Failed to setup dap: ", res)
             end
