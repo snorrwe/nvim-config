@@ -194,10 +194,6 @@ return {
             -- Snippets
             { 'L3MON4D3/LuaSnip' },
 
-            -- Debugging
-            { 'nvim-lua/plenary.nvim' },
-            { 'mfussenegger/nvim-dap' },
-
             -- formatting
             {
                 "jose-elias-alvarez/null-ls.nvim",
@@ -214,7 +210,6 @@ return {
     -- Debugger
     {
         'mfussenegger/nvim-dap',
-        keys = "<F5>",
         config = function()
             local suc, res = pcall(require("setup_debugging"))
             if not suc then
