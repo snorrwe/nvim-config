@@ -23,22 +23,6 @@ require("lazy").setup("plugins")
 -- FIXME: split plugin_setup to different modules
 require 'plugin_setup'.initialize()
 
--- NERDcommenter
-vim.g.NERDSpaceDelims = 1
-
--- Use compact syntax for prettified multi-line comments
-vim.g.NERDCompactSexyComs = 1
-
--- Align line-wise comment delimiters flush left instead of following code indentation
-vim.g.NERDDefaultAlign = 'left'
-
--- Allow commenting and inverting empty lines (useful when commenting a region)
-vim.g.NERDCommentEmptyLines = 1
-
--- Enable trimming of trailing whitespace when uncommenting
-vim.g.NERDTrimTrailingWhitespace = 1
-
-
 -- wgsl
 local wgsl_group = vim.api.nvim_create_augroup("wgsl", { clear = true })
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {

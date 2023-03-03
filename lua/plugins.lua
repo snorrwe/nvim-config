@@ -1,5 +1,23 @@
 return {
-    { 'scrooloose/nerdcommenter' },
+    {
+        'scrooloose/nerdcommenter',
+        config = function()
+            -- NERDcommenter
+            vim.g.NERDSpaceDelims = 1
+
+            -- Use compact syntax for prettified multi-line comments
+            vim.g.NERDCompactSexyComs = 1
+
+            -- Align line-wise comment delimiters flush left instead of following code indentation
+            vim.g.NERDDefaultAlign = 'left'
+
+            -- Allow commenting and inverting empty lines (useful when commenting a region)
+            vim.g.NERDCommentEmptyLines = 1
+
+            -- Enable trimming of trailing whitespace when uncommenting
+            vim.g.NERDTrimTrailingWhitespace = 1
+        end
+    },
     { 'gko/vim-coloresque' },
     {
         'kyazdani42/nvim-tree.lua',
@@ -10,7 +28,6 @@ return {
             require("plugin_setup").setupTree()
         end
     },
-    { 'kyazdani42/nvim-web-devicons' },
     {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'kyazdani42/nvim-web-devicons' },
@@ -18,7 +35,10 @@ return {
             require("config_lualine")
         end
     },
-    { 'editorconfig/editorconfig-vim' },
+    {
+        'editorconfig/editorconfig-vim',
+        event = "BufRead",
+    },
     {
         'nvim-telescope/telescope.nvim',
         dependencies = { {
