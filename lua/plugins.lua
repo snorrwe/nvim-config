@@ -217,9 +217,9 @@ return {
             end
         end,
         dependencies = {
-            { "rcarriga/nvim-dap-ui" },
-            { 'nvim-telescope/telescope-dap.nvim' },
-            { 'theHamsta/nvim-dap-virtual-text' },
+            "rcarriga/nvim-dap-ui",
+            'nvim-telescope/telescope-dap.nvim',
+            'theHamsta/nvim-dap-virtual-text',
         }
     },
 }

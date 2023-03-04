@@ -1,5 +1,6 @@
 return function()
     local dap, dapui = require("dap"), require("dapui")
+
     dapui.setup()
     dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
@@ -63,18 +64,18 @@ return function()
                 return vim.fn.getcwd() .. '/build/looq_pc'
             end,
             cwd = '${workspaceFolder}',
-            stopAtEntry = true,
+            stopAtEntry = false,
             args =
-            function()
-                local result = {
-                    "-p",
-                    vim.fn.expand("$HOME/Downloads/sample_db/sample_db_processed-001/sample_db_processed"),
-                    "-m",
-                    vim.fn.expand("$HOME/Downloads/masks"),
-                    "-d",
-                }
-                return result
-            end
+                function()
+                    local result = {
+                        "-p",
+                        vim.fn.expand("$HOME/Downloads/sample_db/sample_db_processed-001/sample_db_processed"),
+                        "-m",
+                        vim.fn.expand("$HOME/Downloads/masks"),
+                        "-d",
+                    }
+                    return result
+                end
         },
     }
 end
