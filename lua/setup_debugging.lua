@@ -62,7 +62,8 @@ return function()
             type = 'cppdbg',
             request = 'launch',
             program = function()
-                return vim.fn.getcwd() .. '/build/looq_pc'
+                return vim.fn.getcwd() .. '/build/pc_postprocess'
+
             end,
             cwd = '${workspaceFolder}',
             stopAtEntry = false,
@@ -73,7 +74,10 @@ return function()
                         vim.fn.expand("$HOME/Downloads/sample_db/sample_db_processed-001/sample_db_processed"),
                         "-m",
                         vim.fn.expand("$HOME/Downloads/masks"),
-                        "-d",
+                        "--images",
+                        vim.fn.expand("$HOME/Downloads/sample_db/sample_db_processed-001/sample_db_processed/dense/images"),
+                        "-o",
+                        "result",
                     }
                     return result
                 end
