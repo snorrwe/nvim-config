@@ -63,7 +63,6 @@ return function()
             request = 'launch',
             program = function()
                 return vim.fn.getcwd() .. '/build/pc_postprocess'
-
             end,
             cwd = '${workspaceFolder}',
             stopAtEntry = false,
@@ -71,11 +70,11 @@ return function()
                 function()
                     local result = {
                         "-p",
-                        vim.fn.expand("$HOME/Downloads/sample_db/sample_db_processed-001/sample_db_processed"),
+                        "./data/191/processing/database/",
                         "-m",
-                        vim.fn.expand("$HOME/Downloads/masks"),
+                        "./data/191/outputs/segmentation_masks/",
                         "--images",
-                        vim.fn.expand("$HOME/Downloads/sample_db/sample_db_processed-001/sample_db_processed/dense/images"),
+                        "./data/191/raw/images/",
                         "-o",
                         "result",
                     }
