@@ -156,14 +156,11 @@ return {
 
             local cmp = require('cmp')
             local cmp_mappings = lsp.defaults.cmp_mappings {
-                ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<C-Space>'] = cmp.mapping.complete(),
             }
             lsp.setup_nvim_cmp {
                 mapping = cmp_mappings,
-                preselect = cmp.PreselectMode.None,
-                view = {
-                    entries = { name = 'custom', selection_order = 'near_cursor' }
-                },
+                preselect = cmp.PreselectMode.None
             }
             lsp.setup()
             local clangd_lsp = lsp.build_options('clangd', {})
