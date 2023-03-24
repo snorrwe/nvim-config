@@ -156,11 +156,22 @@ return {
 
             local cmp = require('cmp')
             local cmp_mappings = lsp.defaults.cmp_mappings {
-                    ['<C-Space>'] = cmp.mapping.complete(),
+                ['<C-Space>'] = cmp.mapping.complete(),
             }
             lsp.setup_nvim_cmp {
                 mapping = cmp_mappings,
-                preselect = cmp.PreselectMode.None
+                preselect = cmp.PreselectMode.None,
+                formatting = {
+                    format = function(_, vim_item)
+                        vim_item.menu = nil;
+                        local label = vim_item.abbr
+                        local truncated_label = vim.fn.strcharpart(label, 0, 100)
+                        if truncated_label ~= label then
+                            vim_item.abbr = truncated_label .. '..'
+                        end
+                        return vim_item
+                    end,
+                },
             }
             lsp.setup()
             local clangd_lsp = lsp.build_options('clangd', {})
