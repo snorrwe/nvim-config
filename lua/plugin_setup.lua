@@ -69,9 +69,12 @@ function M.setupTS()
 end
 
 function M.setupTree()
-    local oil = require 'oil'
-    oil.setup {}
-    vim.keymap.set('n', '<leader>n', oil.open)
+    require 'nvim-tree'.setup {
+        update_cwd = true,
+    }
+
+    vim.keymap.set('n', '<leader>n', '<cmd>NvimTreeToggle<CR>')
+    vim.keymap.set('n', '<leader>f', '<cmd>NvimTreeFindFile<CR>')
 end
 
 function M.setupBufferline()

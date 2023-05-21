@@ -19,10 +19,17 @@ return {
         end
     },
     {
-        'stevearc/oil.nvim',
+        'kyazdani42/nvim-tree.lua',
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("plugin_setup").setupTree()
+        end
+    },
+    {
+        'stevearc/oil.nvim',
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("oil").setup()
         end
     },
     {
