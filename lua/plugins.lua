@@ -19,17 +19,15 @@ return {
         end
     },
     {
-        'kyazdani42/nvim-tree.lua',
-        dependencies = {
-            'kyazdani42/nvim-web-devicons', -- for file icon
-        },
+        'stevearc/oil.nvim',
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("plugin_setup").setupTree()
         end
     },
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'kyazdani42/nvim-web-devicons' },
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
             require("config_lualine")
         end

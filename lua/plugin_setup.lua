@@ -52,16 +52,16 @@ function M.setupTS()
                 enable = true,
                 set_jumps = true,
                 goto_next_start = {
-                        [']m'] = '@function.outer'
+                    [']m'] = '@function.outer'
                 },
                 goto_previous_start = {
-                        ['[m'] = '@function.outer'
+                    ['[m'] = '@function.outer'
                 },
                 goto_next_end = {
-                        [']M'] = '@function.outer'
+                    [']M'] = '@function.outer'
                 },
                 goto_previous_end = {
-                        ['[M'] = '@function.outer'
+                    ['[M'] = '@function.outer'
                 },
             },
         },
@@ -69,12 +69,9 @@ function M.setupTS()
 end
 
 function M.setupTree()
-    require 'nvim-tree'.setup {
-        update_cwd = true,
-    }
-
-    vim.keymap.set('n', '<leader>n', '<cmd>NvimTreeToggle<CR>')
-    vim.keymap.set('n', '<leader>f', '<cmd>NvimTreeFindFile<CR>')
+    local oil = require 'oil'
+    oil.setup {}
+    vim.keymap.set('n', '<leader>n', oil.open)
 end
 
 function M.setupBufferline()

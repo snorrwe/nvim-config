@@ -70,11 +70,11 @@ return function()
                 function()
                     local result = {
                         "-p",
-                        "./data/191/processing/database/",
+                        "./data/213/processing/database/",
                         "-m",
-                        "./data/191/outputs/segmentation_masks/",
+                        "./data/213/outputs/segmentation_masks/",
                         "--images",
-                        "./data/191/raw/images/",
+                        "./data/213/processing/database/dense/images",
                         "-o",
                         "result",
                     }
