@@ -180,7 +180,11 @@ return {
             }
             lsp.setup()
             local clangd_lsp = lsp.build_options('clangd', {})
-            clangd_extensions.setup { server = clangd_lsp }
+            clangd_extensions.setup {
+                inlay_hints = {
+                    inline = vim.fn.has("nvim-0.10") == 1,
+                },
+                server = clangd_lsp }
 
             local rust_lsp = lsp.build_options('rust_analyzer', {})
             rust_rools.setup { server = rust_lsp }
