@@ -139,7 +139,7 @@ return {
     },
     {
         'VonHeikemen/lsp-zero.nvim',
-        event = "BufEnter",
+        event = { 'BufReadPre', 'BufNewFile' },
         config = function()
             local lsp = require('lsp-zero')
             local clangd_extensions = require('clangd_extensions')
