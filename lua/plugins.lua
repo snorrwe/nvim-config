@@ -162,6 +162,7 @@ return {
             local cmp = require('cmp')
             local cmp_mappings = lsp.defaults.cmp_mappings {
                 ['<C-Space>'] = cmp.mapping.complete(),
+                ["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
             }
             lsp.setup_nvim_cmp {
                 mapping = cmp_mappings,
