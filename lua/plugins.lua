@@ -64,7 +64,7 @@ return {
     {
         'nvim-treesitter/nvim-treesitter',
         build = ":TSUpdate",
-        event = "BufRead",
+        event = { "BufRead", "BufEnter" },
         cmd = {
             "TSInstall",
             "TSInstallInfo",
@@ -139,7 +139,7 @@ return {
     },
     {
         'VonHeikemen/lsp-zero.nvim',
-        event = { 'BufReadPre', 'BufNewFile' },
+        event = { 'BufEnter', 'BufReadPre', 'BufNewFile' },
         config = function()
             local lsp = require('lsp-zero')
             local clangd_extensions = require('clangd_extensions')
