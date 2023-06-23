@@ -180,14 +180,23 @@ return {
             }
             lsp.setup()
             local clangd_lsp = lsp.build_options('clangd', {})
+            local has_native_hints = vim.fn.has("nvim-0.10") == 1;
             clangd_extensions.setup {
-                inlay_hints = {
-                    inline = vim.fn.has("nvim-0.10") == 1,
+                extensions = {
+                    autoSetHints = not has_native_hints,
                 },
-                server = clangd_lsp }
+                server = clangd_lsp,
+            }
 
             local rust_lsp = lsp.build_options('rust_analyzer', {})
-            rust_rools.setup { server = rust_lsp }
+            rust_rools.setup {
+                server = rust_lsp,
+                tools = {
+                    inlay_hints = {
+                        auto = not has_native_hints
+                    }
+                }
+            }
         end,
         dependencies = {
             -- LSP Support
