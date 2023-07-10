@@ -1,60 +1,77 @@
-return function()
-    local lsp = require('lsp-zero')
-    local clangd_extensions = require('clangd_extensions')
-    local rust_rools = require('rust-tools')
-    lsp.preset('recommended')
-    lsp.ensure_installed({
-        'rust_analyzer',
-        'clangd',
-    })
-    lsp.set_preferences({
-        suggest_lsp_servers = true,
-        set_lsp_keymaps = {
-            omit = { '<C-k>', 'gr' },
-        }
-    })
-    -- clangd is set up by clangd_extensions
-    -- rust_analyzer is set up by rust-tools
-    lsp.skip_server_setup({ 'clangd', 'rust_analyzer' })
+local function filterOneInplace(t, func)
+    local i = 1
+    while (i <= #t) do
+        if func(t[i]) then
+            i = i + 1
+        else
+            table.remove(t, i)
+            return
+        end
+    end
+end
 
-    local cmp = require('cmp')
-    local cmp_mappings = lsp.defaults.cmp_mappings {
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+return function()
+    require("mason").setup {}
+    local mason_lsp = require("mason-lspconfig")
+    mason_lsp.setup {}
+
+    vim.g.coq_settings = {
+        auto_start = true,
+        ['display.pum.source_context'] = { '[', ']' }
     }
-    lsp.setup_nvim_cmp {
-        mapping = cmp_mappings,
-        preselect = cmp.PreselectMode.None,
-        formatting = {
-            format = function(_, vim_item)
-                vim_item.menu = nil;
-                local label = vim_item.abbr
-                local truncated_label = vim.fn.strcharpart(label, 0, 100)
-                if truncated_label ~= label then
-                    vim_item.abbr = truncated_label .. '..'
-                end
-                return vim_item
-            end,
+
+    local nvim_lsp = require 'lspconfig'
+    local coq = require 'coq'
+
+    local servers = mason_lsp.get_installed_servers()
+
+    local skip = { 'rust_analyzer', 'clangd' }
+    for _, server in ipairs(skip) do
+        filterOneInplace(servers, function(s)
+            return server == s;
+        end)
+    end
+
+    for _, lsp in ipairs(servers) do
+        local status, retval = pcall(nvim_lsp[lsp].setup, coq.lsp_ensure_capabilities())
+        if not status then
+            print("lsp setup failed: ", lsp, retval)
+        end
+    end
+
+    -- manual server setups go here
+    --
+    require("clangd_extensions").setup {
+        server = {
+            -- options to pass to nvim-lspconfig
+            -- i.e. the arguments to require("lspconfig").clangd.setup({})
+            capabilities = coq.lsp_ensure_capabilities()
         },
-    }
-    lsp.setup()
-    local clangd_lsp = lsp.build_options('clangd', {})
-    local has_native_hints = vim.fn.has("nvim-0.10") == 1;
-    clangd_extensions.setup {
-        extensions = {
-            autoSetHints = not has_native_hints,
-        },
-        server = clangd_lsp,
+        -- use the defaults
+        extensions = {}
     }
     vim.keymap.set('n', 'gh', "<cmd>ClangdSwitchSourceHeader<cr>")
 
-    local rust_lsp = lsp.build_options('rust_analyzer', {})
+    local has_native_hints = vim.fn.has("nvim-0.10") == 1;
+    local rust_rools = require('rust-tools')
     rust_rools.setup {
-        server = rust_lsp,
+        server = {
+            capabilities = coq.lsp_ensure_capabilities()
+        },
         tools = {
             inlay_hints = {
                 auto = not has_native_hints
             }
         }
     }
+
+    -- Enable diagnostics
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics, {
+            update_in_insert = true,
+        }
+    )
+
+    vim.cmd [[set shortmess-=F]]
+    vim.cmd [[set shortmess+=c]]
 end
