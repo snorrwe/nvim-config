@@ -45,7 +45,7 @@ if (vim.fn.has("nvim-0.10")==1) then
             local client = vim.lsp.get_client_by_id(args.data.client_id)
             if (client.server_capabilities.inlayHintProvider)
             then
-                vim.lsp.buf.inlay_hint(bufnr, true)
+                vim.lsp.inlay_hint(bufnr, true)
             end
         end,
     })
