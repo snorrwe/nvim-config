@@ -24,7 +24,7 @@ return function()
     }
     lsp.setup_nvim_cmp {
         mapping = cmp_mappings,
-        preselect = cmp.PreselectMode.None,
+        preselect = cmp.PreselectMode.Item,
         formatting = {
             format = function(_, vim_item)
                 vim_item.menu = nil;
