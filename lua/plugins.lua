@@ -188,6 +188,7 @@ return {
                 },
                 server = clangd_lsp,
             }
+            vim.keymap.set('n', 'gh', "<cmd>ClangdSwitchSourceHeader<cr>")
 
             local rust_lsp = lsp.build_options('rust_analyzer', {})
             rust_rools.setup {
