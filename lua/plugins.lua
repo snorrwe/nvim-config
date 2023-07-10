@@ -138,11 +138,12 @@ return {
         ft = "tex"
     },
     {
-        'neovim/nvim-lspconfig',
+        'VonHeikemen/lsp-zero.nvim',
         event = { 'BufEnter', 'BufReadPre', 'BufNewFile' },
         config = require("setup_lsp"),
         dependencies = {
             -- LSP Support
+            { 'neovim/nvim-lspconfig' },
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
             { 'p00f/clangd_extensions.nvim' },
@@ -155,17 +156,15 @@ return {
             },
 
             -- Autocompletion
-            {
-                'ms-jpq/coq_nvim',
-                branch = 'coq',
-                build = function()
-                    vim.cmd[[CoqDeps]]
-                end
-            },
-            {
-                'ms-jpq/coq.artifacts',
-                branch = 'artifacts',
-            },
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-nvim-lua' },
+
+            -- Snippets
+            { 'L3MON4D3/LuaSnip' },
 
             -- formatting
             {
