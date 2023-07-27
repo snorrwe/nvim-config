@@ -29,5 +29,6 @@ return function()
     vim.keymap.set('n', '<space>l', "<cmd>lua require('telescope.builtin').diagnostics()<cr>")
     vim.keymap.set('n', '<space>s', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>")
     vim.keymap.set('n', '<space>S', "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>")
+    vim.keymap.set('n', '<space><space>', "<cmd>lua require('telescope.builtin').resume()<cr>")
     vim.keymap.set('n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
 end
