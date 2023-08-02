@@ -106,6 +106,12 @@ return {
                 options = {
                     transparent = false,
                     dim_inactive = true,
+                    colorblind = {
+                        enable = true,
+                        severity = {
+                            protan = 0.6
+                        }
+                    }
                 },
             })
             vim.cmd [[colorscheme terafox]]
