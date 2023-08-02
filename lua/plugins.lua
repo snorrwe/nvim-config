@@ -34,7 +34,11 @@ return {
     },
     {
         'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+            -- lualine should only run config after nightfox has been setup
+            'EdenEast/nightfox.nvim',
+        },
         config = function()
             require("config_lualine")
         end
