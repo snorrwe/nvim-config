@@ -108,7 +108,7 @@ return {
                     dim_inactive = true,
                 },
             })
-            vim.cmd [[colorscheme duskfox]]
+            vim.cmd [[colorscheme terafox]]
         end,
         build = function()
             require('nightfox').setup({
