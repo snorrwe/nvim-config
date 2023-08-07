@@ -45,6 +45,7 @@ function M.setupTS()
                 init_selection = '=',
                 node_incremental = '=',
                 node_decremental = '-',
+                scope_incremental = '+',
             },
         },
         textobjects = {
