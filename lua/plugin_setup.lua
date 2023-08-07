@@ -42,7 +42,7 @@ function M.setupTS()
         incremental_selection = {
             enable = true,
             keymaps = {
-                init_selection = '<leader><space>',
+                init_selection = '=',
                 node_incremental = '=',
                 node_decremental = '-',
             },
