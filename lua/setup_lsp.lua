@@ -15,7 +15,7 @@ return function()
     })
     -- clangd is set up by clangd_extensions
     -- rust_analyzer is set up by rust-tools
-    lsp.skip_server_setup({ 'clangd', 'rust_analyzer' })
+    lsp.skip_server_setup({ 'rust_analyzer' })
 
     local cmp = require('cmp')
     local cmp_mappings = lsp.defaults.cmp_mappings {
