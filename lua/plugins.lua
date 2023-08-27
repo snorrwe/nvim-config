@@ -53,9 +53,7 @@ return {
             'nvim-lua/plenary.nvim',
             lazy = true,
         } },
-        config = function()
-            require("setup_telescope")()
-        end
+        config = require("setup_telescope")
     },
     {
         'akinsho/bufferline.nvim',
@@ -130,7 +128,10 @@ return {
             require('nightfox').compile()
         end
     },
-    { 'airblade/vim-gitgutter' },
+    {
+        'airblade/vim-gitgutter',
+        event = "BufEnter"
+    },
     {
         "folke/which-key.nvim",
         config = function()
