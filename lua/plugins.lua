@@ -96,12 +96,6 @@ return {
         },
     },
     {
-        'voldikss/vim-floaterm',
-        config = function()
-            require("plugin_setup").setupFloaterm()
-        end
-    },
-    {
         "EdenEast/nightfox.nvim",
         config = function()
             require('nightfox').setup({
