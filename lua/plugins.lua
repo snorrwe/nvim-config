@@ -145,7 +145,7 @@ return {
     },
     {
         'VonHeikemen/lsp-zero.nvim',
-        event = { 'BufEnter', 'BufReadPre', 'BufNewFile' },
+        event = {'InsertEnter'},
         config = require("setup_lsp"),
         dependencies = {
             -- LSP Support
