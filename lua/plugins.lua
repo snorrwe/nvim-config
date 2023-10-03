@@ -175,7 +175,7 @@ return {
             -- formatting
             {
                 "jose-elias-alvarez/null-ls.nvim",
-                event = "BufRead",
+                event = "InsertEnter",
                 config = function()
                     require "plugin_setup".setupAutoformat()
                 end,
