@@ -57,14 +57,6 @@ return {
         config = require("setup_telescope")
     },
     {
-        'akinsho/bufferline.nvim',
-        event = "BufRead",
-        branch = 'main',
-        config = function()
-            require("plugin_setup").setupBufferline()
-        end
-    },
-    {
         'nvim-treesitter/nvim-treesitter',
         build = ":TSUpdate",
         event = { "BufRead", "BufEnter" },
@@ -145,7 +137,7 @@ return {
     },
     {
         'VonHeikemen/lsp-zero.nvim',
-        event = {'InsertEnter'},
+        event = { 'InsertEnter' },
         config = require("setup_lsp"),
         dependencies = {
             -- LSP Support

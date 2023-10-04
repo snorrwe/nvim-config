@@ -78,13 +78,6 @@ function M.setupTree()
     vim.keymap.set('n', '<leader>f', '<cmd>NvimTreeFindFile<CR>')
 end
 
-function M.setupBufferline()
-    require("bufferline").setup {}
-
-    vim.keymap.set('n', '<leader>wd', '<cmd>BufferLineCycleNext<cr>')
-    vim.keymap.set('n', '<leader>wa', '<cmd>BufferLineCyclePrev<cr>')
-end
-
 function M.initialize()
     vim.opt.incsearch = true
     vim.opt.smartindent = true
