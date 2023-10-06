@@ -5,15 +5,21 @@ return function()
     local clangd_extensions = require('clangd_extensions')
     local rust_rools = require('rust-tools')
     local cmp = require('cmp')
-    local cmp_action = require('lsp-zero').cmp_action()
 
     lsp.preset('recommended')
-    mason.setup{}
-    mason_lsp.setup{
-        ensure_installed={
-        'rust_analyzer',
-        'clangd',
-    }}
+    mason.setup {}
+    mason_lsp.setup {
+        ensure_installed = {
+            'rust_analyzer',
+            'clangd',
+        },
+        handlers = {
+            lsp.default_setup,
+            -- manually setup these servers
+            rust_analyzer = lsp.noop,
+            clangd = lsp.noop,
+        },
+    }
     lsp.set_preferences({
         suggest_lsp_servers = true,
         set_lsp_keymaps = {
@@ -25,8 +31,8 @@ return function()
         ['<C-Space>'] = cmp.mapping.complete(),
         ["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
     }
-    cmp.setup{
-        mapping=cmp_mappings,
+    cmp.setup {
+        mapping = cmp_mappings,
         preselect = cmp.PreselectMode.Item,
         formatting = {
             format = function(_, vim_item)
