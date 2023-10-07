@@ -17,7 +17,6 @@ return function()
             lsp.default_setup,
             -- manually setup these servers
             rust_analyzer = lsp.noop,
-            clangd = lsp.noop,
         },
     }
     lsp.set_preferences({
