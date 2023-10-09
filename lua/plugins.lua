@@ -46,7 +46,7 @@ return {
     },
     {
         'editorconfig/editorconfig-vim',
-        event = "BufRead",
+        event = "InsertEnter",
     },
     {
         'nvim-telescope/telescope.nvim',
@@ -117,7 +117,7 @@ return {
     },
     {
         'airblade/vim-gitgutter',
-        event = "BufEnter"
+        event = "InsertEnter"
     },
     {
         "folke/which-key.nvim",
@@ -129,7 +129,7 @@ return {
     },
     {
         "junegunn/vim-slash",
-        event = "BufEnter",
+        event = "InsertEnter",
     },
     {
         "gerw/vim-latex-suite",
