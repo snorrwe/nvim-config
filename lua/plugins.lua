@@ -70,9 +70,7 @@ return {
             "TSDisableAll",
             "TSEnableAll",
         },
-        config = function()
-            require("plugin_setup").setupTS()
-        end,
+        config = require("setup_treesitter"),
         dependencies = {
             {
                 'nvim-treesitter/nvim-treesitter-textobjects',
