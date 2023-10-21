@@ -3,7 +3,6 @@ return function()
     local mason = require('mason')
     local mason_lsp = require('mason-lspconfig')
     local clangd_extensions = require('clangd_extensions')
-    local rust_rools = require('rust-tools')
     local cmp = require('cmp')
 
     lsp.preset('recommended')
@@ -16,7 +15,7 @@ return function()
         handlers = {
             lsp.default_setup,
             -- manually setup these servers
-            rust_analyzer = lsp.noop,
+            -- rust_analyzer = lsp.noop,
         },
     }
     lsp.set_preferences({
@@ -55,14 +54,4 @@ return function()
         server = clangd_lsp,
     }
     vim.keymap.set('n', 'gh', "<cmd>ClangdSwitchSourceHeader<cr>")
-
-    local rust_lsp = lsp.build_options('rust_analyzer', {})
-    rust_rools.setup {
-        server = rust_lsp,
-        tools = {
-            inlay_hints = {
-                auto = not has_native_hints
-            }
-        }
-    }
 end

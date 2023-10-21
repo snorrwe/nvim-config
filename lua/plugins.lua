@@ -145,7 +145,6 @@ return {
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
             { 'p00f/clangd_extensions.nvim' },
-            { 'simrat39/rust-tools.nvim' },
             {
                 "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
                 config = function()
