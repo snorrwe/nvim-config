@@ -50,6 +50,7 @@ return {
     },
     {
         'nvim-telescope/telescope.nvim',
+        event = "VeryLazy",
         dependencies = { {
             'nvim-lua/plenary.nvim',
             lazy = true,
@@ -115,10 +116,11 @@ return {
     },
     {
         'airblade/vim-gitgutter',
-        event = "InsertEnter"
+        event = "VeryLazy",
     },
     {
         "folke/which-key.nvim",
+        event = "VeryLazy",
         config = function()
             require("which-key").setup {
                 triggers = "auto",
@@ -127,7 +129,7 @@ return {
     },
     {
         "junegunn/vim-slash",
-        event = "InsertEnter",
+        event = "VeryLazy",
     },
     {
         "gerw/vim-latex-suite",
@@ -135,7 +137,7 @@ return {
     },
     {
         'VonHeikemen/lsp-zero.nvim',
-        event = { 'InsertEnter' },
+        event = "VeryLazy",
         config = require("setup_lsp"),
         dependencies = {
             -- LSP Support
