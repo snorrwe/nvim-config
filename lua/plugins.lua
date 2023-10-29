@@ -20,6 +20,7 @@ return {
     },
     {
         'kyazdani42/nvim-tree.lua',
+        event = "VeryLazy",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("plugin_setup").setupTree()
@@ -183,6 +184,7 @@ return {
     -- Debugger
     {
         'mfussenegger/nvim-dap',
+        event = "VeryLazy",
         config = function()
             local suc, res = pcall(require("setup_debugging"))
             if not suc then
