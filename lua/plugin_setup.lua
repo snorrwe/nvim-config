@@ -1,23 +1,5 @@
 local M = {}
 
-function M.setupAutoformat()
-    local null_ls = require "null-ls"
-    -- check supported formatters
-    local formatting = null_ls.builtins.formatting
-
-    null_ls.setup {
-        debug = false,
-        sources = {
-            formatting.rufo,
-            formatting.black,
-            formatting.prettier,
-        }
-    }
-
-    vim.keymap.set('n', '<leader>a', '<cmd>lua vim.lsp.buf.format()<CR>')
-    vim.keymap.set('v', '<leader>a', '<cmd>lua vim.lsp.buf.format()<CR>')
-end
-
 function M.setupTree()
     require 'nvim-tree'.setup {
         update_cwd = true,

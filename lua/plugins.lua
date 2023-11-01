@@ -169,15 +169,6 @@ return {
 
             -- Snippets
             { 'L3MON4D3/LuaSnip' },
-
-            -- formatting
-            {
-                "jose-elias-alvarez/null-ls.nvim",
-                event = "InsertEnter",
-                config = function()
-                    require "plugin_setup".setupAutoformat()
-                end,
-            },
         }
     },
     {
@@ -229,5 +220,33 @@ return {
                 "Treesitter Search"
             },
         },
+    },
+    {
+        'stevearc/conform.nvim',
+        event = "VeryLazy",
+        opts = {},
+        config = function()
+            local conform = require("conform");
+            -- Use a sub-list to run only the first available formatter
+            local prettier = { { "prettierd", "prettier" } }
+            conform.setup({
+                formatters_by_ft = {
+                    -- Specify a list of formatters to run
+                    lua = { "stylua" },
+                    python = { "black" },
+                    rust = { "rustfmt" },
+                    go = { "gofmt" },
+                    javascript = prettier,
+                    typescript = prettier,
+                    json = prettier,
+                    html = prettier,
+                    css = prettier,
+                },
+            })
+            local formatcmd = function()
+                conform.format({ lsp_fallback = true, timeout_ms = 500 })
+            end
+            vim.keymap.set({ 'n', 'v' }, '<leader>a', formatcmd)
+        end
     }
 }
