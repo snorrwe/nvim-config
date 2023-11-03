@@ -147,6 +147,8 @@ return {
         'VonHeikemen/lsp-zero.nvim',
         event = "VeryLazy",
         config = require("setup_lsp"),
+        branch = 'v3.x',
+        lazy = true,
         dependencies = {
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -165,17 +167,19 @@ return {
             },
 
             -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-path' },
-            { 'saadparwaiz1/cmp_luasnip' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-nvim-lua' },
-
-            -- Snippets
             {
-                'L3MON4D3/LuaSnip',
-                version = "v2.*"
+                'hrsh7th/nvim-cmp',
+                dependencies = {
+                    { 'hrsh7th/cmp-buffer' },
+                    { 'hrsh7th/cmp-path' },
+                    { 'saadparwaiz1/cmp_luasnip' },
+                    { 'hrsh7th/cmp-nvim-lsp' },
+                    -- Snippets
+                    {
+                        'L3MON4D3/LuaSnip',
+                        version = "v2.*"
+                    },
+                }
             },
         }
     },

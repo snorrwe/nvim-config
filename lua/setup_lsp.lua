@@ -43,6 +43,11 @@ return function()
                 return vim_item
             end,
         },
+        snippet = {
+            expand = function(args)
+                require 'luasnip'.lsp_expand(args.body)
+            end
+        },
     }
     lsp.setup()
     local clangd_lsp = lsp.build_options('clangd', {})
