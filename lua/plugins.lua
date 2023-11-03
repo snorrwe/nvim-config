@@ -23,7 +23,12 @@ return {
         event = "VeryLazy",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
-            require("plugin_setup").setupTree()
+            require 'nvim-tree'.setup {
+                update_cwd = true,
+            }
+
+            vim.keymap.set('n', '<leader>n', '<cmd>NvimTreeToggle<CR>')
+            vim.keymap.set('n', '<leader>f', '<cmd>NvimTreeFindFile<CR>')
         end
     },
     {
@@ -193,7 +198,6 @@ return {
     {
         "folke/flash.nvim",
         event = "VeryLazy",
-        ---@type Flash.Config
         opts = {},
         -- stylua: ignore
         keys = {
