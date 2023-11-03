@@ -24,7 +24,6 @@ require("lazy").setup("plugins")
 vim.opt.incsearch = true
 vim.opt.smartindent = true
 vim.o.completeopt = "menuone,noselect"
-vim.cmd.syntax(true)
 
 vim.cmd [[set nocompatible]]
 vim.cmd [[filetype plugin indent on]]
