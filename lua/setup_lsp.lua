@@ -1,11 +1,11 @@
 return function()
-    local lsp = require('lsp-zero')
+    local lsp_zero = require('lsp-zero')
     local mason = require('mason')
     local mason_lsp = require('mason-lspconfig')
     local clangd_extensions = require('clangd_extensions')
     local cmp = require('cmp')
 
-    lsp.preset('recommended')
+    lsp_zero.preset('recommended')
     mason.setup {}
     mason_lsp.setup {
         ensure_installed = {
@@ -13,19 +13,19 @@ return function()
             'clangd',
         },
         handlers = {
-            lsp.default_setup,
+            lsp_zero.default_setup,
             -- manually setup these servers
-            -- rust_analyzer = lsp.noop,
+            -- rust_analyzer = lsp_zero.noop,
         },
     }
-    lsp.set_preferences({
+    lsp_zero.set_preferences({
         suggest_lsp_servers = true,
         set_lsp_keymaps = {
             omit = { '<C-k>', 'gr' },
         }
     })
 
-    local cmp_mappings = lsp.defaults.cmp_mappings {
+    local cmp_mappings = lsp_zero.defaults.cmp_mappings {
         ['<C-Space>'] = cmp.mapping.complete(),
         ["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
     }
@@ -49,8 +49,8 @@ return function()
             end
         },
     }
-    lsp.setup()
-    local clangd_lsp = lsp.build_options('clangd', {})
+    lsp_zero.setup()
+    local clangd_lsp = lsp_zero.build_options('clangd', {})
     local has_native_hints = vim.fn.has("nvim-0.10") == 1;
     clangd_extensions.setup {
         extensions = {
