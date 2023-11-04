@@ -255,7 +255,7 @@ return {
                 },
             })
             local formatcmd = function()
-                conform.format({ lsp_fallback = true, timeout_ms = 500 })
+                conform.format({ lsp_fallback = 'always', timeout_ms = 500 })
             end
             vim.keymap.set({ 'n', 'v' }, '<leader>a', formatcmd)
         end
