@@ -144,14 +144,11 @@ return {
         ft = "tex"
     },
     {
-        'VonHeikemen/lsp-zero.nvim',
-        event = "VeryLazy",
+        'neovim/nvim-lspconfig',
         config = require("setup_lsp"),
-        branch = 'v3.x',
-        lazy = true,
+        event = "VeryLazy",
         dependencies = {
             -- LSP Support
-            { 'neovim/nvim-lspconfig' },
             { 'williamboman/mason.nvim' },
             { 'williamboman/mason-lspconfig.nvim' },
             { 'p00f/clangd_extensions.nvim' },
@@ -165,6 +162,7 @@ return {
                     })
                 end,
             },
+            { 'nvim-telescope/telescope.nvim' },
 
             -- Autocompletion
             {
