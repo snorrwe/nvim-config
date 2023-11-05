@@ -167,6 +167,7 @@ return {
             -- Autocompletion
             {
                 'hrsh7th/nvim-cmp',
+                config = require("setup_cmp"),
                 dependencies = {
                     { 'hrsh7th/cmp-buffer' },
                     { 'hrsh7th/cmp-path' },

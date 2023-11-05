@@ -4,7 +4,6 @@ return function()
     local mason = require('mason')
     local mason_lsp = require('mason-lspconfig')
     local clangd_extensions = require('clangd_extensions')
-    local cmp = require('cmp')
 
     mason.setup {}
     mason_lsp.setup {
@@ -24,35 +23,6 @@ return function()
         },
     }
 
-    cmp.setup {
-        mapping = {
-            ['<C-Space>'] = cmp.mapping.complete(),
-            ["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
-        },
-        preselect = cmp.PreselectMode.Item,
-        formatting = {
-            format = function(_, vim_item)
-                vim_item.menu = nil;
-                local label = vim_item.abbr
-                local truncated_label = vim.fn.strcharpart(label, 0, 100)
-                if truncated_label ~= label then
-                    vim_item.abbr = truncated_label .. '..'
-                end
-                return vim_item
-            end,
-        },
-        snippet = {
-            expand = function(args)
-                require 'luasnip'.lsp_expand(args.body)
-            end
-        },
-        sources = {
-            { name = 'nvim_lsp' },
-            { name = 'path' },
-            { name = 'buffer' },
-            { name = 'luasnip' },
-        },
-    }
     local has_native_hints = vim.fn.has("nvim-0.10") == 1;
     clangd_extensions.setup {
         extensions = {
