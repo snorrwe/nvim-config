@@ -232,6 +232,7 @@ return {
         },
     },
     {
+        -- autoformat
         'stevearc/conform.nvim',
         event = "VeryLazy",
         opts = {},
