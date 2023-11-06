@@ -17,9 +17,14 @@ return function()
                 lsp[server_name].setup {
                     capabilities = lsp_capabilities,
                 }
-            end
+            end,
             -- manually setup these servers
-            -- rust_analyzer = lsp_zero.noop,
+            clangd = function()
+                lsp.clangd.setup {
+                    capabilities = lsp_capabilities,
+                    filetypes = { "cpp", "c", "h", "hpp" }
+                }
+            end,
         },
     }
 
