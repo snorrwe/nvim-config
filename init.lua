@@ -68,6 +68,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     group = wgsl_group,
     command = "set ft=wgsl"
 })
+-- templ
+local templ_group = vim.api.nvim_create_augroup("templ", { clear = true })
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = { "*.templ" },
+    group = templ_group,
+    command = "set ft=templ"
+})
 
 if (vim.fn.has("nvim-0.10") == 1) then
     -- enable inlay hints on lsp attach
