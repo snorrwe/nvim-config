@@ -22,7 +22,7 @@ return function()
             clangd = function()
                 lsp.clangd.setup {
                     capabilities = lsp_capabilities,
-                    filetypes = { "cpp", "c", "h", "hpp" }
+                    filetypes = { "cpp", "c", "h", "hpp", "cuda" }
                 }
             end,
         },
@@ -37,7 +37,7 @@ return function()
 
     local group = vim.api.nvim_create_augroup('UserLspConfig', {});
     vim.api.nvim_create_autocmd('LspAttach', {
-        pattern = { "*.c", "*.h", "*.hpp", "*.cpp" },
+        pattern = { "*.c", "*.h", "*.hpp", "*.cpp", "*.cu" },
         group = group,
         callback = function(ev)
             local opts = { buffer = ev.buf }
