@@ -252,6 +252,7 @@ return {
                     json = prettier,
                     html = prettier,
                     css = prettier,
+                    markdown = {"mdformat"},
                 },
             })
             local formatcmd = function()
