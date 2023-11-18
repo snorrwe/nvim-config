@@ -17,6 +17,11 @@ return function()
             markdown = { "mdformat" },
             proto = { "buf" }
         },
+        formatters = {
+            rustfmt = {
+                prepend_args = { "--edition", "2021" }
+            }
+        }
     })
     vim.api.nvim_create_user_command("Format", function(args)
         local range = nil
