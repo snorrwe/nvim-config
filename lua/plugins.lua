@@ -136,6 +136,7 @@ return {
         end,
     },
     {
+        -- better in-buffer search
         "junegunn/vim-slash",
         event = "VeryLazy",
     },
