@@ -14,6 +14,8 @@ return function()
             json = prettier,
             html = prettier,
             css = prettier,
+            yaml = prettier,
+            yml = prettier,
             markdown = { "mdformat", "cbfmt" },
             proto = { "buf" }
         },
