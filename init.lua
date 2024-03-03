@@ -95,3 +95,12 @@ if vim.fn.has("nvim-0.10") == 1 then
         end,
     })
 end
+
+-- highlight when yanking
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight yanked text',
+    group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank { timeout = 200 }
+    end
+})
