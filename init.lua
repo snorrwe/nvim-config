@@ -47,8 +47,6 @@ vim.cmd([[noremap <leader>o <cmd>only<cr>]])
 -- show the next match in the middle of the screen
 vim.cmd([[noremap n nzz]])
 vim.cmd([[noremap N Nzz]])
-vim.cmd([[noremap <leader>] :BufferLineCycleNext<cr>]])
-vim.cmd([[noremap <leader>[ :BufferLineCyclePrev<cr>]])
 vim.keymap.set("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
 vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
