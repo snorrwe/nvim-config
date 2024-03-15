@@ -262,4 +262,7 @@ return {
         version = "v2.*",
         config = require('setup_snippets')
     },
+    {
+        "sindrets/diffview.nvim",
+    }
 }
