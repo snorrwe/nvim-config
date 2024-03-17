@@ -268,6 +268,7 @@ return {
             vim.keymap.set("n", "<leader>dh", "<cmd>DiffviewFileHistory<cr>")
             vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<cr>")
             vim.keymap.set("n", "<leader>dr", "<cmd>DiffviewRefresh<cr>")
+            vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<cr>")
         end
     }
 }
