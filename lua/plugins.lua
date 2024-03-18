@@ -264,6 +264,7 @@ return {
     },
     {
         "sindrets/diffview.nvim",
+        event = "VeryLazy",
         config = function()
             vim.keymap.set("n", "<leader>dh", "<cmd>DiffviewFileHistory<cr>")
             vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<cr>")
