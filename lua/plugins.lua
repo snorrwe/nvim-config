@@ -186,22 +186,6 @@ return {
     {
         "christoomey/vim-tmux-navigator",
     },
-    -- Debugger
-    {
-        "mfussenegger/nvim-dap",
-        event = "VeryLazy",
-        config = function()
-            local suc, res = pcall(require("setup_debugging"))
-            if not suc then
-                print("Failed to setup dap: ", res)
-            end
-        end,
-        dependencies = {
-            "rcarriga/nvim-dap-ui",
-            "nvim-telescope/telescope-dap.nvim",
-            "theHamsta/nvim-dap-virtual-text",
-        },
-    },
     {
         "folke/flash.nvim",
         event = "VeryLazy",
