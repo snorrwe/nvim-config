@@ -42,7 +42,6 @@ vim.cmd([[set smartcase]])
 vim.cmd([[set list]])
 
 vim.keymap.set("v", "//", 'y/<C-R>"<cr>')
-vim.cmd([[noremap <leader>o <cmd>only<cr>]])
 
 -- show the next match in the middle of the screen
 vim.cmd([[noremap n nzz]])
