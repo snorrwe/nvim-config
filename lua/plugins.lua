@@ -36,7 +36,9 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         cmd = "Oil",
         config = function()
-            require("oil").setup()
+            require("oil").setup {
+                default_file_explorer = true,
+            }
         end,
     },
     {
