@@ -28,6 +28,9 @@ return function()
         },
     })
 
+    -- mason_lsp does not support nginx_language_server
+    lsp.nginx_language_server.setup { capabilities = lsp_capabilities }
+
     local has_native_hints = vim.fn.has("nvim-0.10") == 1
     clangd_extensions.setup({
         extensions = {
