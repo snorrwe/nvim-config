@@ -257,5 +257,10 @@ return {
             vim.keymap.set("n", "<leader>dr", "<cmd>DiffviewRefresh<cr>")
             vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<cr>")
         end
+    },
+    {
+        "tpope/vim-dadbod",
+        "kristijanhusak/vim-dadbod-completion",
+        "kristijanhusak/vim-dadbod-ui",
     }
 }
