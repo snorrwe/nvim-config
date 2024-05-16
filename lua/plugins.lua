@@ -182,6 +182,9 @@ return {
                         "L3MON4D3/LuaSnip",
                         version = "v2.*",
                     },
+                    {
+                        "kristijanhusak/vim-dadbod-completion",
+                    }
                 },
             },
         },
@@ -261,7 +264,6 @@ return {
     },
     {
         "tpope/vim-dadbod",
-        "kristijanhusak/vim-dadbod-completion",
         "kristijanhusak/vim-dadbod-ui",
     }
 }
