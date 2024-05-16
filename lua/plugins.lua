@@ -170,13 +170,14 @@ return {
             -- Autocompletion
             {
                 "hrsh7th/nvim-cmp",
+                event = "InsertEnter",
                 config = require("setup_cmp"),
                 dependencies = {
                     { "hrsh7th/cmp-buffer" },
                     { "hrsh7th/cmp-path" },
-                    { "saadparwaiz1/cmp_luasnip" },
                     { "hrsh7th/cmp-nvim-lsp" },
                     -- Snippets
+                    { "saadparwaiz1/cmp_luasnip" },
                     {
                         "L3MON4D3/LuaSnip",
                         version = "v2.*",

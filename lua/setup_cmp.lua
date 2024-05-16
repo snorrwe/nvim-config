@@ -22,12 +22,17 @@ return function()
                 require("luasnip").lsp_expand(args.body)
             end,
         },
-        sources = {
+        sources = cmp.config.sources({
             { name = "nvim_lsp" },
-            { name = "path" },
-            { name = "buffer" },
             { name = "luasnip" },
-        },
+            { name = "path" },
+        }, {
+            { name = "buffer" },
+        }),
+        window = {
+            completion = cmp.config.window.bordered(),
+            documentation = cmp.config.window.bordered(),
+        }
     })
 
 
