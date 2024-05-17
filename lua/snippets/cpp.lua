@@ -14,7 +14,22 @@ local same_as = function(idx)
     end, { idx })
 end
 
+local c_for = fmt([[for(int {} = 0; {} < {}; ++{}) {{
+    {}
+}}]], {
+    i(1), same_as(1), i(2), same_as(1),
+    i(3),
+})
+
+local range_for = fmt([[for(auto&& {} : {}) {{
+    {}
+}}]], {
+    i(1), i(2),
+    i(3),
+})
+
 ls.add_snippets("cpp", {
+    s("for", c(1, { c_for, range_for })),
     s("forim", fmt([[for(int {} = 0; {} < {}.height{}; ++{}) {{
         for(int {} = 0; {} < {}.width{}; ++{}) {{
             {}
