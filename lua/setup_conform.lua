@@ -17,9 +17,10 @@ return function()
             yaml = prettier,
             yml = prettier,
             markdown = { "mdformat", "cbfmt" },
-            proto = { "buf" }
+            proto = { "buf" },
+            gdscript = { "gdformat" },
         },
-        formatters = { }
+        formatters = {},
     })
     vim.api.nvim_create_user_command("Format", function(args)
         local range = nil
@@ -30,7 +31,7 @@ return function()
                 ["end"] = { args.line2, end_line:len() },
             }
         end
-        require("conform").format({ async = true, lsp_fallback = 'always', range = range })
+        require("conform").format({ async = true, lsp_fallback = "always", range = range })
     end, { range = true })
     vim.keymap.set({ "n", "v" }, "<leader>a", "<cmd>Format<cr>")
 end
