@@ -1,5 +1,7 @@
 return function()
-    require("telescope").setup({
+    local ts = require("telescope")
+
+    ts.setup({
         defaults = {
             vimgrep_arguments = {
                 "rg",
@@ -26,7 +28,7 @@ return function()
             },
         },
     })
-    vim.keymap.set("n", "<space>f", "<cmd>lua require('telescope.builtin').git_files()<cr>")
+    vim.keymap.set("n", "<space>f", "<cmd>lua require('telescope_project_files').project_files()<cr>")
     vim.keymap.set("n", "<space>F", "<cmd>lua require('telescope.builtin').find_files()<cr>")
     vim.keymap.set("n", "<space>g", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
     vim.keymap.set("n", "<space>G", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>")
