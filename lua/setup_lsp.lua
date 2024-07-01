@@ -34,7 +34,7 @@ return function()
 								autoSearchPaths = true,
 								diagnosticMode = "openFilesOnly",
 								useLibraryCodeForTypes = true,
-								typeCheckingMode = "basic"
+								typeCheckingMode = "standard"
 							},
 						},
 					},
