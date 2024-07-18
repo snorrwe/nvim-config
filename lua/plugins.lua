@@ -36,9 +36,9 @@ return {
         dependencies = { "nvim-tree/nvim-web-devicons" },
         cmd = "Oil",
         config = function()
-            require("oil").setup {
+            require("oil").setup({
                 default_file_explorer = true,
-            }
+            })
         end,
     },
     {
@@ -166,7 +166,6 @@ return {
                 end,
             },
             { "nvim-telescope/telescope.nvim" },
-
         },
     },
     -- Autocompletion
@@ -186,7 +185,7 @@ return {
             },
             {
                 "kristijanhusak/vim-dadbod-completion",
-            }
+            },
         },
     },
     {
@@ -227,11 +226,11 @@ return {
         "stevearc/conform.nvim",
         event = "VeryLazy",
         opts = {},
-        config = require('setup_conform'),
+        config = require("setup_conform"),
     },
     {
-        'folke/todo-comments.nvim',
-        dependencies = { 'nvim-lua/plenary.nvim', },
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
         opts = {
             signs = false,
             search = {
@@ -245,12 +244,12 @@ return {
                 },
                 pattern = [[\b(KEYWORDS)]],
             },
-        }
+        },
     },
     {
         "L3MON4D3/LuaSnip",
         version = "v2.*",
-        config = require('setup_snippets')
+        config = require("setup_snippets"),
     },
     {
         "sindrets/diffview.nvim",
@@ -260,10 +259,16 @@ return {
             vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<cr>")
             vim.keymap.set("n", "<leader>dr", "<cmd>DiffviewRefresh<cr>")
             vim.keymap.set("n", "<leader>do", "<cmd>DiffviewOpen<cr>")
-        end
+        end,
     },
     {
         "tpope/vim-dadbod",
         "kristijanhusak/vim-dadbod-ui",
-    }
+    },
+    {
+        "FabijanZulj/blame.nvim",
+        config = function()
+            require("blame").setup()
+        end,
+    },
 }
