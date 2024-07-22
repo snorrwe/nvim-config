@@ -133,7 +133,9 @@ return {
         event = "VeryLazy",
         config = function()
             require("which-key").setup({
-                triggers = "auto",
+                triggers = {
+                    { "<auto>", mode = "nixsotc" },
+                },
             })
         end,
     },
