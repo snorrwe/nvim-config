@@ -1,7 +1,7 @@
 return function()
     local conform = require("conform")
     -- Use a sub-list to run only the first available formatter
-    local prettier = { { "prettierd", "prettier" } }
+    local prettier = { "prettierd", "prettier", stop_after_first = true }
     conform.setup({
         formatters_by_ft = {
             -- Specify a list of formatters to run
