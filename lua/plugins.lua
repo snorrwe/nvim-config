@@ -107,7 +107,7 @@ return {
                     colorblind = {
                         enable = true,
                         severity = {
-                            protan = 0.6,
+                            protan = 0.72,
                         },
                     },
                 },
