@@ -93,10 +93,13 @@ if vim.fn.has("nvim-0.10") == 1 then
 end
 
 -- highlight when yanking
-vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight yanked text',
-    group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight yanked text",
+    group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
     callback = function()
-        vim.highlight.on_yank { timeout = 200 }
-    end
+        vim.highlight.on_yank({ timeout = 200 })
+    end,
 })
+
+-- Oil is lazy initialized so I put the keymap here instead of config()
+vim.keymap.set("n", "<leader>o", "<cmd>Oil<CR>")
