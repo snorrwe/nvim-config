@@ -1,6 +1,6 @@
 local M = {}
 
-M.options = {
+local options = {
     transparent = false,
     dim_inactive = true,
     colorblind = {
@@ -10,14 +10,15 @@ M.options = {
         },
     },
 }
+M.options = options
 
 M.config = function()
-    require("nightfox").setup { M.options }
+    require("nightfox").setup { options = options }
     vim.cmd([[colorscheme terafox]])
 end
 
 M.build = function()
-    require("nightfox").setup { M.options }
+    require("nightfox").setup { options = options }
     require("nightfox").compile()
 end
 
