@@ -99,30 +99,8 @@ return {
     },
     {
         "EdenEast/nightfox.nvim",
-        config = function()
-            require("nightfox").setup({
-                options = {
-                    transparent = false,
-                    dim_inactive = true,
-                    colorblind = {
-                        enable = true,
-                        severity = {
-                            protan = 0.72,
-                        },
-                    },
-                },
-            })
-            vim.cmd([[colorscheme terafox]])
-        end,
-        build = function()
-            require("nightfox").setup({
-                options = {
-                    transparent = true,
-                    dim_inactive = true,
-                },
-            })
-            require("nightfox").compile()
-        end,
+        config = require("setup_nightfox").config,
+        build = require("setup_nightfox").build,
     },
     {
         "airblade/vim-gitgutter",
