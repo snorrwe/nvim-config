@@ -103,3 +103,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Oil is lazy initialized so I put the keymap here instead of config()
 vim.keymap.set("n", "<leader>o", "<cmd>Oil<CR>")
+
+require("term")
