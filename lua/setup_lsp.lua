@@ -3,13 +3,21 @@ return function()
     local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
     local mason = require("mason")
     local mason_lsp = require("mason-lspconfig")
+    local mason_reg = require("mason-registry")
     local clangd_extensions = require("clangd_extensions")
+
+    local function setup_clangd()
+        lsp.clangd.setup({
+            capabilities = lsp_capabilities,
+            filetypes = { "cpp", "c", "h", "hpp", "cuda" },
+            cmd = { "clangd", "--background-index", "--log=verbose" },
+        })
+    end
 
     mason.setup({})
     mason_lsp.setup({
         ensure_installed = {
             "rust_analyzer",
-            "clangd",
         },
         handlers = {
             -- default server setup
@@ -20,10 +28,7 @@ return function()
             end,
             -- manually setup these servers
             clangd = function()
-                lsp.clangd.setup({
-                    capabilities = lsp_capabilities,
-                    filetypes = { "cpp", "c", "h", "hpp", "cuda" },
-                })
+                setup_clangd()
             end,
             basedpyright = function()
                 lsp.basedpyright.setup({
@@ -51,6 +56,10 @@ return function()
     lsp.gdscript.setup({
         capabilities = lsp_capabilities,
     })
+    if not mason_reg.is_installed("clangd") then
+        -- on nixos mason provided clangd does not work as expected with system headers, use the system clangd instead
+        setup_clangd()
+    end
 
     local has_native_hints = vim.fn.has("nvim-0.10") == 1
     clangd_extensions.setup({
