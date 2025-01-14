@@ -10,7 +10,7 @@ return function()
         lsp.clangd.setup({
             capabilities = lsp_capabilities,
             filetypes = { "cpp", "c", "h", "hpp", "cuda" },
-            cmd = { "clangd", "--background-index", "--log=verbose" },
+            cmd = { "clangd", "--background-index", "--log=verbose", "--clang-tidy" },
         })
     end
 
