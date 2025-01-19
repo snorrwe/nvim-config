@@ -2,6 +2,7 @@ return function()
     local dap = require("dap")
     local dapui = require("dapui")
     local mason_dap = require("mason-nvim-dap")
+    require("nvim-dap-virtual-text").setup()
     mason_dap.setup()
     dapui.setup()
 
