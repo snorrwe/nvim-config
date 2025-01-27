@@ -39,7 +39,7 @@ return function()
                                 autoSearchPaths = true,
                                 diagnosticMode = "openFilesOnly",
                                 useLibraryCodeForTypes = true,
-                                typeCheckingMode = "standard"
+                                typeCheckingMode = "standard",
                             },
                         },
                     },
@@ -56,7 +56,7 @@ return function()
     lsp.gdscript.setup({
         capabilities = lsp_capabilities,
     })
-    if not mason_reg.is_installed("clangd") then
+    if not mason_reg.is_installed("clangd") and vim.fn.executable("clangd") == 1 then
         -- on nixos mason provided clangd does not work as expected with system headers, use the system clangd instead
         setup_clangd()
     end
