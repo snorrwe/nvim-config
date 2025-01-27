@@ -19,7 +19,8 @@ return function()
             markdown = { "mdformat", "cbfmt" },
             proto = { "buf" },
             gdscript = { "gdformat" },
-            nix = { "nixfmt" }
+            nix = { "nixfmt" },
+            sql = { "sqlfmt" },
         },
         formatters = {},
     })
