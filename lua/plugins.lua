@@ -129,7 +129,6 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = require("setup_lsp"),
-        event = "VeryLazy",
         dependencies = {
             -- LSP Support
             { "williamboman/mason.nvim" },
