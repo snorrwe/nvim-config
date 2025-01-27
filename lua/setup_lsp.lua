@@ -70,7 +70,7 @@ return function()
 
     local group = vim.api.nvim_create_augroup("UserLspConfig", {})
     vim.api.nvim_create_autocmd("LspAttach", {
-        pattern = { "*.c", "*.h", "*.hpp", "*.cpp", "*.cu", "*.cuh" },
+        pattern = { "*.c", "*.h", "*.hpp", "*.cpp", "*.cu", "*.cuh", "*.cc" },
         group = group,
         callback = function(ev)
             local opts = { buffer = ev.buf }
