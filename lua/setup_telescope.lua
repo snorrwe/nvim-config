@@ -27,6 +27,12 @@ return function()
                 find_command = { "fd", "-u", "--type", "f", "--strip-cwd-prefix" },
             },
         },
+        extensions  = {
+            ["ui-select"] = {
+                require("telescope.themes").get_dropdown {
+                }
+            }
+        }
     })
     vim.keymap.set("n", "<space>F", "<cmd>lua require('telescope_project_files').project_files()<cr>")
     vim.keymap.set("n", "<space>f", "<cmd>lua require('telescope.builtin').find_files()<cr>")
@@ -36,4 +42,6 @@ return function()
     vim.keymap.set("n", "<space>t", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
     vim.keymap.set("n", "<space>l", "<cmd>lua require('telescope.builtin').diagnostics()<cr>")
     vim.keymap.set("n", "<space><space>", "<cmd>lua require('telescope.builtin').resume()<cr>")
+
+    ts.load_extension("ui-select")
 end
