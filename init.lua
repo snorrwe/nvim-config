@@ -55,6 +55,8 @@ vim.cmd([[autocmd User LspProgressUpdate redrawstatus]])
 vim.opt.scrolloff = 8 -- always have at least 8 lines in the bottom when scrolling
 vim.opt.signcolumn = "yes"
 
+vim.opt.diffopt="filler,internal,closeoff,algorithm:histogram,context:5,linematch:60"
+
 -- move highlightes stuff
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
