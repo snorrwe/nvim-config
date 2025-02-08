@@ -1,6 +1,7 @@
 return function()
     local cmp = require("cmp")
     cmp.setup({
+        completion = { completeopt = 'menu,menuone,noselect' },
         mapping = cmp.mapping.preset.insert({
             ["<C-Space>"] = cmp.mapping.complete(),
             ["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
