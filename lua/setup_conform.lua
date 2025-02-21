@@ -20,7 +20,7 @@ return function()
             proto = { "buf" },
             gdscript = { "gdformat" },
             nix = { "nixfmt" },
-            sql = { "sqlfmt" },
+            sql = { "sqlfmt", "sleek" },
         },
         formatters = {},
     })
