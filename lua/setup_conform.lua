@@ -21,6 +21,7 @@ return function()
             gdscript = { "gdformat" },
             nix = { "nixfmt" },
             sql = { "sqlfmt", "sleek" },
+            just = { "just" },
         },
         formatters = {},
     })
