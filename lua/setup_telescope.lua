@@ -26,13 +26,15 @@ return function()
             find_files = {
                 find_command = { "fd", "-u", "--type", "f", "--strip-cwd-prefix" },
             },
+            current_buffer_fuzzy_find = {
+                skip_empty_lines = true,
+            },
         },
-        extensions  = {
+        extensions = {
             ["ui-select"] = {
-                require("telescope.themes").get_dropdown {
-                }
-            }
-        }
+                require("telescope.themes").get_dropdown({}),
+            },
+        },
     })
     vim.keymap.set("n", "<space>F", "<cmd>lua require('telescope_project_files').project_files()<cr>")
     vim.keymap.set("n", "<space>f", "<cmd>lua require('telescope.builtin').find_files()<cr>")
