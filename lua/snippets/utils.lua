@@ -8,4 +8,18 @@ M.same_as = function(idx)
     end, { idx })
 end
 
+M.concat = function(...)
+    local result = {}
+    for _, tbl in ipairs({ ... }) do
+        for k, v in pairs(tbl) do
+            if type(k) ~= "number" then
+                result[k] = v
+            else
+                table.insert(result, v)
+            end
+        end
+    end
+    return result
+end
+
 return M

@@ -14,6 +14,9 @@ local js = {
             util.same_as(1),
         })
     ),
+}
+
+local svelte = util.concat(js, {
     s(
         "predbg",
         fmt(
@@ -24,8 +27,8 @@ local js = {
             { i(1), util.same_as(1) }
         )
     ),
-}
+})
 
 ls.add_snippets("javascript", js)
 ls.add_snippets("typescript", js)
-ls.add_snippets("svelte", js)
+ls.add_snippets("svelte", svelte)
