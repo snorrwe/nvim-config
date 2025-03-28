@@ -14,6 +14,16 @@ local js = {
             util.same_as(1),
         })
     ),
+    s(
+        "predbg",
+        fmt(
+            [[<pre>
+===={}====
+    {{JSON.stringify({}, null, 4)}}
+</pre>]],
+            { i(1), util.same_as(1) }
+        )
+    ),
 }
 
 ls.add_snippets("javascript", js)
