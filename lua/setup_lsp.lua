@@ -80,7 +80,7 @@ return function()
 	vim.api.nvim_create_autocmd("LspAttach", {
 		group = group,
 		callback = function(ev)
-			local telescope = require("telescope.builtin")
+			local fzf = require("fzf-lua")
 			local opts = { buffer = ev.buf }
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -90,9 +90,9 @@ return function()
 			vim.keymap.set({ "n", "v" }, "ga", vim.lsp.buf.code_action, opts)
 			vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 			vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, opts)
-			vim.keymap.set("n", "<space>s", telescope.lsp_document_symbols, opts)
-			vim.keymap.set("n", "<space>S", telescope.lsp_workspace_symbols, opts)
-			vim.keymap.set("n", "gr", telescope.lsp_references, opts)
+			vim.keymap.set("n", "<space>s", fzf.lsp_document_symbols, opts)
+			vim.keymap.set("n", "<space>S", fzf.lsp_workspace_symbols, opts)
+			vim.keymap.set("n", "gr", fzf.lsp_references, opts)
 		end,
 	})
 end

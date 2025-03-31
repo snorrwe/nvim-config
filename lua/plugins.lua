@@ -57,17 +57,13 @@ return {
         event = "InsertEnter",
     },
     {
-        "nvim-telescope/telescope.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            {
-                "nvim-lua/plenary.nvim",
-                lazy = true,
-            },
-            "nvim-telescope/telescope-ui-select.nvim",
-        },
-        config = require("setup_telescope"),
+        "ibhagwan/fzf-lua",
+        -- optional for icon support
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        -- TODO: rename
+        config = require("setup_fzf"),
     },
+
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
@@ -148,7 +144,7 @@ return {
                     })
                 end,
             },
-            "nvim-telescope/telescope.nvim",
+            "ibhagwan/fzf-lua",
         },
     },
     -- Autocompletion
