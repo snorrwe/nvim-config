@@ -1,6 +1,6 @@
 return function()
     local fzf = require("fzf-lua")
-    fzf.setup({ winopts = { preview = { default = "bat" } } })
+    fzf.setup()
 
     vim.keymap.set("n", "<space>F", fzf.git_files)
     vim.keymap.set("n", "<space>f", fzf.files)
