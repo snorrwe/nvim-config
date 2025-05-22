@@ -1,6 +1,12 @@
 return function()
     local fzf = require("fzf-lua")
-    fzf.setup()
+    fzf.setup({
+        keymap = {
+            fzf = {
+                ["ctrl-q"] = "select-all+accept",
+            },
+        },
+    })
 
     vim.keymap.set("n", "<space>F", fzf.git_files)
     vim.keymap.set("n", "<space>f", fzf.files)
