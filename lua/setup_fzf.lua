@@ -16,4 +16,5 @@ return function()
     vim.keymap.set("n", "<space>t", fzf.helptags)
     vim.keymap.set("n", "<space>l", fzf.lsp_workspace_diagnostics)
     vim.keymap.set("n", "<space><space>", fzf.resume)
+    fzf.register_ui_select()
 end
