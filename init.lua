@@ -109,4 +109,16 @@ vim.keymap.set("n", "<leader>o", "<cmd>Oil<CR>")
 vim.api.nvim_create_user_command("Today", 'r! date +"\\%B \\%d, \\%Y"', {})
 vim.api.nvim_create_user_command("Now", "r! date", {})
 
+local pairMode = false
+vim.api.nvim_create_user_command("TogglePair", function()
+    pairMode = not pairMode
+    if pairMode then
+        vim.cmd([[colorscheme dawnfox]])
+        vim.cmd([[set norelativenumber]])
+    else
+        vim.cmd([[colorscheme terafox]])
+        vim.cmd([[set relativenumber]])
+    end
+end, {})
+
 require("term")
