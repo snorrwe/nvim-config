@@ -111,3 +111,4 @@ vim.api.nvim_create_user_command("Now", "r! date", {})
 
 require("term")
 require("pair")
+require("format_on_save")
