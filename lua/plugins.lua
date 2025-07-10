@@ -307,4 +307,9 @@ return {
         },
         config = require("setup_dap"),
     },
+    {
+        "MeanderingProgrammer/render-markdown.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        opts = {},
+    },
 }
