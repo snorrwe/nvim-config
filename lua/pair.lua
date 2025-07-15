@@ -11,3 +11,4 @@ vim.api.nvim_create_user_command("TogglePair", function()
         vim.cmd([[set relativenumber]])
     end
 end, {})
+vim.keymap.set("n", "<leader>tp", "<cmd>TogglePair<CR>")

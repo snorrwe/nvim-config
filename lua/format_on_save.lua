@@ -16,3 +16,5 @@ vim.api.nvim_create_user_command("ToggleFormatOnSave", function()
         print("formatOnSave disabled")
     end
 end, {})
+
+vim.keymap.set("n", "<leader>tf", "<cmd>ToggleFormatOnSave<CR>")
