@@ -16,7 +16,7 @@ return function()
             css = prettier,
             yaml = prettier,
             yml = prettier,
-            markdown = { "mdformat", "cbfmt" },
+            markdown = { "markdownlint", "cbfmt" },
             proto = { "buf" },
             gdscript = { "gdformat" },
             nix = { "nixfmt" },
