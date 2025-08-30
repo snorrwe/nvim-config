@@ -297,17 +297,6 @@ return {
         end,
     },
     {
-        "rcarriga/nvim-dap-ui",
-        event = "VeryLazy",
-        dependencies = {
-            "mfussenegger/nvim-dap",
-            "nvim-neotest/nvim-nio",
-            "jay-babu/mason-nvim-dap.nvim",
-            "theHamsta/nvim-dap-virtual-text",
-        },
-        config = require("setup_dap"),
-    },
-    {
         "MeanderingProgrammer/render-markdown.nvim",
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         opts = {
