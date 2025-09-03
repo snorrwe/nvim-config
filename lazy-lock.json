@@ -1,4 +1,5 @@
 {
+  "Jumppack.nvim": { "branch": "main", "commit": "aa02b4f9bc052a2572277d562448a779ed662d3e" },
   "LuaSnip": { "branch": "master", "commit": "458560534a73f7f8d7a11a146c801db00b081df0" },
   "blame.nvim": { "branch": "main", "commit": "b87b8c820e4cec06fbbd2f946b7b35c45906ee0c" },
   "blink.cmp": { "branch": "main", "commit": "bae4bae0eedd1fa55f34b685862e94a222d5c6f8" },
