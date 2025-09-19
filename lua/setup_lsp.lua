@@ -1,5 +1,4 @@
 return function()
-    local lsp = require("lspconfig")
     local lsp_capabilities = require("blink.cmp").get_lsp_capabilities()
     local mason = require("mason")
     local mason_lsp = require("mason-lspconfig")
@@ -7,11 +6,11 @@ return function()
     local clangd_extensions = require("clangd_extensions")
 
     local function setup_clangd()
-        lsp.clangd.setup({
+        vim.lsp.config.clangd = {
             capabilities = lsp_capabilities,
             filetypes = { "cpp", "c", "h", "hpp", "cuda" },
             cmd = { "clangd", "--background-index", "--log=verbose", "--clang-tidy" },
-        })
+        }
     end
 
     mason.setup({})
@@ -20,16 +19,16 @@ return function()
         handlers = {
             -- default server setup
             function(server_name)
-                lsp[server_name].setup({
+                vim.lsp.config[server_name] = {
                     capabilities = lsp_capabilities,
-                })
+                }
             end,
             -- manually setup these servers
             clangd = function()
                 setup_clangd()
             end,
             basedpyright = function()
-                lsp.basedpyright.setup({
+                vim.lsp.config.basedpyright = {
                     capabilities = lsp_capabilities,
                     settings = {
                         basedpyright = {
@@ -41,7 +40,7 @@ return function()
                             },
                         },
                     },
-                })
+                }
             end,
         },
     })
@@ -49,11 +48,9 @@ return function()
     -- mason_lsp does not support these servers
     if vim.fn.executable("nginx-language-server") == 1 then
         -- mason_lsp does not support nginx_language_server
-        lsp.nginx_language_server.setup({ capabilities = lsp_capabilities })
+        vim.lsp.config.nginx_language_server.capabilities = lsp_capabilities
     end
-    lsp.gdscript.setup({
-        capabilities = lsp_capabilities,
-    })
+    vim.lsp.config.gdscript.capabilities = lsp_capabilities
     if not mason_reg.is_installed("clangd") and vim.fn.executable("clangd") == 1 then
         -- on nixos mason provided clangd does not work as expected with system headers, use the system clangd instead
         setup_clangd()
