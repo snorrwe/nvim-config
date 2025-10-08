@@ -7,7 +7,6 @@ return function()
 
 	local function setup_clangd()
 		vim.lsp.config.clangd = {
-			capabilities = lsp_capabilities,
 			filetypes = { "cpp", "c", "h", "hpp", "cuda" },
 			cmd = { "clangd", "--background-index", "--log=verbose", "--clang-tidy" },
 		}
@@ -17,19 +16,12 @@ return function()
 	mason_lsp.setup({
 		ensure_installed = {},
 		handlers = {
-			-- default server setup
-			function(server_name)
-				vim.lsp.config[server_name] = {
-					capabilities = lsp_capabilities,
-				}
-			end,
 			-- manually setup these servers
 			clangd = function()
 				setup_clangd()
 			end,
 			basedpyright = function()
 				vim.lsp.config.basedpyright = {
-					capabilities = lsp_capabilities,
 					settings = {
 						basedpyright = {
 							analysis = {
@@ -45,12 +37,6 @@ return function()
 		},
 	})
 
-	-- mason_lsp does not support these servers
-	if vim.fn.executable("nginx-language-server") == 1 then
-		-- mason_lsp does not support nginx_language_server
-		vim.lsp.config.nginx_language_server.capabilities = lsp_capabilities
-	end
-	vim.lsp.config.gdscript.capabilities = lsp_capabilities
 	if not mason_reg.is_installed("clangd") and vim.fn.executable("clangd") == 1 then
 		-- on nixos mason provided clangd does not work as expected with system headers, use the system clangd instead
 		setup_clangd()
@@ -89,5 +75,9 @@ return function()
 			vim.keymap.set("n", "<space>S", fzf.lsp_workspace_symbols, opts)
 			vim.keymap.set("n", "gr", fzf.lsp_references, opts)
 		end,
+	})
+
+	vim.lsp.config("*", {
+		capabilities = lsp_capabilities,
 	})
 end
