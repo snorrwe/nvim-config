@@ -67,7 +67,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = { "BufRead", "BufEnter" },
+		event = { "BufRead", "BufEnter", "VimEnter" },
 		cmd = {
 			"TSInstall",
 			"TSInstallInfo",
