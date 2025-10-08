@@ -75,6 +75,17 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     group = templ_group,
     command = "set ft=templ",
 })
+-- nushell
+local nushell_group = vim.api.nvim_create_augroup("nushell", { clear = true })
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = { "*.nu" },
+    group = nushell_group,
+    callback = function(ev)
+        if vim.fn.executable("nu") == 1 then
+            vim.cmd([[LspStart nushell]])
+        end
+    end,
+})
 
 if vim.fn.has("nvim-0.10") == 1 then
     -- enable inlay hints on lsp attach
