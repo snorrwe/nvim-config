@@ -279,6 +279,13 @@ return {
 		"sindrets/diffview.nvim",
 		event = "VeryLazy",
 		config = function()
+			local dv = require("diffview")
+			dv.setup({
+				enhanced_diff_hl = true,
+				file_panel = {
+					listing_style = "list",
+				},
+			})
 			vim.keymap.set("n", "<leader>dh", "<cmd>DiffviewFileHistory<cr>")
 			vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<cr>")
 			vim.keymap.set("n", "<leader>dr", "<cmd>DiffviewRefresh<cr>")
