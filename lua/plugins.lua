@@ -310,8 +310,4 @@ return {
 			sign = { enabled = false },
 		},
 	},
-	{
-		"suliatis/Jumppack.nvim",
-		config = true,
-	},
 }
