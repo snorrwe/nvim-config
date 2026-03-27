@@ -1,3 +1,1 @@
-# snorrwe Neovim settings
-
-Requires fzf, fd, rg, bat
+Moved into dotfiles
